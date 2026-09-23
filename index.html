@@ -6,6 +6,12 @@
 <title>Altyn Click — продающие сайты для малого бизнеса</title>
 <meta name="description" content="Упаковываю сильные стороны бизнеса в сайт. Лендинг под ключ за 120 000 ₸: исследование, тексты, дизайн, вёрстка, заявки в Telegram.">
 
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#181410">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -615,6 +621,8 @@ tailwind.config = {
           <input class="input" name="name" required placeholder="Ваше имя *">
           <input class="input" name="contact" required placeholder="Телефон или @telegram *">
           <input class="input" name="link" placeholder="Ссылка на сайт / Instagram (необязательно)">
+          <!-- Honeypot for bots, hidden from people and screen readers -->
+          <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <button type="submit" id="auditBtn" class="btn btn-gold w-full py-4">Получить бесплатный аудит</button>
           <p class="text-[11px] text-mut text-center leading-relaxed">Никакого спама — свяжусь только по делу.</p>
         </form>
@@ -835,10 +843,30 @@ form.addEventListener('submit', e => {
   const btn = document.getElementById('auditBtn');
   btn.disabled = true;
   btn.textContent = 'Отправляю…';
-  setTimeout(() => {                       // здесь позже подключить отправку в Telegram Bot API
-    form.classList.add('hidden');
-    document.getElementById('auditOk').classList.remove('hidden');
-  }, 900);
+  fetch('/api/lead', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(Object.fromEntries(new FormData(form))),
+  })
+    .then(r => r.json().then(d => { if (!r.ok || !d.ok) throw new Error(d.error || r.status); }))
+    .then(() => {
+      form.classList.add('hidden');
+      document.getElementById('auditOk').classList.remove('hidden');
+    })
+    .catch(() => {
+      // Keep the lead: re-enable the form and point to Telegram as a fallback channel
+      btn.disabled = false;
+      btn.textContent = 'Получить бесплатный аудит';
+      let err = document.getElementById('auditErr');
+      if (!err) {
+        err = document.createElement('p');
+        err.id = 'auditErr';
+        err.setAttribute('role', 'alert');
+        err.className = 'text-sm text-center text-red-700';
+        form.appendChild(err);
+      }
+      err.innerHTML = 'Не получилось отправить. Попробуйте ещё раз или напишите в <a href="' + TG + '" target="_blank" rel="noopener" class="font-bold underline">Telegram</a>.';
+    });
 });
 
 /* ---------- 6. Портфолио: данные ---------- */
