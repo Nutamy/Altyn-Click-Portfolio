@@ -878,6 +878,24 @@ const MOBILE_Q = '(max-width: 639px)';
 const MOBILE = matchMedia(MOBILE_Q);
 const works = [
   {
+    id:'savepoint', name:'Save Point', cat:'Кофейня и коворкинг',
+    tag:'Стол с розеткой и кофе к нужной минуте',
+    tagline:'Бронь стола за 30 секунд — эспрессо готов к приходу',
+    url:'https://savepoint-1hu.pages.dev/',
+    cover:'screenshots/savepoint/01.webp',
+    shots:shots('savepoint'),
+    about:'Лендинг спешелти-кофейни и laptop-friendly пространства в центре Алматы для фрилансеров, стартаперов и тех, кто назначает встречи в центре. Их главная боль — кружить по залу в поисках свободного стола с розеткой и ловить косые взгляды персонала из-за ноутбука. Задача — перенести выбор места и заказ в онлайн и привести к брони стола или предзаказу напитка.',
+    done:[
+      'UX-структура «знакомая ситуация → решение»: четыре боли алматинских кофеен — полная посадка, охота за розеткой, «с ноутбуком нельзя», хаос с бронью — и таблица «что у нас есть → что это даёт тебе».',
+      'Интерактивная карта зала: три зоны (у окна, для встреч, тихий угол), статусы «свободен / скоро освободится / занят» и выбор стола в один клик.',
+      'Онлайн-предзаказ: меню по категориям, корзина с допами и итоговой суммой — напиток готов к точной минуте прихода.',
+      'Брони и заказы уходят в Telegram-бот кофейни через серверную функцию Cloudflare: валидация полей, защита от спама и ограничение частоты заявок.',
+      'Триггеры конверсии: welcome-промокод −20%, индикатор загрузки зала в часы пик и отдельный сценарий брони ивент-зоны на 8–12 человек.',
+      'Стиль ретро-терминала: неоновый зелёный на тёмном фоне, пиксельный шрифт, собственный пиксельный курсор и печенье с предсказаниями в первом экране.'
+    ],
+    highlight:'Сайт говорит на языке своей аудитории: интерфейс оформлен как игровой терминал 90-х — окна TABLE_BOOKING.SYS и INVENTORY_MENU.DAT, метка «checkpoint loaded». Название Save Point превращается в обещание: здесь можно «сохраниться» — занять стол заранее и не тратить время на поиск места.'
+  },
+  {
     id:'elara', name:'ELARA Dental', cat:'Стоматология',
     tag:'Стоматология с ценой, известной до лечения',
     tagline:'Цена без сюрпризов: осмотр, снимки и план лечения — до кресла',
@@ -932,6 +950,7 @@ const works = [
     id:'tropinka', name:'Тропинка', cat:'Детский центр',
     tag:'Подготовка к школе и развитие детей 3–6 лет',
     tagline:'«Тропинка к школе» — подготовка без родительской тревоги',
+    url:'https://tropinka.pages.dev/',
     cover:'screenshots/tropinka/01.webp',
     shots:shots('tropinka'),
     about:'Конверсионный одностраничный сайт для детского центра в Алматы. Программы для детей 3–6 лет: подготовка к школе, логопедия, студия рисования, казахский и английский языки. Задача — снять родительскую тревогу «не опоздали ли мы», понятно объяснить методику и программы и перевести сомневающегося родителя в запись на пробное занятие.',
@@ -949,6 +968,7 @@ const works = [
     id:'steps', name:'Steps', cat:'Детский развивающий центр',
     tag:'Каждый шаг — развитие, и каждый шаг виден',
     tagline:'Прозрачность, которую можно увидеть: камеры и диагностика',
+    url:'https://stupenki.pages.dev/',
     cover:'screenshots/steps/01.webp',
     shots:shots('steps'),
     about:'Лендинг детского развивающего центра Steps в Алматы для детей 1,5–7 лет (речевое развитие, логика, подготовка к школе). Для родителей, которых пугает неизвестность — «а что там реально происходит с ребёнком». Задача — перевести это в запись на бесплатное пробное занятие через прозрачность.',
@@ -1008,12 +1028,14 @@ works.forEach((w, i) => {
 
 function layoutStack() {
   if (expanded) return;
-  const off = Math.min(stackEl.clientWidth * 0.23, 150);
-  const rots = [-14, -7, 0, 7, 14];
-  const ys   = [16, 5, 0, 5, 16];
-  [...stackEl.children].forEach((c, i) => {
-    const k = i - 2;
-    c.style.transform = 'translate(-50%,-50%) translateX(' + (k * off) + 'px) translateY(' + ys[i] + 'px) rotate(' + rots[i] + 'deg)';
+  const cards = [...stackEl.children];
+  // Fan spans a fixed width and ±14° regardless of card count; k is normalized to -1…1
+  const half = (cards.length - 1) / 2 || 1;
+  const spread = Math.min(stackEl.clientWidth * 0.46, 300);
+  cards.forEach((c, i) => {
+    const k = (i - half) / half;
+    const y = 16 * k * k;
+    c.style.transform = 'translate(-50%,-50%) translateX(' + (k * spread) + 'px) translateY(' + y + 'px) rotate(' + (k * 14) + 'deg)';
   });
 }
 layoutStack();
@@ -1057,6 +1079,7 @@ const curShots = () => MOBILE.matches ? curWork.mshots : curWork.shots;
 const thumbCls = on => 'th flex-none w-12 h-20 sm:w-20 sm:h-14 rounded-xl overflow-hidden border-2 ' +
   (on ? 'border-gold' : 'border-transparent opacity-70 hover:opacity-100') + ' transition bg-ink';
 
+const EXT = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
 function openWork(id) {
   curWork = works.find(w => w.id === id);
   shotIdx = 0;
@@ -1089,6 +1112,8 @@ function openWork(id) {
         '<p class="leading-relaxed text-ink/85">' + curWork.highlight + '</p></div>' +
       '<div class="mt-8 flex flex-wrap items-center gap-4">' +
         '<a href="' + TG + '" target="_blank" rel="noopener" class="btn btn-gold px-7 py-3.5">Хочу похожий сайт ' + ARR + '</a>' +
+        // Live link is optional: projects without a public URL simply don't get the button
+        (curWork.url ? '<a href="' + curWork.url + '" target="_blank" rel="noopener" class="btn btn-ghost px-7 py-3.5">Посмотреть сайт ' + EXT + '</a>' : '') +
         '<span class="text-sm text-mut">Расскажу подробнее о решениях по проекту — в личных сообщениях.</span></div>' +
     '</div>';
   modal.classList.remove('hidden');
