@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+
+/* Custom styles sit between components and utilities, matching the old CDN setup:
+   utility classes in markup still override them. */
+
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{font-family:'Manrope',sans-serif;background:#FAF6EE;color:#181410}
+::selection{background:#C89A3C;color:#fff}
+
+/* Visible keyboard focus everywhere; mouse clicks don't trigger it */
+:focus-visible{outline:3px solid #7E5B1C;outline-offset:3px;border-radius:6px}
+.bg-ink :focus-visible,footer :focus-visible,#workModal :focus-visible{outline-color:#E2B75C}
+
+.dots{background-image:radial-gradient(rgba(24,20,16,.07) 1px,transparent 1px);background-size:22px 22px}
+.dots-light{background-image:radial-gradient(rgba(250,246,238,.08) 1px,transparent 1px);background-size:22px 22px}
+
+/* Darker gold on light backgrounds for AA contrast; dark sections keep the bright gold */
+.eyebrow{font-family:'Unbounded',sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#7E5B1C}
+.bg-ink .eyebrow{color:#E2B75C}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border-radius:9999px;font-weight:800;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,color .25s ease;white-space:nowrap}
+/* Dark text on the gold gradient: 8.3:1 → 5.7:1 (white text was 2.2–3.2:1) */
+.btn-gold{background:linear-gradient(135deg,#D6A84B,#B9862C);color:#181410;box-shadow:0 12px 26px -10px rgba(200,154,60,.6)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 32px -10px rgba(200,154,60,.7)}
+.btn-ghost{border:1.5px solid #E6DEC9;color:#181410;background:#fff}
+.btn-ghost:hover{border-color:#C89A3C;color:#7E5B1C;transform:translateY(-2px)}
+/* Long CTA labels wrap on phones instead of pushing the page sideways */
+@media (max-width:639px){.btn{white-space:normal;text-align:center}}
+
+/* чек-лист */
+.chk{display:flex;gap:.75rem}
+.chk .ic{flex:none;margin-top:2px;width:22px;height:22px;border-radius:9999px;background:rgba(200,154,60,.15);color:#7E5B1C;display:flex;align-items:center;justify-content:center}
+.chk p{font-size:.95rem;line-height:1.55;color:#4E463A}
+.chk b{color:#181410}
+.chk-d .ic{background:rgba(226,183,92,.16);color:#E2B75C}
+.chk-d p{color:#BDB3A0}
+.chk-d b{color:#F3EDE0}
+
+/* анимации */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.js .reveal.in{opacity:1;transform:none}
+@keyframes toastLoop{0%,14%{opacity:1;transform:translateY(0) scale(1)}24%{opacity:0;transform:translateY(-10px) scale(.95)}72%{opacity:0}84%{opacity:0;transform:translateY(12px) scale(.95)}94%,100%{opacity:1;transform:translateY(0) scale(1)}}
+.toast-loop{animation:toastLoop 6.5s ease-in-out infinite}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.marquee-track{animation:marquee 28s linear infinite}
+
+/* FAQ: collapsed answers are also hidden from screen readers and Tab */
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,.61,.36,1)}
+.faq-a>div{overflow:hidden;visibility:hidden;transition:visibility 0s .45s}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-item.open .faq-a>div{visibility:visible;transition-delay:0s}
+.faq-item.open .faq-chev{transform:rotate(45deg);background:#C89A3C;color:#fff;border-color:#C89A3C}
+
+/* галерея работ */
+.work-stack{transition:opacity .4s ease,transform .4s ease}
+.work-stack.hide{opacity:0;transform:scale(.94);pointer-events:none}
+.ws-pos{position:absolute;left:50%;top:50%;will-change:transform;transition:transform .55s cubic-bezier(.22,.9,.32,1.18);border-radius:1.5rem}
+.ws-card{transition:transform .3s ease,box-shadow .3s ease}
+.ws-pos:hover .ws-card,.ws-pos:focus-visible .ws-card{transform:translateY(-10px) scale(1.03)}
+.work-grid{transition:opacity .45s ease,transform .45s ease}
+.work-grid.prep{opacity:0;transform:translateY(18px);pointer-events:none}
+
+/* модалка */
+#workModal{opacity:0;transition:opacity .3s ease}
+#workModal.open{opacity:1}
+#workModal .panel{transform:translateY(26px) scale(.98);transition:transform .38s cubic-bezier(.22,.61,.36,1)}
+#workModal.open .panel{transform:none}
+
+/* опции */
+.opt.on{border-color:#C89A3C;background:#FBF3DF}
+.opt.on .optmark{background:#C89A3C;border-color:#C89A3C;color:#fff}
+
+/* Field border 3.9:1 on white (WCAG 1.4.11 needs 3:1 for UI boundaries) */
+.input{width:100%;border-radius:.9rem;border:1.5px solid #8F7F62;background:#fff;padding:.9rem 1.1rem;outline:none;font-size:.95rem;transition:border-color .2s,box-shadow .2s}
+.input:focus{border-color:#7E5B1C;box-shadow:0 0 0 4px rgba(200,154,60,.25)}
+.input[aria-invalid="true"]{border-color:#B91C1C}
+.field-err{font-size:.8rem;color:#B91C1C;margin-top:.35rem}
+
+/* Respect the OS "reduce motion" setting: no decorative motion, states still switch instantly */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  .js .reveal{opacity:1;transform:none}
+  .marquee-track{animation:none}
+}
+
+@tailwind utilities;

@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Аудит лендинга — Altyn Click — портфолио-лендинг</title>
+<style>
+  :root { color-scheme: light; } * { box-sizing: border-box; }
+  body { margin:0; background:#f7f7f8; color:#111827; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; }
+  .wrap { max-width:880px; margin:0 auto; padding:32px 20px 80px; }
+  header.report-head { background:#111827; color:#fff; border-radius:16px; padding:32px 28px; margin-bottom:28px; }
+  header.report-head h1 { margin:0 0 6px; font-size:1.5rem; }
+  header.report-head .meta { opacity:.75; font-size:.9rem; margin-bottom:20px; }
+  .overall-row { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  .overall-score { font-size:2.6rem; font-weight:700; }
+  .overall-sub { font-size:.9rem; opacity:.85; }
+  .counts { display:flex; gap:12px; margin-left:auto; flex-wrap:wrap; }
+  .count-chip { background:rgba(255,255,255,.1); padding:6px 12px; border-radius:999px; font-size:.85rem; }
+  nav.cat-nav { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+  .nav-chip { border:1.5px solid; border-radius:999px; padding:6px 12px; font-size:.82rem; text-decoration:none; color:#111827; background:#fff; }
+  section.category { background:#fff; border-radius:14px; padding:22px 24px; margin-bottom:18px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .category-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .category-head h2 { font-size:1.1rem; margin:0; }
+  .score-pill { color:#fff; font-weight:700; padding:4px 12px; border-radius:999px; font-size:.9rem; }
+  .cat-note { color:#6b7280; font-style:italic; margin:0; }
+  .finding { border-top:1px solid #eef0f2; padding:14px 0; } .finding:first-child { border-top:none; padding-top:0; }
+  .finding-head { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .badge { color:#fff; font-size:.72rem; font-weight:700; padding:3px 9px; border-radius:999px; white-space:nowrap; }
+  .finding-title { font-weight:600; }
+  .finding-desc { margin:4px 0; color:#374151; }
+  .finding-loc, .finding-rec { margin:4px 0; font-size:.92rem; color:#374151; }
+  .code-diff { display:flex; gap:12px; margin-top:8px; flex-wrap:wrap; }
+  .code-col { flex:1 1 260px; min-width:0; }
+  .code-label { font-size:.75rem; text-transform:uppercase; color:#9ca3af; margin-bottom:4px; }
+  pre { background:#0f172a; color:#e2e8f0; padding:10px 12px; border-radius:8px; font-size:.8rem; overflow-x:auto; margin:0; white-space:pre-wrap; word-break:break-word; }
+  table.brief { width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden; }
+  table.brief td { padding:14px 16px; border-top:1px solid #eef0f2; vertical-align:top; font-size:.92rem; }
+  table.brief tr:first-child td { border-top:none; }
+  .brief-title { font-weight:600; margin-bottom:4px; } .brief-why { color:#6b7280; margin-bottom:4px; }
+  section.not-checked { margin-top:28px; padding:18px 22px; background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; }
+  section.not-checked h2 { margin:0 0 8px; font-size:1rem; }
+  h1.section-title { font-size:1.2rem; margin:32px 0 14px; }
+  @media (max-width:480px) { .wrap { padding:20px 14px 60px; } header.report-head { padding:22px 18px; } .overall-score { font-size:2.1rem; } .counts { margin-left:0; } }
+</style></head>
+<body><div class="wrap">
+  <header class="report-head">
+    <h1>Аудит лендинга: Altyn Click — портфолио-лендинг</h1>
+    <div class="meta">Дата: 2026-09-24 · Источник: файлы проекта</div>
+    <div class="overall-row">
+      <div><div class="overall-score" style="color:#d97706">5.5/10</div><div class="overall-sub">Общая оценка</div></div>
+      <div class="counts"><span class="count-chip">Критично: 5</span><span class="count-chip">Важно: 20</span></div>
+    </div>
+  </header>
+  <nav class="cat-nav"><a href="#cat-copy_cro_geo_aeo" class="nav-chip" style="border-color:#dc2626">Оффер, копирайтинг, CRO, GEO/AEO <span style="color:#dc2626">3.0</span></a><a href="#cat-security" class="nav-chip" style="border-color:#dc2626">Критичные баги и безопасность <span style="color:#dc2626">3.5</span></a><a href="#cat-responsive_qa" class="nav-chip" style="border-color:#d97706">Адаптивность и Layout QA <span style="color:#d97706">6.8</span></a><a href="#cat-performance_assets" class="nav-chip" style="border-color:#d97706">Производительность, LCP, Core Web Vitals <span style="color:#d97706">6.5</span></a><a href="#cat-code_review" class="nav-chip" style="border-color:#dc2626">Код-ревью и доступность <span style="color:#dc2626">3.5</span></a><a href="#cat-motion_design" class="nav-chip" style="border-color:#d97706">Motion-дизайн <span style="color:#d97706">6.8</span></a><a href="#cat-analytics_tracking" class="nav-chip" style="border-color:#d97706">Аналитика <span style="color:#d97706">7.0</span></a><a href="#cat-legal_privacy" class="nav-chip" style="border-color:#dc2626">Юридика и приватность <span style="color:#dc2626">3.5</span></a><a href="#cat-social_sharing" class="nav-chip" style="border-color:#16a34a">Соцшаринг и превью <span style="color:#16a34a">8.5</span></a></nav>
+  <section class="category" id="cat-copy_cro_geo_aeo">
+      <div class="category-head"><h2>Оффер, копирайтинг, CRO, GEO/AEO</h2><div class="score-pill" style="background:#dc2626">3.0/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#dc2626">Критично</span>
+        <span class="finding-title">Вымышленное соцдоказательство «5.0 · 2ГИС · 57 отзывов» в hero</span>
+      </div>
+      <p class="finding-desc">Плашка стоит рядом с H1 студии и читается как рейтинг Altyn Click. У Altyn Click (пре-запуск) нет карточки 2ГИС с 57 отзывами. Любой, кто проверит, потеряет доверие ко всему сайту — именно тому, что сайт продаёт.</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:216–222 (.floaty в hero)</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Удалить плашку. Если нужен второй «плавающий» элемент — только проверяемый факт: «6 проектов в портфолио» (их реально 6) или ссылка на живой сайт кейса.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#dc2626">Критично</span>
+        <span class="finding-title">Искусственный дефицит: «свободно 1/2 места» считается по чётности месяца, таймер до конца месяца</span>
+      </div>
+      <p class="finding-desc">spots = (month+1) % 2 === 0 ? 2 : 1 — число мест не связано с реальной загрузкой. Бонус «до конца месяца» с секундным таймером перезапускается каждый месяц. Это fake urgency, которую ТЗ запрещает, и она противоречит блоку «Всё честно».</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:116, 387–406, 459–464, 771–801</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Удалить таймер, чип в шапке и живые «слоты». Оставить честное ограничение текстом: «Беру не больше 3 проектов в месяц — о ближайшей свободной дате скажу в ответе».</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Противоречия в цене и составе</span>
+      </div>
+      <p class="finding-desc">Hero: «Фиксированная цена — 120 000 ₸». FAQ-3: «Доплата возможна только за две опции: второй язык и прямые расходы». Блок 08 предлагает ещё калькулятор/квиз (+15 000) и экспресс (+25 000). Экспресс «до 5 дней» при базовом сроке «5–12 дней»; блок 05 обещает «через 10 дней». Логотип упомянут в FAQ-2 без указания, входит ли он в цену.</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:162, 448, 567, 665, 673</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Один источник правды: «База 120 000 ₸ фиксированно; опции — по желанию; домен оплачивается отдельно». Экспресс переформулировать как «гарантированно до 5 рабочих дней». Уточнить, входит ли логотип.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Нет блока «кто делает сайт»</span>
+      </div>
+      <p class="finding-desc">Возражение «можно ли доверять одному специалисту» закрывается только словами «лично». Нет имени, фото, опыта. Для соло-исполнителя это главный trust-актив.</p>
+      <p class="finding-loc"><strong>Где:</strong> между #works и #terms (блока нет)</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Короткий блок «Кто делает сайт»: имя, фото, 3 проверяемых факта опыта (только то, что вы готовы публиковать), ссылка на Telegram.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Доказательства слишком поздно, процесс дублируется</span>
+      </div>
+      <p class="finding-desc">Портфолио — 7-й блок, после цены, ограничений и условий. Процесс описан дважды: 4 шага в #process и 5 шагов в #terms.</p>
+      <p class="finding-loc"><strong>Где:</strong> порядок секций main</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Порядок: Hero → Проблема → Портфолио → Процесс (один, 5 шагов) → Оффер+опции → Кто делает → Условия/FAQ → Форма.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">9 CTA с 9 разными формулировками и двумя разными каналами</span>
+      </div>
+      <p class="finding-desc">Часть CTA ведёт к форме аудита, часть — в Telegram. Пользователь не понимает, какой шаг основной.</p>
+      <p class="finding-loc"><strong>Где:</strong> строки 117, 156, 284, 338, 425, 450, 500, 583, 702</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Основной CTA — форма (2 формулировки максимум). Telegram — вторичная ссылка-текст.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Контраст: белый текст на золотых кнопках 2.2–3.2:1, eyebrow 2.4:1, цены golddeep 3.5:1</span>
+      </div>
+      <p class="finding-desc">Все основные CTA не проходят WCAG AA (нужно 4.5:1 для 16px). Проверено расчётом по цветам из CSS.</p>
+      <p class="finding-loc"><strong>Где:</strong> .btn-gold, .eyebrow, .text-golddeep</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Текст CTA — ink #181410 (8.3:1 на золоте). golddeep → #7E5B1C (5.7:1). Eyebrow — #7E5B1C на светлом, gold2 на тёмном.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Нет JSON-LD, canonical; кейсы не видны без JS</span>
+      </div>
+      <p class="finding-desc">Тексты 6 кейсов существуют только в JS-массиве works — поисковики и AI-краулеры без JS их не увидят. Нет Schema.org ProfessionalService/Offer/FAQPage.</p>
+      <p class="finding-loc"><strong>Где:</strong> &lt;head&gt;; index.html:879–985</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Добавить JSON-LD (ProfessionalService + Offer 120000 KZT + FAQPage по реальным ответам), canonical; краткое описание кейсов вывести в HTML.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#2563eb">Полировка</span>
+        <span class="finding-title">Неподтверждённая цифра «90% малого бизнеса»</span>
+      </div>
+      <p class="finding-desc">Цифра без источника.</p>
+      <p class="finding-loc"><strong>Где:</strong> FAQ-2, строка 665</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> «Это частая ситуация — тексты я беру на себя».</p>
+      
+    </div>
+    </section><section class="category" id="cat-security">
+      <div class="category-head"><h2>Критичные баги и безопасность</h2><div class="score-pill" style="background:#dc2626">3.5/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#dc2626">Критично</span>
+        <span class="finding-title">Все Telegram-CTA ведут на @altynclick — это не ваш аккаунт; WhatsApp — заглушка</span>
+      </div>
+      <p class="finding-desc">9 ссылок t.me/altynclick (включая сообщение об ошибке формы и success-экран). Аккаунта @altynclick у вас нет — клиенты уходят в пустоту или к чужому человеку. WhatsApp +7 700 000 00 00 — плейсхолдер. Instagram @altyn.click — проверьте, что он ваш.</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:338, 425, 450, 500, 583, 634, 702, 733–735, 759</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Зарегистрировать @altynclick или заменить на реальный контакт; удалить WhatsApp-заглушку. Один раз проверить каждую ссылку вручную.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Нет rate limiting на /api/lead</span>
+      </div>
+      <p class="finding-desc">Honeypot есть, но бот, пропускающий пустое поле website, может засыпать Telegram. Кейс Save Point при этом обещает «ограничение частоты заявок».</p>
+      <p class="finding-loc"><strong>Где:</strong> functions/api/lead.js</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Cloudflare WAF → Rate limiting rule на /api/lead (например, 5 запросов/10 мин с IP) + проверка Origin в функции.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Нет security-заголовков и CSP; сторонний JS из cdn.tailwindcss.com</span>
+      </div>
+      <p class="finding-desc">Файла _headers нет. Скрипт Tailwind Play CDN исполняется с полными правами на странице с формой.</p>
+      <p class="finding-loc"><strong>Где:</strong> корень проекта; index.html:19</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Собрать Tailwind в статичный CSS, вынести JS в /app.js, добавить _headers с CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, frame-ancestors.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#2563eb">Полировка</span>
+        <span class="finding-title">Бэкенд формы сделан правильно</span>
+      </div>
+      <p class="finding-desc">Токен в env, экранирование HTML для Telegram, лимиты длины, honeypot, клиент проверяет r.ok &amp;&amp; d.ok. innerHTML используется только со статичными данными — XSS-вектора нет.</p>
+      <p class="finding-loc"><strong>Где:</strong> functions/api/lead.js; index.html:838–870</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Не переделывать.</p>
+      
+    </div>
+    </section><section class="category" id="cat-responsive_qa">
+      <div class="category-head"><h2>Адаптивность и Layout QA</h2><div class="score-pill" style="background:#d97706">6.8/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Горизонтальный скролл на 390/375/360px</span>
+      </div>
+      <p class="finding-desc">Кнопка «Показать решение для моего бизнеса» шириной 396px (white-space:nowrap в .btn) — scrollWidth страницы 412px. Проверено рендером Playwright с реальными шрифтами.</p>
+      <p class="finding-loc"><strong>Где:</strong> #process, строка 338; .btn</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Для .btn на мобильных разрешить перенос (white-space:normal; text-align:center) и сократить текст CTA.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Портфолио на мобильном — два лишних тапа до кейса</span>
+      </div>
+      <p class="finding-desc">Сначала веер из карточек (тап раскрывает сетку), потом тап по карточке. Веер на 375px показывает обрезанные карточки под углом.</p>
+      <p class="finding-loc"><strong>Где:</strong> #workStack</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Показывать сетку сразу; веер убрать (или оставить только ≥1024px).</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#2563eb">Полировка</span>
+        <span class="finding-title">Ссылки в футере и навигации 20px высотой</span>
+      </div>
+      <p class="finding-desc">Меньше рекомендуемых ~44px тач-зоны.</p>
+      <p class="finding-loc"><strong>Где:</strong> footer, #mobMenu</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> py-2 для ссылок футера и мобильного меню.</p>
+      
+    </div>
+    </section><section class="category" id="cat-performance_assets">
+      <div class="category-head"><h2>Производительность, LCP, Core Web Vitals</h2><div class="score-pill" style="background:#d97706">6.5/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Tailwind Play CDN в продакшене</span>
+      </div>
+      <p class="finding-desc">Синхронный скрипт в &lt;head&gt; компилирует CSS в браузере: блокирует рендер, даёт FOUC, грузит сторонний JS на каждом визите. Tailwind прямо не рекомендует CDN для продакшена. Локальная сборка этого же index.html даёт 24 КБ минифицированного CSS.</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:19–31</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> tailwindcss CLI → /assets/tw.css (24 КБ) и &lt;link rel=stylesheet&gt;.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">LCP (H1 на мобильном) скрыт анимацией reveal</span>
+      </div>
+      <p class="finding-desc">Hero-блок имеет opacity:0 до срабатывания IntersectionObserver + 0.7s transition; без JS весь контент невидим.</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:145 (.reveal в hero), CSS строка 59</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Убрать .reveal с hero; reveal включать только при html.js и без prefers-reduced-motion.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#2563eb">Полировка</span>
+        <span class="finding-title">Лишние начертания шрифтов</span>
+      </div>
+      <p class="finding-desc">Unbounded 500 и Manrope 500 нигде не используются (font-medium в коде нет).</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:17</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Unbounded:wght@400;600;700, Manrope:wght@400;600;700;800.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#2563eb">Полировка</span>
+        <span class="finding-title">Изображения в порядке</span>
+      </div>
+      <p class="finding-desc">WebP 28–84 КБ, width/height заданы, lazy + decoding=async, &lt;picture&gt; для мобильных скриншотов.</p>
+      <p class="finding-loc"><strong>Где:</strong> screenshots/*</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Не менять. Опционально: loading=lazy для миниатюр в модалке.</p>
+      
+    </div>
+    </section><section class="category" id="cat-code_review">
+      <div class="category-head"><h2>Код-ревью и доступность</h2><div class="score-pill" style="background:#dc2626">3.5/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#dc2626">Критично</span>
+        <span class="finding-title">Портфолио недоступно с клавиатуры и скринридеру</span>
+      </div>
+      <p class="finding-desc">Карточки — div/article с click-обработчиком, без tabindex/role. Модалка без role=dialog, aria-modal, фокус не переносится и не возвращается; кнопки ←/→/× без aria-label.</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:1002–1026, 748–753, 1086–1092</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Карточка = &lt;button type=button&gt;; модалка = role=dialog aria-modal=true aria-labelledby, фокус на заголовок/закрыть, возврат фокуса, aria-label у иконочных кнопок.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Форма без &lt;label&gt;, без autocomplete/inputmode</span>
+      </div>
+      <p class="finding-desc">Placeholder исчезает при вводе; граница поля #E6DEC9 на белом — 1.34:1 (нужно 3:1 для UI-элементов).</p>
+      <p class="finding-loc"><strong>Где:</strong> index.html:620–628, .input</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Видимые label, autocomplete=name/tel, inputmode, граница темнее.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">FAQ, бургер и опции без состояния для скринридера</span>
+      </div>
+      <p class="finding-desc">Нет aria-expanded у FAQ и бургера, нет aria-pressed у карточек опций.</p>
+      <p class="finding-loc"><strong>Где:</strong> строки 118, 653–697, 541–569</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> aria-expanded/aria-controls, aria-pressed — 10 строк JS.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#2563eb">Полировка</span>
+        <span class="finding-title">Мёртвый код и дубли</span>
+      </div>
+      <p class="finding-desc">document.querySelectorAll(&#x27;[data-month-gen-0]&#x27;) без эффекта; SVG-иконка Telegram продублирована 3 раза; setInterval каждую секунду ради таймера.</p>
+      <p class="finding-loc"><strong>Где:</strong> строки 769, 163/212/733, 801</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Удалить вместе с таймером.</p>
+      
+    </div>
+    </section><section class="category" id="cat-motion_design">
+      <div class="category-head"><h2>Motion-дизайн</h2><div class="score-pill" style="background:#d97706">6.8/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Нет prefers-reduced-motion</span>
+      </div>
+      <p class="finding-desc">Бесконечные marquee, floaty, toast-loop, pulse-dot и reveal работают у всех.</p>
+      <p class="finding-loc"><strong>Где:</strong> &lt;style&gt;, строки 58–68</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> @media (prefers-reduced-motion: reduce) — отключить анимации и transition.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Декоративные бесконечные анимации конкурируют с H1 и CTA</span>
+      </div>
+      <p class="finding-desc">Toast «Новая заявка» мигает каждые 6.5 с, рейтинг «плавает», marquee и пульс-точка — 4 постоянно движущихся объекта без UX-задачи.</p>
+      <p class="finding-loc"><strong>Где:</strong> hero, marquee, #limits</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Оставить toast один раз (без цикла), остальное убрать или сделать статичным.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#2563eb">Полировка</span>
+        <span class="finding-title">Уместные анимации</span>
+      </div>
+      <p class="finding-desc">FAQ через grid-template-rows, модалка opacity+transform, hover кнопок — короткие и по делу.</p>
+      <p class="finding-loc"><strong>Где:</strong> CSS 70–89</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Не менять.</p>
+      
+    </div>
+    </section><section class="category" id="cat-analytics_tracking">
+      <div class="category-head"><h2>Аналитика</h2><div class="score-pill" style="background:#d97706">7.0/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Аналитики нет вовсе</span>
+      </div>
+      <p class="finding-desc">Нельзя понять, сколько людей дошли до формы и какой канал дал заявку.</p>
+      <p class="finding-loc"><strong>Где:</strong> &lt;head&gt;</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Cloudflare Web Analytics (без cookies) или Яндекс.Метрика.</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Нет событий конверсии</span>
+      </div>
+      <p class="finding-desc">Не отслеживаются успешная отправка формы, клики в Telegram, открытие кейсов.</p>
+      <p class="finding-loc"><strong>Где:</strong> JS формы и модалки</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Событие lead_submit — только после ответа ok:true; tg_click; case_open.</p>
+      
+    </div>
+    </section><section class="category" id="cat-legal_privacy">
+      <div class="category-head"><h2>Юридика и приватность</h2><div class="score-pill" style="background:#dc2626">3.5/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#dc2626">Критично</span>
+        <span class="finding-title">Сбор телефона без согласия и политики обработки ПД</span>
+      </div>
+      <p class="finding-desc">Закон РК «О персональных данных и их защите» требует согласия субъекта. Рядом с формой нет ни текста согласия, ни ссылки на политику. Это не юридическая консультация — стоит показать юристу.</p>
+      <p class="finding-loc"><strong>Где:</strong> #auditForm</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Строка согласия под кнопкой + страница /privacy (кто оператор, какие данные, цель, срок, куда передаются — Telegram).</p>
+      
+    </div><div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">«Работаем официально… по договору» — проверить соответствие</span>
+      </div>
+      <p class="finding-desc">Если ИП/самозанятость ещё не оформлены, формулировка вводит в заблуждение.</p>
+      <p class="finding-loc"><strong>Где:</strong> строки 497, 697</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> Оставить только если есть оформленный статус и шаблон договора; иначе «Фиксируем этапы, сроки и цену письменно».</p>
+      
+    </div>
+    </section><section class="category" id="cat-social_sharing">
+      <div class="category-head"><h2>Соцшаринг и превью</h2><div class="score-pill" style="background:#16a34a">8.5/10</div></div>
+      <div class="finding">
+      <div class="finding-head">
+        <span class="badge" style="background:#d97706">Важно</span>
+        <span class="finding-title">Нет Open Graph / Twitter Card</span>
+      </div>
+      <p class="finding-desc">Ссылка в Telegram/WhatsApp — основной канал продвижения — покажется без картинки и описания. Favicon, apple-touch-icon и manifest при этом сделаны корректно.</p>
+      <p class="finding-loc"><strong>Где:</strong> &lt;head&gt;</p>
+      <p class="finding-rec"><strong>Рекомендация:</strong> og:title, og:description, og:image 1200×630, og:url, og:locale=ru_RU, twitter:card=summary_large_image.</p>
+      
+    </div>
+    </section>
+  <h1 class="section-title">Бриф на рефакторинг</h1>
+  <table class="brief"><tbody><tr>
+      <td><span class="badge" style="background:#dc2626">P0 — блокирует</span></td>
+      <td><div class="brief-title">Починить контакты: @altynclick и WhatsApp-заглушка</div><div class="brief-why">9 CTA ведут не к вам — лиды теряются полностью.</div>
+      <div class="brief-action"><strong>Действие:</strong> Реальный Telegram в одну константу/все href; удалить WhatsApp-заглушку; проверить Instagram.</div></td>
+      <td>Безопасность</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#dc2626">P0 — блокирует</span></td>
+      <td><div class="brief-title">Удалить фейковые «5.0 · 57 отзывов», места по чётности месяца и таймер</div><div class="brief-why">Проверяемая неправда разрушает доверие — главный продукт студии.</div>
+      <div class="brief-action"><strong>Действие:</strong> Удалить .floaty-рейтинг, #spotsChip, #countdown, #slots и JS-блок 1; оставить честный текст о 3 проектах в месяц.</div></td>
+      <td>Копирайтинг, CRO, GEO/AEO</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#dc2626">P0 — блокирует</span></td>
+      <td><div class="brief-title">Согласие на обработку ПД + /privacy</div><div class="brief-why">Форма собирает телефон без согласия.</div>
+      <div class="brief-action"><strong>Действие:</strong> Строка согласия под кнопкой, страница privacy.html, ссылка в футере.</div></td>
+      <td>Юридика и приватность</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#dc2626">P0 — блокирует</span></td>
+      <td><div class="brief-title">Портфолио и модалка — доступ с клавиатуры</div><div class="brief-why">Главное доказательство компетентности недоступно части пользователей.</div>
+      <div class="brief-action"><strong>Действие:</strong> button-карточки, role=dialog, управление фокусом, aria-label.</div></td>
+      <td>Код-ревью</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">Контраст CTA и золотого текста</div><div class="brief-why">Основные кнопки 2.2–3.2:1.</div>
+      <div class="brief-action"><strong>Действие:</strong> .btn-gold color:#181410; golddeep → #7E5B1C.</div></td>
+      <td>Копирайтинг, CRO, GEO/AEO</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">Tailwind CDN → статичный CSS 24 КБ; убрать reveal с hero</div><div class="brief-why">Блокировка рендера и задержка LCP.</div>
+      <div class="brief-action"><strong>Действие:</strong> tailwindcss CLI, &lt;link&gt;, html.js-гейт для reveal.</div></td>
+      <td>Ассеты, LCP, Core Web Vitals</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">Устранить горизонтальный скролл на телефонах</div><div class="brief-why">Страница «ездит» вбок на 375/390px.</div>
+      <div class="brief-action"><strong>Действие:</strong> white-space:normal у .btn &lt; 640px, короче текст CTA.</div></td>
+      <td>Адаптивность и Layout QA</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">Убрать противоречия в цене/сроках, объединить процесс</div><div class="brief-why">Противоречия = сомнение в честности.</div>
+      <div class="brief-action"><strong>Действие:</strong> Одна формулировка цены, один процесс из 5 шагов, уточнить логотип и «официально».</div></td>
+      <td>Копирайтинг, CRO, GEO/AEO</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">Поднять портфолио выше, показать сетку сразу, добавить ссылки ProRemont/Alba/ELARA</div><div class="brief-why">Доказательства должны идти до цены; у 3 кейсов нет ссылок на живые сайты.</div>
+      <div class="brief-action"><strong>Действие:</strong> Переставить секцию, удалить веер, добавить url.</div></td>
+      <td>Копирайтинг, CRO, GEO/AEO</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">Блок «Кто делает сайт»</div><div class="brief-why">Закрывает возражение «один специалист».</div>
+      <div class="brief-action"><strong>Действие:</strong> Фото, имя, 3 проверяемых факта.</div></td>
+      <td>Копирайтинг, CRO, GEO/AEO</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">Один основной CTA</div><div class="brief-why">9 формулировок и 2 канала распыляют внимание.</div>
+      <div class="brief-action"><strong>Действие:</strong> Форма — основной шаг; Telegram — вторичная ссылка.</div></td>
+      <td>Копирайтинг, CRO, GEO/AEO</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">Rate limit + security headers</div><div class="brief-why">Защита Telegram от спама, базовая защита страницы.</div>
+      <div class="brief-action"><strong>Действие:</strong> WAF rate limiting, Origin-check, _headers.</div></td>
+      <td>Безопасность</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#d97706">P1 — сильно влияет</span></td>
+      <td><div class="brief-title">SEO: canonical, OG, JSON-LD, robots, sitemap</div><div class="brief-why">Превью в мессенджерах и понятность сущности для поисковиков/AI.</div>
+      <div class="brief-action"><strong>Действие:</strong> Фрагменты кода в отчёте.</div></td>
+      <td>Соцшаринг и превью</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#2563eb">P2 — полировка</span></td>
+      <td><div class="brief-title">prefers-reduced-motion и сокращение бесконечных анимаций</div><div class="brief-why">Доступность и фокус на CTA.</div>
+      <div class="brief-action"><strong>Действие:</strong> Медиазапрос + удалить floaty/pulse/цикл toast.</div></td>
+      <td>Motion-дизайн и анимации</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#2563eb">P2 — полировка</span></td>
+      <td><div class="brief-title">Форма: label, autocomplete, передача выбранных опций</div><div class="brief-why">Меньше трения, калькулятор опций начинает работать на заявку.</div>
+      <div class="brief-action"><strong>Действие:</strong> См. код формы в отчёте.</div></td>
+      <td>Код-ревью</td>
+    </tr><tr>
+      <td><span class="badge" style="background:#2563eb">P2 — полировка</span></td>
+      <td><div class="brief-title">Аналитика + события</div><div class="brief-why">Без неё эффект правок не измерить.</div>
+      <div class="brief-action"><strong>Действие:</strong> Cloudflare Web Analytics, события lead_submit/tg_click.</div></td>
+      <td>Аналитика и трекинг конверсий</td>
+    </tr></tbody></table>
+  <section class="not-checked"><h2>Что не проверялось в этом заходе</h2><ul><li>Живой сайт в продакшене (домен, HTTPS, реальные заголовки Cloudflare) — аудит сделан по файлам репозитория и локальному рендеру.</li><li>Реальные Core Web Vitals (CrUX/PageSpeed) — сеть к CDN из песочницы закрыта; выводы о LCP сделаны по коду.</li><li>Существование аккаунтов @altynclick и @altyn.click — проверьте вручную.</li><li>Статус кейсов (реальный заказчик или концепт) — не определить по коду.</li></ul></section>
+</div></body></html>
