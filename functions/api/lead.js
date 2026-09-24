@@ -4,9 +4,11 @@
 
 import { PRICES, json, badOrigin, findPromo, discountFor } from './promo.js';
 
-const LIMITS = { name: 80, contact: 120, link: 300, promo: 32, utm_source: 100, utm_medium: 100, utm_campaign: 100 };
+const LIMITS = { lang: 5, name: 80, contact: 120, link: 300, promo: 32, utm_source: 100, utm_medium: 100, utm_campaign: 100 };
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// Site language the visitor wrote from: tells the owner which language to reply in
+const LANGS = { ru: 'русский', kk: 'қазақша', en: 'English' };
 const fmt = n => n.toLocaleString('ru-RU').replace(/ /g, ' ');
 
 // Turnstile check runs only when TURNSTILE_SECRET is set, so the form keeps working before setup
@@ -65,6 +67,7 @@ export async function onRequestPost({ request, env }) {
     '<b>🟡 Новая заявка с сайта</b>',
     `<b>Имя:</b> ${esc(f.name)}`,
     `<b>Контакт:</b> ${esc(f.contact)}`,
+    f.lang && f.lang !== 'ru' && LANGS[f.lang] && `<b>Язык сайта:</b> ${LANGS[f.lang]}`,
     f.link && `<b>Сайт/Instagram/2ГИС:</b> ${esc(f.link)}`,
     optIds.length && `<b>Опции:</b> ${optIds.map(id => PRICES.options[id].title).join(', ')}`,
   ];

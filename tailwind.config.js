@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // app.js builds markup from class strings, so it is a content source too
-  content: ['./index.html', './privacy.html', './app.js'],
+  content: ['./index.html', './privacy.html', './app.js', './i18n/*.{js,mjs}'],
   theme: {
     extend: {
       colors: {
@@ -11,7 +11,8 @@ module.exports = {
         golddeep: '#7E5B1C',
         mut: '#6F6553', mutd: '#A99F8C', green: '#3E9B5F'
       },
-      fontFamily: { disp: ['Unbounded', 'sans-serif'], sans: ['Manrope', 'sans-serif'] }
+      // Resolved per language in src/input.css (Kazakh needs other families)
+      fontFamily: { disp: ['var(--f-disp)'], sans: ['var(--f-sans)'] }
     }
   }
 };

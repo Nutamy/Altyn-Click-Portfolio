@@ -15,7 +15,64 @@ const BASE_PRICE = 120000;
 
 const ARR = '<svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 const CHK = '<svg aria-hidden="true" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
-const fmt = n => n.toLocaleString('ru-RU');
+
+/* ---------- Языки ---------- */
+// The page language comes from <html lang>. /kz/ and /en/ load i18n/<lang>.js before this file;
+// it sets window.I18N = { ui: {...}, works: {...} } and overrides the Russian defaults below.
+const LANG = document.documentElement.lang || 'ru';
+const L10N = window.I18N || {};
+// Site root derived from this script's URL, so asset paths work from /kz/ and /en/ too
+const ROOT = new URL('.', document.currentScript.src).href;
+const RU = {
+  menuOpen: 'Открыть меню',
+  menuClose: 'Закрыть меню',
+  optNone: '— пока без опций',
+  optSum: sum => '+ ' + sum + ' ₸ (опции)',
+  promoLine: (code, size, disc) => 'Промокод ' + code + ': ' + size + ' (−' + disc + ' ₸)',
+  rowBase: 'Лендинг под ключ',
+  rowOpts: names => 'Опции: ' + names,
+  rowPromo: code => 'Промокод ' + code,
+  rowTotal: 'Предварительный итог',
+  promoChecking: 'Проверяю…',
+  promoOk: size => 'Промокод применён: ' + size + '. Итоговую сумму подтвержу в ответе.',
+  promoExpired: 'Срок действия промокода закончился.',
+  promoUnknown: 'Такого промокода нет — проверьте написание.',
+  promoNetErr: 'Не получилось проверить промокод. Отправьте заявку — проверю его сама.',
+  sending: 'Отправляю…',
+  errTail: (tg, wa) => ' Или напишите в ' + tg + ' / ' + wa + '.',
+  errors: {
+    captcha: 'Проверка от спама не прошла — попробуйте ещё раз.',
+    contact: 'Проверьте контакт: нужен телефон или ник в Telegram.',
+    required: 'Заполните имя и контакт.',
+    consent: 'Отметьте согласие на обработку данных.',
+  },
+  errGeneric: 'Не получилось отправить. Попробуйте ещё раз.',
+  // Turnstile has no Kazakh UI; 'auto' follows the browser language
+  turnstileLang: 'ru',
+  openCase: 'Открыть кейс: ',
+  galExpand: 'Смотреть все проекты',
+  galCollapse: 'Свернуть галерею',
+  city: 'Алматы',
+  done: 'Что сделано',
+  highlight: 'Изюминка',
+  wantSimilar: 'Хочу похожий сайт',
+  viewSite: 'Посмотреть сайт',
+  tellMore: tg => 'Расскажу подробнее о решениях по проекту — ' + tg + '.',
+  tellMoreLink: 'в Telegram',
+  prevShot: 'Предыдущий скриншот',
+  nextShot: 'Следующий скриншот',
+  closeCase: 'Закрыть кейс',
+  showScreen: i => 'Показать экран ' + i,
+  shotAlt: (name, i, n) => 'Скриншот сайта ' + name + ', экран ' + i + ' из ' + n,
+};
+const T = { ...RU, ...L10N.ui, errors: { ...RU.errors, ...(L10N.ui && L10N.ui.errors) } };
+// English groups thousands with commas; Russian and Kazakh use spaces, as in the static prices
+const fmt = n => n.toLocaleString(LANG === 'en' ? 'en-US' : 'ru-RU');
+
+// Language links keep the promo/utm query and the current section when switching
+document.querySelectorAll('a[data-lang]').forEach(a => a.addEventListener('click', () => {
+  a.href = a.getAttribute('href').split(/[?#]/)[0] + location.search + location.hash;
+}));
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)');
 // Two frames: lets the browser paint the start state before a CSS transition begins
 const raf2 = fn => requestAnimationFrame(() => requestAnimationFrame(fn));
@@ -60,7 +117,7 @@ const burger = document.getElementById('burger');
 function setMenu(open) {
   mobMenu.classList.toggle('hidden', !open);
   burger.setAttribute('aria-expanded', String(open));
-  burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  burger.setAttribute('aria-label', open ? T.menuClose : T.menuOpen);
 }
 burger.addEventListener('click', () => setMenu(mobMenu.classList.contains('hidden')));
 mobMenu.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', () => setMenu(false)));
@@ -114,10 +171,10 @@ const promoText = p => p.percent ? '−' + p.percent + '%' : '−' + fmt(p.amoun
 function recalc() {
   const { picked, subtotal, discount, total } = calc();
   const optSum = subtotal - BASE_PRICE;
-  document.getElementById('optSumLabel').textContent = optSum ? '+ ' + fmt(optSum) + ' ₸ (опции)' : '— пока без опций';
+  document.getElementById('optSumLabel').textContent = optSum ? T.optSum(fmt(optSum)) : T.optNone;
   document.getElementById('optTotal').textContent = fmt(total) + ' ₸';
   promoLine.hidden = !promo;
-  if (promo) promoLine.textContent = 'Промокод ' + promo.code + ': ' + promoText(promo) + ' (−' + fmt(discount) + ' ₸)';
+  if (promo) promoLine.textContent = T.promoLine(promo.code, promoText(promo), fmt(discount));
 
   // The form carries option ids; the summary tells the visitor what will be sent
   optField.value = picked.map(c => c.dataset.opt).join(',');
@@ -133,10 +190,10 @@ function recalc() {
       row.children[1].textContent = value;
       calcSummary.appendChild(row);
     };
-    add('Лендинг под ключ', fmt(BASE_PRICE) + ' ₸');
-    if (names.length) add('Опции: ' + names.join(', '), '+ ' + fmt(subtotal - BASE_PRICE) + ' ₸');
-    if (promo) add('Промокод ' + promo.code, '− ' + fmt(discount) + ' ₸');
-    add('Предварительный итог', fmt(total) + ' ₸');
+    add(T.rowBase, fmt(BASE_PRICE) + ' ₸');
+    if (names.length) add(T.rowOpts(names.join(', ')), '+ ' + fmt(subtotal - BASE_PRICE) + ' ₸');
+    if (promo) add(T.rowPromo(promo.code), '− ' + fmt(discount) + ' ₸');
+    add(T.rowTotal, fmt(total) + ' ₸');
   }
 }
 optCards.forEach(card => card.addEventListener('click', () => {
@@ -167,7 +224,7 @@ async function applyPromo() {
   const code = promoInput.value.trim().toUpperCase();
   promo = null;
   if (!code) { setPromoMsg('', true); recalc(); return; }
-  setPromoMsg('Проверяю…', true);
+  setPromoMsg(T.promoChecking, true);
   try {
     const r = await fetch('/api/promo', {
       method: 'POST',
@@ -177,13 +234,13 @@ async function applyPromo() {
     const d = await r.json();
     if (d.ok) {
       promo = d;
-      setPromoMsg('Промокод применён: ' + promoText(d) + (d.label ? ' · ' + d.label : '') + '. Итоговую сумму подтвержу в ответе.', true);
+      setPromoMsg(T.promoOk(promoText(d) + (d.label ? ' · ' + d.label : '')), true);
       track('promo_applied', { code: d.code });
     } else {
-      setPromoMsg(d.error === 'expired' ? 'Срок действия промокода закончился.' : 'Такого промокода нет — проверьте написание.', false);
+      setPromoMsg(d.error === 'expired' ? T.promoExpired : T.promoUnknown, false);
     }
   } catch {
-    setPromoMsg('Не получилось проверить промокод. Отправьте заявку — проверю его сама.', false);
+    setPromoMsg(T.promoNetErr, false);
   }
   recalc();
 }
@@ -228,20 +285,16 @@ function showFormError(text) {
     form.appendChild(err);
   }
   // Static markup with our own text only, never user input
-  err.innerHTML = text + ' Или напишите в <a href="' + TG + '" target="_blank" rel="noopener" class="font-bold underline">Telegram</a> / <a href="' + WA + '" target="_blank" rel="noopener" class="font-bold underline">WhatsApp</a>.';
+  err.innerHTML = text + T.errTail(
+    '<a href="' + TG + '" target="_blank" rel="noopener" class="font-bold underline">Telegram</a>',
+    '<a href="' + WA + '" target="_blank" rel="noopener" class="font-bold underline">WhatsApp</a>');
 }
-const SERVER_ERRORS = {
-  captcha: 'Проверка от спама не прошла — попробуйте ещё раз.',
-  contact: 'Проверьте контакт: нужен телефон или ник в Telegram.',
-  required: 'Заполните имя и контакт.',
-  consent: 'Отметьте согласие на обработку данных.',
-};
 
 // Cloudflare Turnstile: loaded only when a site key is configured
 let turnstileId = null;
 if (TURNSTILE_SITEKEY) {
   window.onTurnstileLoad = () => {
-    turnstileId = turnstile.render('#turnstileBox', { sitekey: TURNSTILE_SITEKEY, language: 'ru' });
+    turnstileId = turnstile.render('#turnstileBox', { sitekey: TURNSTILE_SITEKEY, language: T.turnstileLang });
   };
   const ts = document.createElement('script');
   ts.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit';
@@ -256,33 +309,34 @@ form.addEventListener('submit', e => {
   if (invalid.length) { invalid[0].el.focus(); return; }
 
   btn.disabled = true;
-  btn.textContent = 'Отправляю…';
+  btn.textContent = T.sending;
   // An unconfirmed code still travels with the lead; the server re-checks it
   fetch('/api/lead', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(Object.fromEntries(new FormData(form))),
+    // lang tells the owner which language to reply in
+    body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), lang: LANG }),
   })
     .then(r => r.json().then(d => { if (!r.ok || !d.ok) throw new Error(d.error || r.status); }))
     .then(() => {
       form.classList.add('hidden');
       document.getElementById('auditOk').classList.remove('hidden');
       document.getElementById('auditOkTitle').focus();
-      track('lead_submit', { promo: promo ? promo.code : '', options: optField.value });
+      track('lead_submit', { promo: promo ? promo.code : '', options: optField.value, lang: LANG });
     })
     .catch(err => {
       btn.disabled = false;
       btn.textContent = BTN_TXT;
       // Turnstile tokens are single-use: a new one is needed for the retry
       if (turnstileId !== null && window.turnstile) turnstile.reset(turnstileId);
-      showFormError(SERVER_ERRORS[err.message] || 'Не получилось отправить. Попробуйте ещё раз.');
+      showFormError(T.errors[err.message] || T.errGeneric);
     });
 });
 
 /* ---------- 5. Портфолио: данные ---------- */
 // Every project ships 5 desktop (1416×768) and 5 mobile (585×1266 = 390px viewport @1.5x) WebP shots; 01 = hero, 02–05 = key sections
-const shots = id => [1,2,3,4,5].map(n => 'screenshots/' + id + '/0' + n + '.webp');
-const mshots = id => [1,2,3,4,5].map(n => 'screenshots/' + id + '/m/0' + n + '.webp');
+const shots = id => [1,2,3,4,5].map(n => ROOT + 'screenshots/' + id + '/0' + n + '.webp');
+const mshots = id => [1,2,3,4,5].map(n => ROOT + 'screenshots/' + id + '/m/0' + n + '.webp');
 // Must match the Tailwind `sm` breakpoint used in the image classes below
 const MOBILE_Q = '(max-width: 639px)';
 const MOBILE = matchMedia(MOBILE_Q);
@@ -386,6 +440,8 @@ const works = [
   }
 ];
 works.forEach(w => {
+  // Translated fields (cat, tag, tagline, about, done, highlight) replace the Russian ones
+  Object.assign(w, L10N.works && L10N.works[w.id]);
   w.cover = shots(w.id)[0];
   w.shots = shots(w.id);
   w.mshots = mshots(w.id);
@@ -413,7 +469,7 @@ works.forEach((w, i) => {
   sp.style.zIndex = 10 + i * 10;
   sp.innerHTML =
     // Visible text stays the accessible name; the prefix only adds context for screen readers
-    '<span class="sr-only">Открыть кейс: </span>' +
+    '<span class="sr-only">' + T.openCase + '</span>' +
     '<div class="ws-card w-44 sm:w-56 md:w-64 rounded-3xl bg-white border border-line shadow-xl overflow-hidden">' +
       pic(w, 'w-full aspect-[4/5] sm:aspect-[59/32] object-cover object-top pointer-events-none select-none') +
       '<div class="p-3 md:p-4"><div class="text-[10px] font-disp uppercase tracking-[0.2em] text-golddeep">' + w.cat + '</div>' +
@@ -451,7 +507,7 @@ addEventListener('resize', layoutStack, { passive: true });
 function expand() {
   expanded = true;
   stackEl.classList.add('hide');
-  galBtnTxt.textContent = 'Свернуть галерею';
+  galBtnTxt.textContent = T.galCollapse;
   galToggle.setAttribute('aria-expanded', 'true');
   later(() => {
     stackEl.style.display = 'none';
@@ -463,7 +519,7 @@ function expand() {
 function collapse() {
   expanded = false;
   gridEl.classList.add('prep');
-  galBtnTxt.textContent = 'Смотреть все проекты';
+  galBtnTxt.textContent = T.galExpand;
   galToggle.setAttribute('aria-expanded', 'false');
   later(() => {
     gridEl.style.display = 'none';
@@ -484,7 +540,7 @@ const modalBody = document.getElementById('modalBody');
 let curWork = null, shotIdx = 0, lastFocus = null;
 // Phone users get phone screenshots; the set is picked at open time and re-picked on breakpoint change
 const curShots = () => MOBILE.matches ? curWork.mshots : curWork.shots;
-const shotAlt = i => 'Скриншот сайта ' + curWork.name + ', экран ' + (i + 1) + ' из ' + curShots().length;
+const shotAlt = i => T.shotAlt(curWork.name, i + 1, curShots().length);
 const thumbCls = on => 'th flex-none w-12 h-20 sm:w-20 sm:h-14 rounded-xl overflow-hidden border-2 ' +
   (on ? 'border-gold' : 'border-transparent opacity-70 hover:opacity-100') + ' transition bg-ink';
 
@@ -493,35 +549,35 @@ function renderWork() {
   modalBody.innerHTML =
     '<div class="relative bg-ink select-none">' +
       '<img id="shotImg" src="' + curShots()[0] + '" alt="' + shotAlt(0) + '" ' + (MOBILE.matches ? 'width="585" height="1266"' : 'width="1416" height="768"') + ' class="w-full aspect-[585/1266] max-h-[75vh] object-contain sm:aspect-[59/32] sm:max-h-none sm:object-cover object-top bg-ink">' +
-      '<button type="button" data-dir="-1" aria-label="Предыдущий скриншот" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/40 hover:bg-gold text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
-      '<button type="button" data-dir="1" aria-label="Следующий скриншот" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/40 hover:bg-gold text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>' +
+      '<button type="button" data-dir="-1" aria-label="' + T.prevShot + '" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/40 hover:bg-gold text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
+      '<button type="button" data-dir="1" aria-label="' + T.nextShot + '" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/40 hover:bg-gold text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>' +
       '<div id="shotCnt" aria-live="polite" class="absolute bottom-3 right-4 text-xs font-bold text-white bg-black/50 backdrop-blur px-3 py-1.5 rounded-full">1 / ' + curShots().length + '</div>' +
-      '<button type="button" data-close aria-label="Закрыть кейс" class="absolute top-3 right-3 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' +
+      '<button type="button" data-close aria-label="' + T.closeCase + '" class="absolute top-3 right-3 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' +
     '</div>' +
     '<div id="thumbs" class="flex gap-2 px-5 md:px-8 -mt-6 relative z-10 overflow-x-auto pb-1">' +
       curShots().map((s, i) =>
-        '<button type="button" data-thumb="' + i + '" aria-label="Показать экран ' + (i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + ' class="' + thumbCls(i === 0) + '"><img src="' + s + '" alt="" loading="lazy" class="w-full h-full object-cover object-top"></button>'
+        '<button type="button" data-thumb="' + i + '" aria-label="' + T.showScreen(i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + ' class="' + thumbCls(i === 0) + '"><img src="' + s + '" alt="" loading="lazy" class="w-full h-full object-cover object-top"></button>'
       ).join('') +
     '</div>' +
     '<div class="p-6 md:p-9">' +
       '<div class="flex flex-wrap items-center gap-2">' +
         '<span class="text-[10px] font-disp uppercase tracking-[0.2em] bg-gold/15 text-golddeep px-3 py-1.5 rounded-full">' + curWork.cat + '</span>' +
-        '<span class="text-[10px] font-disp uppercase tracking-[0.2em] border border-line text-mut px-3 py-1.5 rounded-full">Алматы</span></div>' +
+        '<span class="text-[10px] font-disp uppercase tracking-[0.2em] border border-line text-mut px-3 py-1.5 rounded-full">' + T.city + '</span></div>' +
       '<h3 id="workTitle" class="font-disp font-semibold text-2xl md:text-[1.7rem] mt-4 leading-tight">' + curWork.name + '</h3>' +
       '<p class="text-golddeep font-bold mt-1.5">' + curWork.tagline + '</p>' +
       '<p class="mt-4 text-mut leading-relaxed">' + curWork.about + '</p>' +
-      '<h4 class="mt-8 text-[11px] font-disp uppercase tracking-[0.22em] text-mut font-normal">Что сделано</h4>' +
+      '<h4 class="mt-8 text-[11px] font-disp uppercase tracking-[0.22em] text-mut font-normal">' + T.done + '</h4>' +
       '<ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-3">' +
         curWork.done.map(d => '<li class="chk"><span class="ic">' + CHK + '</span><p>' + d + '</p></li>').join('') +
       '</ul>' +
       '<div class="mt-8 rounded-2xl bg-gold/10 border-l-4 border-gold p-5">' +
-        '<div class="text-[10px] font-disp uppercase tracking-[0.22em] text-golddeep mb-2">Изюминка</div>' +
+        '<div class="text-[10px] font-disp uppercase tracking-[0.22em] text-golddeep mb-2">' + T.highlight + '</div>' +
         '<p class="leading-relaxed text-ink/85">' + curWork.highlight + '</p></div>' +
       '<div class="mt-8 flex flex-wrap items-center gap-4">' +
-        '<a href="#audit" data-to-form class="btn btn-gold px-7 py-3.5">Хочу похожий сайт ' + ARR + '</a>' +
+        '<a href="#audit" data-to-form class="btn btn-gold px-7 py-3.5">' + T.wantSimilar + ' ' + ARR + '</a>' +
         // Live link is optional: projects without a public URL simply don't get the button
-        (curWork.url ? '<a href="' + curWork.url + '" target="_blank" rel="noopener" class="btn btn-ghost px-7 py-3.5">Посмотреть сайт ' + EXT + '</a>' : '') +
-        '<span class="text-sm text-mut">Расскажу подробнее о решениях по проекту — <a href="' + TG + '" target="_blank" rel="noopener" class="font-bold underline text-golddeep">в Telegram</a>.</span></div>' +
+        (curWork.url ? '<a href="' + curWork.url + '" target="_blank" rel="noopener" class="btn btn-ghost px-7 py-3.5">' + T.viewSite + ' ' + EXT + '</a>' : '') +
+        '<span class="text-sm text-mut">' + T.tellMore('<a href="' + TG + '" target="_blank" rel="noopener" class="font-bold underline text-golddeep">' + T.tellMoreLink + '</a>') + '</span></div>' +
     '</div>';
 }
 function openWork(id, trigger) {

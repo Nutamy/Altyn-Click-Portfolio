@@ -4,8 +4,28 @@
 /* Custom styles sit between components and utilities, matching the old CDN setup:
    utility classes in markup still override them. */
 
+/* Font stacks per language: Unbounded and Manrope have no Kazakh letters (Ә Ғ Қ Ң Ө Ұ Ү Һ),
+   so the Kazakh page swaps to the closest families that do: Geologica (display) and Onest (text) */
+:root{--f-disp:'Unbounded',sans-serif;--f-sans:'Manrope',sans-serif}
+:root:lang(kk){--f-disp:'Geologica',sans-serif;--f-sans:'Onest',sans-serif}
+
 html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{font-family:'Manrope',sans-serif;background:#FAF6EE;color:#181410}
+body{font-family:var(--f-sans);background:#FAF6EE;color:#181410}
+/* The wordmark is Latin-only and stays in Unbounded on every language version */
+.brand{font-family:'Unbounded',sans-serif}
+
+/* Language switcher: segmented pill; the current language is marked with aria-current */
+.lang-sw{display:inline-flex;gap:2px;padding:3px;border-radius:9999px;border:1px solid #E6DEC9;background:#fff;font-size:.8rem;font-weight:800;line-height:1}
+.lang-sw a{padding:.5rem .7rem;border-radius:9999px;color:#6F6553;transition:color .2s,background-color .2s}
+.lang-sw a:hover{color:#181410}
+.lang-sw a[aria-current="page"]{background:#181410;color:#FAF6EE}
+/* Bigger tap targets in the mobile menu (44px) */
+.lang-sw-lg{font-size:.9rem}
+.lang-sw-lg a{padding:.9rem 1.15rem}
+.lang-sw-dark{background:transparent;border-color:rgba(255,255,255,.14)}
+.lang-sw-dark a{color:#A99F8C}
+.lang-sw-dark a:hover{color:#E2B75C}
+.lang-sw-dark a[aria-current="page"]{background:#E2B75C;color:#181410}
 ::selection{background:#C89A3C;color:#fff}
 
 /* Visible keyboard focus everywhere; mouse clicks don't trigger it */
@@ -16,7 +36,7 @@ body{font-family:'Manrope',sans-serif;background:#FAF6EE;color:#181410}
 .dots-light{background-image:radial-gradient(rgba(250,246,238,.08) 1px,transparent 1px);background-size:22px 22px}
 
 /* Darker gold on light backgrounds for AA contrast; dark sections keep the bright gold */
-.eyebrow{font-family:'Unbounded',sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#7E5B1C}
+.eyebrow{font-family:var(--f-disp);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#7E5B1C}
 .bg-ink .eyebrow{color:#E2B75C}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border-radius:9999px;font-weight:800;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,color .25s ease;white-space:nowrap}

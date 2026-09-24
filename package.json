@@ -2,8 +2,9 @@
   "name": "altyn-click-portfolio",
   "private": true,
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify",
-    "watch": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch"
+    "build": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify && node scripts/build-i18n.mjs",
+    "watch": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch",
+    "i18n": "node scripts/build-i18n.mjs"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"

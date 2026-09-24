@@ -12,9 +12,15 @@
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#181410">
 <link rel="canonical" href="https://altyn-click.pages.dev/">
+<link rel="alternate" hreflang="ru" href="https://altyn-click.pages.dev/">
+<link rel="alternate" hreflang="kk" href="https://altyn-click.pages.dev/kz/">
+<link rel="alternate" hreflang="en" href="https://altyn-click.pages.dev/en/">
+<link rel="alternate" hreflang="x-default" href="https://altyn-click.pages.dev/">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="kk_KZ">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:site_name" content="Altyn Click">
 <meta property="og:url" content="https://altyn-click.pages.dev/">
 <meta property="og:title" content="Altyn Click — продающие лендинги для малого бизнеса">
@@ -159,9 +165,9 @@
 <header id="hdr" class="fixed top-0 inset-x-0 z-[60] transition-all duration-300">
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <div class="flex items-center justify-between h-16 md:h-[76px]">
-      <a href="#top" class="font-disp font-semibold text-lg tracking-tight">altyn<span class="text-gold">·click</span></a>
+      <a href="#top" class="brand font-semibold text-lg tracking-tight">altyn<span class="text-gold">·click</span></a>
 
-      <nav class="hidden md:flex items-center gap-5 lg:gap-8 text-sm font-bold text-mut">
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-bold text-mut" aria-label="Навигация по странице">
         <a href="#works" class="hover:text-ink transition-colors">Работы</a>
         <a href="#about" class="hover:text-ink transition-colors">Обо мне</a>
         <a href="#process" class="hover:text-ink transition-colors">Процесс</a>
@@ -170,16 +176,27 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="#audit" class="btn btn-gold text-sm px-5 py-2.5">Бесплатный аудит</a>
-        <button id="burger" type="button" class="md:hidden w-11 h-11 rounded-xl border border-line bg-white flex items-center justify-center" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobMenu">
+        <div class="hidden lg:block"><nav class="lang-sw" aria-label="Язык сайта">
+            <a href="/" hreflang="ru" lang="ru" data-lang="ru" aria-current="page">Рус</a>
+            <a href="/kz/" hreflang="kk" lang="kk" data-lang="kk">Қаз</a>
+            <a href="/en/" hreflang="en" lang="en" data-lang="en">Eng</a>
+          </nav></div>
+        <!-- Full label from 400px; on narrower phones it wrapped into two lines and overlapped the logo -->
+        <a href="#audit" class="btn btn-gold text-sm px-4 sm:px-5 py-2.5 whitespace-nowrap"><span class="min-[400px]:hidden">Аудит</span><span class="hidden min-[400px]:inline">Бесплатный аудит</span></a>
+        <button id="burger" type="button" class="lg:hidden w-11 h-11 rounded-xl border border-line bg-white flex items-center justify-center" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobMenu">
           <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
       </div>
     </div>
   </div>
   <!-- мобильное меню -->
-  <nav id="mobMenu" class="hidden md:hidden bg-paper border-b border-line shadow-lg" aria-label="Мобильное меню">
-    <div class="px-6 py-3 flex flex-col font-bold">
+  <nav id="mobMenu" class="hidden lg:hidden bg-paper border-b border-line shadow-lg" aria-label="Мобильное меню">
+    <div class="px-4 md:px-8 py-3 flex flex-col font-bold">
+      <div class="lang-sw lang-sw-lg self-start mb-2" role="group" aria-label="Язык сайта">
+        <a href="/" hreflang="ru" lang="ru" data-lang="ru" aria-current="page">Рус</a>
+        <a href="/kz/" hreflang="kk" lang="kk" data-lang="kk">Қаз</a>
+        <a href="/en/" hreflang="en" lang="en" data-lang="en">Eng</a>
+      </div>
       <a href="#works" class="mob-link py-2.5">Работы</a>
       <a href="#about" class="mob-link py-2.5">Обо мне</a>
       <a href="#process" class="mob-link py-2.5">Процесс</a>
@@ -201,7 +218,7 @@
     <!-- текст -->
     <div>
       <div class="eyebrow">Altyn Click · Продающие сайты для малого бизнеса</div>
-      <h1 class="font-disp font-semibold text-[1.7rem] sm:text-4xl lg:text-[2.75rem] leading-[1.18] tracking-tight mt-5">
+      <h1 class="font-disp font-semibold text-[1.7rem] sm:text-4xl lg:text-[2.75rem] leading-[1.18] sm:leading-[1.18] tracking-tight mt-5">
         Упаковываю <span class="relative inline-block">сильные стороны
           <svg aria-hidden="true" class="absolute -bottom-1.5 left-0 w-full" height="9" viewBox="0 0 220 9" preserveAspectRatio="none"><path d="M3 6.5C70 1.5 150 1.5 217 5.5" stroke="#C89A3C" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
         </span><br>бизнеса в сайт
@@ -926,7 +943,7 @@
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <div class="grid md:grid-cols-[1.2fr_1fr_1fr] gap-10 pb-12 border-b border-white/10">
       <div>
-        <div class="font-disp font-semibold text-lg">altyn<span class="text-gold">·click</span></div>
+        <div class="brand font-semibold text-lg">altyn<span class="text-gold">·click</span></div>
         <p class="mt-4 text-mutd text-sm leading-relaxed max-w-xs">Продающие сайты для малого бизнеса. Сайт, который продаёт, пока вы занимаетесь делом.</p>
       </div>
       <div>
@@ -948,6 +965,11 @@
           <a href="https://instagram.com/altyn.click" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 py-1.5 hover:text-gold2 transition-colors"><svg aria-hidden="true" class="w-4 h-4 text-gold2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>@altyn.click</a>
         </div>
         <p class="mt-4 text-xs text-mutd">Алматы · работаю удалённо со всем Казахстаном</p>
+        <div class="lang-sw lang-sw-dark mt-5" role="group" aria-label="Язык сайта">
+          <a href="/" hreflang="ru" lang="ru" data-lang="ru" aria-current="page">Рус</a>
+          <a href="/kz/" hreflang="kk" lang="kk" data-lang="kk">Қаз</a>
+          <a href="/en/" hreflang="en" lang="en" data-lang="en">Eng</a>
+        </div>
       </div>
     </div>
     <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-mutd">
