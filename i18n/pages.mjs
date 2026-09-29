@@ -168,6 +168,7 @@ export const index = [
   [`Сайт, который снимает сомнения — за вас`, `Күмәнді сіздің орныңызға сейілтетін сайт`, `A website that answers doubts — so you don’t have to`],
   [`Как всё происходит на деле: от брифа до готового сайта.`, `Іс жүзінде бәрі қалай өтеді: брифтен дайын сайтқа дейін.`, `What actually happens, from brief to finished site.`],
   [`>Бриф</h3>`, `>Бриф</h3>`, `>Brief</h3>`],
+  [`>Заполнить бриф<svg`, `>Брифті толтыру<svg`, `>Fill in the brief (in Russian)<svg`],
   [`Вы заполняете короткий бриф — <b class="text-ink">около 15 минут вашего времени</b>. Рассказываете о бизнесе, клиентах и о том, что сейчас мешает получать заявки.`,
    `Сіз қысқа бриф толтырасыз — <b class="text-ink">уақытыңыздың 15 минуттайы</b>. Бизнесіңіз, клиенттеріңіз және қазір өтінім алуға не кедергі екені туралы айтасыз.`,
    `You fill in a short brief — <b class="text-ink">about 15 minutes of your time</b>. You tell me about your business, your clients and what’s currently getting in the way of enquiries.`],

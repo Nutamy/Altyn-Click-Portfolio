@@ -99,6 +99,7 @@ document.addEventListener('click', e => {
   if (!a) return;
   if (a.href.startsWith('https://t.me/')) track('tg_click');
   else if (a.href.startsWith('https://wa.me/')) track('wa_click');
+  else if (a.dataset.goal) track(a.dataset.goal);
 });
 
 /* ---------- 1. Шапка, меню, reveal ---------- */
@@ -470,8 +471,8 @@ works.forEach((w, i) => {
   sp.innerHTML =
     // Visible text stays the accessible name; the prefix only adds context for screen readers
     '<span class="sr-only">' + T.openCase + '</span>' +
-    '<div class="ws-card w-44 sm:w-56 md:w-64 rounded-3xl bg-white border border-line shadow-xl overflow-hidden">' +
-      pic(w, 'w-full aspect-[4/5] sm:aspect-[59/32] object-cover object-top pointer-events-none select-none') +
+    '<div class="ws-card w-40 sm:w-56 md:w-72 rounded-3xl bg-white border border-line shadow-xl overflow-hidden">' +
+      pic(w, 'w-full aspect-square sm:aspect-[59/32] object-cover object-top pointer-events-none select-none') +
       '<div class="p-3 md:p-4"><div class="text-[10px] font-disp uppercase tracking-[0.2em] text-golddeep">' + w.cat + '</div>' +
       '<div class="font-extrabold text-sm md:text-base leading-tight mt-1">' + w.name + '</div></div></div>';
   // Hovered or focused card comes to the front so it's fully visible
@@ -492,13 +493,25 @@ document.getElementById('galControls').hidden = false;
 function layoutStack() {
   if (expanded) return;
   const cards = [...stackEl.children];
-  // Fan spans a fixed width and ±14° regardless of card count; k is normalized to -1…1
-  const half = (cards.length - 1) / 2 || 1;
-  const spread = Math.min(stackEl.clientWidth * 0.46, 300);
+  if (!cards.length) return;
+  // Two fan rows; phones get three rows of two, otherwise three cards overlap until captions are unreadable.
+  // The row gap comes from the real card height, so the lower row never covers the captions above it
+  const rows = stackEl.clientWidth < 520 ? 3 : 2;
+  const perRow = Math.ceil(cards.length / rows);
+  const w = cards[0].offsetWidth, h = cards[0].offsetHeight;
+  const rowGap = h + 24;
+  // Neighbours overlap by ~8% on wide screens; on phones the fan compresses to fit the container
+  const spread = Math.max(0, Math.min((stackEl.clientWidth - w) / 2, w * 0.92));
+  // Extra room for hover lift and the rotated corners
+  stackEl.style.height = ((rows - 1) * rowGap + h + 56) + 'px';
   cards.forEach((c, i) => {
-    const k = (i - half) / half;
-    const y = 16 * k * k;
-    c.style.transform = 'translate(-50%,-50%) translateX(' + (k * spread) + 'px) translateY(' + y + 'px) rotate(' + (k * 14) + 'deg)';
+    const row = Math.floor(i / perRow), col = i % perRow;
+    const inRow = Math.min(perRow, cards.length - row * perRow);
+    // k is normalized to -1…1 inside the row; a lone card stays centred
+    const half = (inRow - 1) / 2;
+    const k = half ? (col - half) / half : 0;
+    const y = (row - (rows - 1) / 2) * rowGap + 10 * k * k;
+    c.style.transform = 'translate(-50%,-50%) translateX(' + (k * spread) + 'px) translateY(' + y + 'px) rotate(' + (k * 6) + 'deg)';
   });
 }
 layoutStack();
