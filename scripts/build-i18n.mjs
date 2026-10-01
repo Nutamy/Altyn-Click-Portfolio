@@ -75,7 +75,7 @@ function localize(html, lang, file) {
 }
 
 // Text nodes of the Russian page that should not survive translation
-const KEEP = new Set(['Altyn Click', 'Telegram', 'WhatsApp', 'Instagram', 'Рус', 'Қаз', 'Eng', 'Промокод', 'Портфолио', 'Стоматология', 'Дизайн', 'Процесс', 'Бриф', 'Тропинка', 'Наталья', 'Навигация', 'Алматы', '02 · Портфолио', '120 000 ₸ (база)']);
+const KEEP = new Set(['Altyn Click', 'Telegram', 'WhatsApp', 'Instagram', 'Рус', 'Қаз', 'Eng', 'Промокод', 'Портфолио', 'Стоматология', 'Дизайн', 'Процесс', 'Бриф', 'Тропинка', 'Наталья', 'Навигация', 'Алматы', '02 · Портфолио', '120 000 ₸ (база)', 'Таргетолог', 'Азамат Жеңісұлы', 'Айгерим &amp; Тимур', 'Миссия «Мирон-7»']);
 const textNodes = html => [...html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, '')
   .matchAll(/>([^<>]+)</g)].map(m => m[1].replace(/\s+/g, ' ').trim()).filter(t => /[А-Яа-яЁё]{3}/.test(t) && !KEEP.has(t));
 

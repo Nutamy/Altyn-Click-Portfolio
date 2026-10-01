@@ -132,6 +132,54 @@ window.I18N = {
         'A warm cream palette and soft, playful visuals.'
       ],
       highlight: 'The headline “Every step is growth” is backed by a concrete feature: access to class streams and monthly progress checks. Parents don’t just take it on trust — they see the progress and can make sure their child is safe.'
+    },
+    targetolog: {
+      name: 'Azamat Zhenisuly',
+      cat: 'Paid social specialist',
+      tag: 'Targeted ads that pay back ×3 — and you can calculate it',
+      tagline: 'A system instead of “set it up and hope”: 7 steps and a live goal calculation',
+      about: 'Personal website for an Almaty paid-social specialist who runs ads on Instagram, Facebook and TikTok for product businesses, service companies, experts and online schools. The service is invisible, and the business owner’s main question is “will my money come back?” The goal was to show the approach and the logic of the work, name the result in the language of money (×3) and lead visitors to a conversation on WhatsApp.',
+      done: [
+        'The offer on the first screen — “Paid ads that pay back ×3” — and four trust figures: 4+ years of practice, ×3 target ROI, 5–10 video creatives per launch, and 80% of ad success coming from the creative.',
+        'An “About me” block with working principles (analytics, creative strategy, payback focus, a systematic approach) and the niches served: product businesses, services, experts and online schools.',
+        'A 7-step system — from audience analysis and video-creative briefs to A/B tests, optimisation and reporting — shown as “bento” cards instead of a wall of text.',
+        'An interactive goal calculation: a budget slider shows the target return and net profit (a 1,000,000 ₸ investment → 3,000,000 ₸ target return).',
+        'An honest take on reviews: instead of invented quotes, contacts of current clients are available on request.',
+        'Conversion: a WhatsApp button in the header and on every screen, a sticky “Discuss the project” bar on phones and one-tap copying of the phone number.'
+      ],
+      highlight: 'The site speaks the business owner’s language: not reach and clicks, but “1 ₸ → 3 ₸+”. The calculator slider turns the promise into numbers for the client’s own budget, while the dark palette with an emerald accent and the expert’s photo on the first screen set a tone of calm, professional confidence.'
+    },
+    wedding: {
+      name: 'Aigerim &amp; Timur',
+      cat: 'Wedding invitation',
+      tag: 'A wedding where every guest knows their table and their ride',
+      tagline: 'Everything a guest would ask in the group chat — on one page',
+      about: 'Invitation website for a wedding on 12 June 2027 at the Bes Terek garden in the Alatau foothills. Guests usually piece the details together from dozens of messages: what time, where to go, what to wear, where to sit, what to give. The goal was to gather everything at one address and get an answer from every guest about attendance, the hot dish and transfer.',
+      done: [
+        'A first screen with the couple’s names, the date, a countdown to the wedding and two buttons — “Confirm attendance” and “Day program”.',
+        '“How it all began”: the couple’s story as a three-milestone timeline — 2019, 2022, 2026 — in a personal, warm tone instead of a template invitation.',
+        'A day program with a timeline, a venue card and logistics: the address, a 13:00 transfer from Republic Square with a return at 23:30 and free parking for 60 cars.',
+        'A dress code through colour: eight “summer mountains” shades — pomegranate, saffron, turquoise, dusty rose and more — and a friendly note that white and cream are reserved for the bride.',
+        'Seating with search: a guest types a first or last name and finds their table among 6 tables and 33 invitations; the tables are named after places the couple visited together.',
+        'A wishlist with an “I’ll give this” button so gifts don’t overlap, and a guest form: attendance, party size, hot dish (beshbarmak, trout, vegetarian), transfer, a dance-floor song and a wish for the couple on a shared wall.'
+      ],
+      highlight: 'The site speaks in the couple’s voice: “Three years, two peaks and one cable-car queue”, a joke about three coffee machines in the wishlist and a Kazakh greeting, “Тойымызға қош келдіңіздер!”, on the first screen. Practical blocks — seating, transfer, the form — come through the couple’s character, so the information never reads like instructions.'
+    },
+    birthday: {
+      name: 'Mission “Miron-7”',
+      cat: 'Kids’ birthday party',
+      tag: 'A birthday as a space flight with a boarding pass',
+      tagline: 'Parents reply in a minute while the kids wait for liftoff',
+      about: 'Invitation website for a seventh birthday with a space theme: 17 October 2026, 14:00–18:00, at the Orbita kids’ center in Almaty. Parents of the invited children need to quickly see where to go, when, what to wear and what to give, while the host needs to collect replies, allergies and pick-up times without dozens of private messages. The goal was to turn an organisational mailing into a game that adults and kids both enjoy.',
+      done: [
+        'A first screen with “Miron is 7!”, a rocket with “launch at 14:00” and “tap the rocket” hints, the date, time, venue, dress code and a countdown to liftoff.',
+        'The program as a “flight plan”: times, stages and colour tags (Meet-up, Games, Quest, Food, Show); on the day itself the current item highlights automatically.',
+        '“Who we’re expecting”: guests as crew cards with roles (navigator, flight engineer, pilot) and “Flying / Replied / On board” counters that update as replies arrive.',
+        'A cargo bay instead of a wishlist: an “I’ll give this” button marks the gift so the birthday boy doesn’t end up with two telescopes, and shows a price guide.',
+        'A “Who’s flying?” form: a name from the list, three statuses (I’m in! / Not sure yet / Can’t make it), adult and child counters, a wish for Miron and a “What the hosts should know” field.',
+        'A boarding pass after replying and a crew memo: indoor shoes, sparkly clothes, parents may stay, and kids can be picked up from 17:50 to 18:15.'
+      ],
+      highlight: 'All the party logistics are presented as a space flight: the invitation is an “invitation on board”, registration is a “boarding pass” and wishes go into a “ship’s log”. The interface stays clear for parents, while the child gets a rocket and a boarding pass of their own; thick outlines and orange-pink accents on pale blue keep the mood of a cartoon game.'
     }
   }
 };
