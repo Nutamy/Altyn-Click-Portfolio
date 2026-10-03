@@ -47,8 +47,7 @@ body::before{content:"";position:fixed;inset:-10vmax;z-index:-2;pointer-events:n
     radial-gradient(46vmax 40vmax at 72% 78%,rgba(188,168,248,.5),transparent 70%),
     radial-gradient(36vmax 34vmax at 10% 88%,rgba(233,166,231,.32),transparent 70%),
     radial-gradient(30vmax 30vmax at 45% 45%,rgba(248,242,236,.9),transparent 70%),
-    linear-gradient(180deg,#F3EFEA,#E9EDF3 55%,#ECE8F3);
-  filter:blur(40px)}
+    linear-gradient(180deg,#F3EFEA,#E9EDF3 55%,#ECE8F3)}
 
 /* Headings: bold, compact, near-black — the futuristic part is the material, not the font */
 h1,h2,h3,h4{letter-spacing:-.03em}
@@ -150,11 +149,13 @@ footer.night{border-radius:var(--r-xl) var(--r-xl) 0 0;margin-bottom:0}
 @media (min-width:768px){.night{margin-inline:18px}}
 
 /* Ambient light sources; float very slowly (6–7s), never as decoration for its own sake */
-.glow{position:absolute;border-radius:9999px;pointer-events:none;filter:blur(70px);opacity:.75;z-index:-1}
-.glow-cyan{background:radial-gradient(circle,rgba(104,221,215,.9),transparent 70%)}
-.glow-violet{background:radial-gradient(circle,rgba(113,100,245,.85),transparent 70%)}
-.glow-pink{background:radial-gradient(circle,rgba(233,166,231,.8),transparent 70%)}
-.glow-peach{background:radial-gradient(circle,rgba(255,206,178,.9),transparent 70%)}
+.glow{position:absolute;border-radius:9999px;pointer-events:none;opacity:.75;z-index:-1}
+.glow-cyan{background:radial-gradient(circle closest-side,rgba(104,221,215,.75),rgba(104,221,215,.3) 45%,transparent)}
+.glow-violet{background:radial-gradient(circle closest-side,rgba(113,100,245,.65),rgba(113,100,245,.25) 45%,transparent)}
+.glow-pink{background:radial-gradient(circle closest-side,rgba(233,166,231,.65),rgba(233,166,231,.25) 45%,transparent)}
+.glow-peach{background:radial-gradient(circle closest-side,rgba(255,206,178,.8),rgba(255,206,178,.3) 45%,transparent)}
+/* Ambient glows stay still; only the hero composition floats */
+.glow.float,.glow.float-slow,.glow.float-late{animation:none}
 @keyframes floatY{0%,100%{transform:translateY(-6px)}50%{transform:translateY(6px)}}
 .float{animation:floatY 6.5s ease-in-out infinite}
 .float-slow{animation:floatY 7.5s ease-in-out infinite;animation-delay:-2.5s}
@@ -227,7 +228,7 @@ footer.night{border-radius:var(--r-xl) var(--r-xl) 0 0;margin-bottom:0}
 .chk-d b{color:#F5F7FA}
 
 /* анимации */
-.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s cubic-bezier(.22,.61,.36,1)}
 .js .reveal.in{opacity:1;transform:none}
 @keyframes toastLoop{0%,14%{opacity:1;transform:translateY(0) scale(1)}24%{opacity:0;transform:translateY(-10px) scale(.95)}72%{opacity:0}84%{opacity:0;transform:translateY(12px) scale(.95)}94%,100%{opacity:1;transform:translateY(0) scale(1)}}
 .toast-loop{animation:toastLoop 6.5s ease-in-out infinite}
@@ -296,6 +297,21 @@ footer.night{border-radius:var(--r-xl) var(--r-xl) 0 0;margin-bottom:0}
   .glass-night{background:#2B3D4F}
   .glass-form,.glass-modal,#hdr.hdr-on .hdr-bar,.glass-menu{background:#F5F7FA}
   .glass::after,.glass-dark::after,.glass-night::after,.glass-form::after{display:none}
+}
+
+/* Phones and tablets: backdrop blur on dozens of layers overloads mobile GPUs and stalls scrolling.
+   Surfaces keep their look via denser tinted fills; only the header bar and modal keep real blur. */
+@media (max-width:1023px),(pointer:coarse){
+  .glass,.glass-night,.glass-dark,.glass-form,.glass-chip,.glass-inset,.glass-icon,.glass-orb,.glass-tag,.btn-ghost,.lang-sw,.input,.mock-glass,.marquee-glass{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .glass{background:linear-gradient(150deg,rgba(255,255,255,.86),rgba(255,255,255,.66))}
+  .glass-card:nth-child(5n+4){background:linear-gradient(150deg,rgba(255,255,255,.94),rgba(255,255,255,.8))}
+  .glass-chip,.btn-ghost{background:rgba(255,255,255,.75)}
+  .glass-inset{background:rgba(255,255,255,.6)}
+  .glass-dark{background:linear-gradient(150deg,rgba(255,255,255,.1),rgba(255,255,255,.04))}
+  .glass-tag{background:rgba(20,26,33,.62)}
+  .marquee-glass{background:rgba(255,255,255,.6)}
+  .float,.float-slow,.float-late{animation:none}
+  .modal-scrim{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(25,38,50,.78)}
 }
 
 @media (prefers-reduced-motion:reduce){
