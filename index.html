@@ -10,7 +10,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#181410">
+<meta name="theme-color" content="#263746">
 <link rel="canonical" href="https://altyn-click.pages.dev/">
 <link rel="alternate" hreflang="ru" href="https://altyn-click.pages.dev/">
 <link rel="alternate" hreflang="kk" href="https://altyn-click.pages.dev/kz/">
@@ -164,7 +164,7 @@
 <!-- ============ ШАПКА ============ -->
 <header id="hdr" class="fixed top-0 inset-x-0 z-[60] transition-all duration-300">
   <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="flex items-center justify-between h-16 md:h-[76px]">
+    <div class="hdr-bar flex items-center justify-between h-16 md:h-[72px] px-3 md:px-5 -mx-3 md:-mx-5">
       <a href="#top" class="brand font-semibold text-lg tracking-tight">altyn<span class="text-gold">·click</span></a>
 
       <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-bold text-mut" aria-label="Навигация по странице">
@@ -183,14 +183,14 @@
           </nav></div>
         <!-- Full label from 400px; on narrower phones it wrapped into two lines and overlapped the logo -->
         <a href="#audit" class="btn btn-gold text-sm px-4 sm:px-5 py-2.5 whitespace-nowrap"><span class="min-[400px]:hidden">Аудит</span><span class="hidden min-[400px]:inline">Бесплатный аудит</span></a>
-        <button id="burger" type="button" class="lg:hidden w-11 h-11 rounded-xl border border-line bg-white flex items-center justify-center" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobMenu">
+        <button id="burger" type="button" class="lg:hidden w-11 h-11 rounded-[16px] glass-chip flex items-center justify-center" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobMenu">
           <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
       </div>
     </div>
   </div>
   <!-- мобильное меню -->
-  <nav id="mobMenu" class="hidden lg:hidden bg-paper border-b border-line shadow-lg" aria-label="Мобильное меню">
+  <nav id="mobMenu" class="hidden lg:hidden glass-menu" aria-label="Мобильное меню">
     <div class="px-4 md:px-8 py-3 flex flex-col font-bold">
       <div class="lang-sw lang-sw-lg self-start mb-2" role="group" aria-label="Язык сайта">
         <a href="/" hreflang="ru" lang="ru" data-lang="ru" aria-current="page">Рус</a>
@@ -210,17 +210,20 @@
 <main id="top">
 
 <!-- ============ 1. HERO ============ -->
-<section class="relative overflow-hidden dots pt-28 md:pt-40 pb-16 md:pb-24">
-  <div class="absolute -top-40 -right-40 w-[520px] h-[520px] rounded-full bg-gold/10 blur-3xl pointer-events-none"></div>
-  <div class="absolute top-64 -left-52 w-[420px] h-[420px] rounded-full bg-gold/8 blur-3xl pointer-events-none"></div>
+<section class="relative overflow-x-clip pt-24 md:pt-32 pb-12 md:pb-16">
+  <div class="relative max-w-6xl mx-auto px-3 md:px-6">
+    <!-- One large liquid-glass panel; light sources sit behind and partly inside it -->
+    <div class="glow glow-peach w-[460px] h-[460px] -top-24 -left-24 float-slow" aria-hidden="true"></div>
+    <div class="glow glow-cyan w-[420px] h-[420px] top-10 right-0 float" aria-hidden="true"></div>
+    <div class="glow glow-violet w-[380px] h-[380px] -bottom-16 right-1/4 float-late" aria-hidden="true"></div>
 
-  <div class="relative max-w-6xl mx-auto px-4 md:px-8 grid lg:grid-cols-[1.05fr_.95fr] gap-14 lg:gap-10 items-center">
+    <div class="glass hero-panel px-5 py-10 sm:px-10 md:px-12 md:py-14 lg:px-14 lg:py-16 grid lg:grid-cols-[1.05fr_.95fr] gap-14 lg:gap-8 items-center">
     <!-- текст -->
     <div>
       <div class="eyebrow">Altyn Click · Продающие сайты для малого бизнеса</div>
-      <h1 class="font-disp font-semibold text-[1.7rem] sm:text-4xl lg:text-[2.75rem] leading-[1.18] sm:leading-[1.18] tracking-tight mt-5">
+      <h1 class="font-disp text-[2rem] sm:text-[2.6rem] lg:text-[3.35rem] leading-[1.06] mt-6">
         Упаковываю <span class="relative inline-block">сильные стороны
-          <svg aria-hidden="true" class="absolute -bottom-1.5 left-0 w-full" height="9" viewBox="0 0 220 9" preserveAspectRatio="none"><path d="M3 6.5C70 1.5 150 1.5 217 5.5" stroke="#C89A3C" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+          <svg aria-hidden="true" class="absolute -bottom-1.5 left-0 w-full" height="10" viewBox="0 0 220 10" preserveAspectRatio="none"><defs><linearGradient id="hl" x1="0" x2="1"><stop offset="0" stop-color="#FFB84D"/><stop offset=".55" stop-color="#F38A5E"/><stop offset="1" stop-color="#E9A6E7"/></linearGradient></defs><path d="M3 7C70 2 150 2 217 6" stroke="url(#hl)" stroke-width="4.5" fill="none" stroke-linecap="round"/></svg>
         </span><br>бизнеса в сайт
       </h1>
       <p class="mt-6 text-mut text-lg leading-relaxed max-w-xl">
@@ -231,68 +234,88 @@
       </div>
       <p class="mt-4 text-sm text-mut max-w-md leading-relaxed">Разберу ваш текущий сайт или подскажу, что стоит учесть, если его пока нет.</p>
 
-      <ul class="mt-10 flex flex-wrap gap-2.5 text-xs font-bold" aria-label="Коротко об условиях">
-        <li class="inline-flex items-center gap-2 bg-white border border-line rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 6.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 1.6 2.7 5 3.4 5 1.6 5 3.6-2.2 3-5 3-5-1.1-5-3"/></svg>Лендинг под ключ — 120 000 ₸</li>
-        <li class="inline-flex items-center gap-2 bg-white border border-line rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>5–12 рабочих дней</li>
-        <li class="inline-flex items-center gap-2 bg-white border border-line rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Работаю лично</li>
+      <ul class="mt-9 flex flex-wrap gap-2.5 text-xs font-bold" aria-label="Коротко об условиях">
+        <li class="inline-flex items-center gap-2 glass-chip rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 6.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 1.6 2.7 5 3.4 5 1.6 5 3.6-2.2 3-5 3-5-1.1-5-3"/></svg>Лендинг под ключ — 120 000 ₸</li>
+        <li class="inline-flex items-center gap-2 glass-chip rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>5–12 рабочих дней</li>
+        <li class="inline-flex items-center gap-2 glass-chip rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Работаю лично</li>
       </ul>
     </div>
 
-    <!-- визуал: макет сайта -->
-    <div class="relative hidden lg:block reveal" style="transition-delay:.15s" aria-hidden="true">
-      <div class="absolute -inset-10 bg-gold/15 blur-3xl rounded-full pointer-events-none"></div>
+    <!-- визуал: 3D-композиция из стеклянных слоёв -->
+    <div class="relative hidden lg:block reveal" style="transition-delay:.15s;perspective:1400px" aria-hidden="true">
+      <!-- light pool inside the panel, behind the browser window -->
+      <div class="glow glow-cyan w-72 h-72 top-0 right-6"></div>
+      <div class="glow glow-violet w-64 h-64 bottom-0 left-4"></div>
 
-      <div class="relative rounded-3xl bg-white border border-line shadow-2xl overflow-hidden rotate-1">
+      <!-- back layer: a tilted plate peeking out behind the browser -->
+      <div class="absolute -left-6 top-14 w-40 h-52 rounded-[28px] glass float-slow" style="--glow:rgba(188,168,248,.45);transform:rotate(-8deg)"></div>
+
+      <div class="float" style="transform-style:preserve-3d">
+      <div class="relative mock-glass rounded-[32px] overflow-hidden" style="transform:rotateY(-9deg) rotateX(4deg)">
         <!-- браузер-хром -->
-        <div class="flex items-center gap-2 px-4 py-3 border-b border-line bg-cream/60">
-          <span class="w-2.5 h-2.5 rounded-full bg-[#E8A0A0]"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-[#E8D3A0]"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-[#A9D8B4]"></span>
-          <div class="mx-auto text-xs font-semibold text-mut bg-paper border border-line rounded-full px-4 py-1">ваш-бизнес.kz</div>
+        <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/70">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#F4A8A0]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FFCF7A]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#8DE8C8]"></span>
+          <div class="mx-auto text-xs font-semibold text-mut bg-white/60 border border-white rounded-full px-4 py-1 shadow-[inset_0_1px_2px_rgba(30,45,70,.08)]">ваш-бизнес.kz</div>
           <span class="w-10"></span>
         </div>
         <!-- мини-сайт -->
         <div class="p-7">
           <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-gold"></span><span class="h-2 w-16 bg-ink/80 rounded-full"></span></div>
+            <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-gradient-to-br from-violet to-cyan"></span><span class="h-2 w-16 bg-ink/75 rounded-full"></span></div>
             <div class="flex items-center gap-2.5">
-              <span class="h-2 w-8 bg-line rounded-full"></span><span class="h-2 w-8 bg-line rounded-full"></span><span class="h-2 w-8 bg-line rounded-full"></span>
+              <span class="h-2 w-8 mock-bar rounded-full"></span><span class="h-2 w-8 mock-bar rounded-full"></span><span class="h-2 w-8 mock-bar rounded-full"></span>
               <span class="h-6 w-20 rounded-full bg-ink/85"></span>
             </div>
           </div>
           <div class="mt-8 space-y-2.5">
-            <div class="h-5 w-4/5 bg-ink/85 rounded-md"></div>
-            <div class="h-5 w-3/5 bg-gold rounded-md"></div>
+            <div class="h-5 w-4/5 bg-ink/80 rounded-lg"></div>
+            <div class="h-5 w-3/5 rounded-lg bg-gradient-to-r from-violet via-blue to-cyan"></div>
           </div>
           <div class="mt-5 space-y-2">
-            <div class="h-2 w-full bg-line rounded-full"></div>
-            <div class="h-2 w-11/12 bg-line rounded-full"></div>
-            <div class="h-2 w-3/4 bg-line rounded-full"></div>
+            <div class="h-2 w-full mock-bar rounded-full"></div>
+            <div class="h-2 w-11/12 mock-bar rounded-full"></div>
+            <div class="h-2 w-3/4 mock-bar rounded-full"></div>
           </div>
           <div class="mt-6 flex gap-3">
-            <span class="h-10 w-40 rounded-full bg-gradient-to-br from-[#D6A84B] to-[#B9862C] flex items-center justify-center text-[11px] font-extrabold text-white">Оставить заявку</span>
-            <span class="h-10 w-28 rounded-full border-2 border-line"></span>
+            <span class="h-10 w-40 rounded-[14px] bg-gradient-to-br from-[#6A5CF0] to-[#4F63E8] shadow-[0_10px_20px_-8px_rgba(91,92,240,.6),inset_0_1px_1px_rgba(255,255,255,.45)] flex items-center justify-center text-[11px] font-extrabold text-white">Оставить заявку</span>
+            <span class="h-10 w-28 rounded-[14px] border border-white bg-white/50"></span>
           </div>
           <div class="mt-7 grid grid-cols-3 gap-3">
-            <div class="rounded-2xl border border-line p-3.5"><div class="w-8 h-8 rounded-xl bg-gold/15 mb-2.5"></div><div class="h-1.5 w-full bg-line rounded-full"></div><div class="h-1.5 w-2/3 bg-line rounded-full mt-1.5"></div></div>
-            <div class="rounded-2xl border border-line p-3.5"><div class="w-8 h-8 rounded-xl bg-gold/15 mb-2.5"></div><div class="h-1.5 w-full bg-line rounded-full"></div><div class="h-1.5 w-2/3 bg-line rounded-full mt-1.5"></div></div>
-            <div class="rounded-2xl border border-line p-3.5"><div class="w-8 h-8 rounded-xl bg-gold/15 mb-2.5"></div><div class="h-1.5 w-full bg-line rounded-full"></div><div class="h-1.5 w-2/3 bg-line rounded-full mt-1.5"></div></div>
+            <div class="rounded-[18px] bg-white/55 border border-white p-3.5 shadow-[0_8px_18px_-12px_rgba(30,45,70,.35)]"><div class="w-8 h-8 rounded-xl bg-gradient-to-br from-aqua to-cyan/40 mb-2.5"></div><div class="h-1.5 w-full mock-bar rounded-full"></div><div class="h-1.5 w-2/3 mock-bar rounded-full mt-1.5"></div></div>
+            <div class="rounded-[18px] bg-white/55 border border-white p-3.5 shadow-[0_8px_18px_-12px_rgba(30,45,70,.35)]"><div class="w-8 h-8 rounded-xl bg-gradient-to-br from-lav to-violet/40 mb-2.5"></div><div class="h-1.5 w-full mock-bar rounded-full"></div><div class="h-1.5 w-2/3 mock-bar rounded-full mt-1.5"></div></div>
+            <div class="rounded-[18px] bg-white/55 border border-white p-3.5 shadow-[0_8px_18px_-12px_rgba(30,45,70,.35)]"><div class="w-8 h-8 rounded-xl bg-gradient-to-br from-pink to-lav/40 mb-2.5"></div><div class="h-1.5 w-full mock-bar rounded-full"></div><div class="h-1.5 w-2/3 mock-bar rounded-full mt-1.5"></div></div>
           </div>
         </div>
       </div>
+      </div>
+
+      <!-- floating glass tiles: phone-ready, quality, the visitor's click (amber = the one warm accent) -->
+      <div class="absolute -left-10 bottom-16 w-16 h-16 glass-icon rounded-[22px] flex items-center justify-center float-late">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M11 18.5h2"/></svg>
+      </div>
+      <div class="absolute -right-6 bottom-8 w-14 h-14 glass-icon rounded-[20px] flex items-center justify-center float-slow">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg>
+      </div>
+      <div class="absolute left-1/2 -bottom-6 w-14 h-14 glass-chip rounded-[20px] flex items-center justify-center float text-ink">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 7-6 2-2 6z"/></svg>
+        <span class="amber-dot absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full"></span>
+      </div>
 
       <!-- всплывающая заявка -->
-      <div class="toast-loop absolute -top-7 -right-4 bg-white border border-line rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
-        <span class="w-9 h-9 rounded-full bg-[#2AABEE] text-white flex items-center justify-center"><svg class="w-4.5 h-4.5 w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
+      <div class="toast-loop absolute -top-8 -right-6 glass-chip rounded-[20px] px-4 py-3 flex items-center gap-3">
+        <span class="w-9 h-9 rounded-full bg-[#2AABEE] text-white flex items-center justify-center shadow-[0_6px_14px_-4px_rgba(42,171,238,.6)]"><svg class="w-4.5 h-4.5 w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
         <div><div class="text-xs font-extrabold">Новая заявка</div><div class="text-[11px] text-mut">улетела в Telegram</div></div>
       </div>
+    </div>
     </div>
   </div>
 </section>
 
 <!-- бегущая строка -->
-<div class="bg-ink text-cream border-y border-gold/25 overflow-hidden py-3.5 select-none">
-  <div class="marquee-track flex whitespace-nowrap font-disp text-[11px] uppercase tracking-[0.3em] text-mutd">
+<div class="marquee-glass overflow-hidden py-3.5 my-2 select-none">
+  <div class="marquee-track flex whitespace-nowrap font-disp font-bold text-[11px] uppercase tracking-[0.3em]">
     <span class="flex shrink-0">
       <span class="mx-6">Исследование ниши</span><span class="text-gold">✦</span>
       <span class="mx-6">Прототип и структура</span><span class="text-gold">✦</span>
@@ -317,7 +340,11 @@
 </div>
 
 <!-- ============ 2. ПОРТФОЛИО ============ -->
-<section id="works" class="bg-cream/60 border-y border-line py-20 md:py-28 overflow-hidden">
+<section id="works" class="relative py-20 md:py-28 overflow-hidden">
+  <!-- ambient light behind the glass -->
+  <div class="glow glow-cyan w-[520px] h-[520px] top-1/3 -left-40 float" aria-hidden="true"></div>
+  <div class="glow glow-violet w-[520px] h-[520px] top-1/4 -right-40 float-slow" aria-hidden="true"></div>
+  <div class="glow glow-peach w-[360px] h-[360px] bottom-0 left-1/3 float-late" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <div class="max-w-2xl mx-auto text-center reveal">
       <div class="eyebrow">02 · Портфолио</div>
@@ -332,12 +359,12 @@
     <!-- сетка -->
     <!-- Static case cards: indexable without JS; app.js hides them behind the stack view -->
     <div id="workGrid" class="work-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="savepoint" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="savepoint" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/savepoint/m/01.webp" width="585" height="1266"><img src="screenshots/savepoint/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Кофейня и коворкинг</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Кофейня и коворкинг</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -345,16 +372,16 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Стол с розеткой и кофе к нужной минуте</p>
               <p class="text-sm text-mut mt-2 leading-snug">Лендинг спешелти-кофейни и laptop-friendly пространства в центре Алматы: бронь стола и предзаказ напитка онлайн.</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="elara" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="elara" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/elara/m/01.webp" width="585" height="1266"><img src="screenshots/elara/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Стоматология</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Стоматология</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -362,16 +389,16 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Стоматология с ценой, известной до лечения</p>
               <p class="text-sm text-mut mt-2 leading-snug">Лендинг новой стоматологической клиники в Алматы: доверие без отзывов и запись на консультацию с планом лечения.</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="alba" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="alba" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/alba/m/01.webp" width="585" height="1266"><img src="screenshots/alba/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Салон красоты</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Салон красоты</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -379,16 +406,16 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Красота за 90 минут · время для себя</p>
               <p class="text-sm text-mut mt-2 leading-snug">Премиальный лендинг салона красоты в Алматы: снимает страхи клиентки и ведёт к записи через форму или WhatsApp.</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="proremont" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="proremont" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/proremont/m/01.webp" width="585" height="1266"><img src="screenshots/proremont/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Ремонт под ключ</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Ремонт под ключ</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -396,16 +423,16 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Ремонт квартир без сюрпризов</p>
               <p class="text-sm text-mut mt-2 leading-snug">Лендинг ремонтной компании в Алматы: гарантии по договору, калькулятор сметы и объекты «до/после».</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="tropinka" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="tropinka" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/tropinka/m/01.webp" width="585" height="1266"><img src="screenshots/tropinka/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Детский центр</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Детский центр</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -413,16 +440,16 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Подготовка к школе и развитие детей 3–6 лет</p>
               <p class="text-sm text-mut mt-2 leading-snug">Сайт детского центра в Алматы: методика, программы, цены и запись на пробное занятие.</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="steps" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="steps" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/steps/m/01.webp" width="585" height="1266"><img src="screenshots/steps/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Детский развивающий центр</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Детский развивающий центр</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -430,16 +457,16 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Каждый шаг — развитие, и каждый шаг виден</p>
               <p class="text-sm text-mut mt-2 leading-snug">Лендинг детского центра для детей 1,5–7 лет: онлайн-камеры, диагностика и бесплатное пробное занятие.</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="targetolog" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="targetolog" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/targetolog/m/01.webp" width="585" height="1266"><img src="screenshots/targetolog/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Таргетолог</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Таргетолог</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -447,16 +474,16 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Таргет, который окупается ×3 — и это можно посчитать</p>
               <p class="text-sm text-mut mt-2 leading-snug">Сайт таргетолога из Алматы: подход в 7 шагов, калькулятор цели и быстрый контакт через WhatsApp.</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="wedding" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="wedding" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/wedding/m/01.webp" width="585" height="1266"><img src="screenshots/wedding/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Свадебное приглашение</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Свадебное приглашение</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -464,16 +491,16 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Свадьба, на которой гость знает свой стол и свой трансфер</p>
               <p class="text-sm text-mut mt-2 leading-snug">Сайт-приглашение на свадьбу: программа дня, рассадка с поиском по имени, вишлист и анкета гостя.</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
-      <article class="group bg-white rounded-3xl border border-line overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5">
-        <button type="button" data-work="birthday" aria-haspopup="dialog" class="block w-full text-left rounded-3xl">
+      <article class="group glass glass-card glass-lift overflow-hidden">
+        <button type="button" data-work="birthday" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
           <span class="sr-only">Открыть кейс: </span>
-          <div class="relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden">
+          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
             <picture><source media="(max-width: 639px)" srcset="screenshots/birthday/m/01.webp" width="585" height="1266"><img src="screenshots/birthday/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[10px] font-disp uppercase tracking-[0.18em] bg-ink/70 text-cream backdrop-blur px-3 py-1.5 rounded-full">Детский праздник</span>
+            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Детский праздник</span>
           </div>
           <div class="p-5 flex items-start justify-between gap-4">
             <div>
@@ -481,7 +508,7 @@
               <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">День рождения как космический рейс с посадочным талоном</p>
               <p class="text-sm text-mut mt-2 leading-snug">Космическое приглашение на день рождения: полётный план, экипаж гостей, подарки и посадочный талон.</p>
             </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 rounded-full border border-line flex items-center justify-center text-ink group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </button>
       </article>
@@ -501,21 +528,22 @@
 <section id="about" class="py-20 md:py-28 overflow-hidden">
   <div class="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-[minmax(0,340px)_1fr] gap-10 md:gap-16 items-center">
     <div class="reveal relative max-w-[340px] mx-auto md:mx-0 w-full">
-      <div class="absolute -inset-3 rounded-[2rem] bg-gold/15 -rotate-2" aria-hidden="true"></div>
+      <div class="glow glow-cyan w-64 h-64 -top-10 -left-10 float" aria-hidden="true"></div><div class="glow glow-violet w-56 h-56 -bottom-8 -right-8 float-slow" aria-hidden="true"></div>
+      <div class="glass absolute -inset-3 rounded-[40px] -rotate-2" aria-hidden="true"></div>
       <img src="img/natalya-480.webp" srcset="img/natalya-480.webp 480w, img/natalya-800.webp 800w" sizes="(min-width: 768px) 340px, 90vw"
            width="480" height="600" loading="lazy" decoding="async"
            alt="Наталья, основатель Altyn Click"
-           class="relative w-full rounded-3xl object-cover shadow-xl border border-line">
+           class="relative w-full rounded-[32px] object-cover shot-frame">
     </div>
     <div class="reveal" style="transition-delay:.08s">
       <div class="eyebrow">03 · Кто делает сайт</div>
       <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">Меня зовут Наталья.<br class="hidden sm:block"> С 2012 года я обожаю делать сайты</h2>
       <p class="mt-6 text-mut text-lg leading-relaxed">Altyn Click — это я. Все проекты из портфолио сделала сама: от аналитики ниши и текстов до дизайна и вёрстки. Вы общаетесь напрямую со мной — без менеджеров и передачи задач по цепочке.</p>
       <ul class="mt-7 flex flex-wrap gap-2.5 text-sm font-bold" aria-label="Что я делаю в каждом проекте">
-        <li class="bg-white border border-line rounded-full px-4 py-2">Аналитика ниши</li>
-        <li class="bg-white border border-line rounded-full px-4 py-2">Тексты и структура</li>
-        <li class="bg-white border border-line rounded-full px-4 py-2">Дизайн</li>
-        <li class="bg-white border border-line rounded-full px-4 py-2">Вёрстка и запуск</li>
+        <li class="glass-chip rounded-full px-4 py-2">Аналитика ниши</li>
+        <li class="glass-chip rounded-full px-4 py-2">Тексты и структура</li>
+        <li class="glass-chip rounded-full px-4 py-2">Дизайн</li>
+        <li class="glass-chip rounded-full px-4 py-2">Вёрстка и запуск</li>
       </ul>
       <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
         <a href="#audit" class="btn btn-gold px-8 py-4">Обсудить мой проект</a>
@@ -526,9 +554,9 @@
 </section>
 
 <!-- ============ 4. ПРОБЛЕМА ============ -->
-<section id="problem" class="relative bg-ink text-cream overflow-hidden">
-  <div class="absolute inset-0 dots-light pointer-events-none"></div>
-  <div class="absolute -top-32 right-0 w-[420px] h-[420px] bg-gold/8 blur-3xl rounded-full pointer-events-none"></div>
+<section id="problem" class="night text-cream overflow-hidden">
+  <div class="glow glow-violet w-[420px] h-[420px] -top-32 right-0 float-slow"></div>
+  <div class="glow glow-cyan w-[320px] h-[320px] bottom-0 -left-20 float"></div>
 
   <div class="relative max-w-6xl mx-auto px-4 md:px-8 py-20 md:py-28">
     <div class="max-w-3xl reveal">
@@ -545,15 +573,15 @@
     </div>
 
     <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-      <div class="reveal rounded-2xl bg-white/[.04] border border-white/10 p-5"><div class="font-disp text-gold text-xs mb-3">01</div><p class="font-bold leading-snug">Подойдёт ли мне эта услуга?</p></div>
-      <div class="reveal rounded-2xl bg-white/[.04] border border-white/10 p-5" style="transition-delay:.06s"><div class="font-disp text-gold text-xs mb-3">02</div><p class="font-bold leading-snug">Можно ли вам доверять?</p></div>
-      <div class="reveal rounded-2xl bg-white/[.04] border border-white/10 p-5" style="transition-delay:.12s"><div class="font-disp text-gold text-xs mb-3">03</div><p class="font-bold leading-snug">Как всё проходит?</p></div>
-      <div class="reveal rounded-2xl bg-white/[.04] border border-white/10 p-5" style="transition-delay:.18s"><div class="font-disp text-gold text-xs mb-3">04</div><p class="font-bold leading-snug">Сколько это стоит?</p></div>
-      <div class="reveal rounded-2xl bg-white/[.04] border border-white/10 p-5" style="transition-delay:.24s"><div class="font-disp text-gold text-xs mb-3">05</div><p class="font-bold leading-snug">Что будет после обращения?</p></div>
+      <div class="reveal glass-dark glass-lift p-5"><div class="font-disp font-bold text-gold2 text-xs mb-3">01</div><p class="font-bold leading-snug">Подойдёт ли мне эта услуга?</p></div>
+      <div class="reveal glass-dark glass-lift p-5" style="transition-delay:.06s"><div class="font-disp font-bold text-gold2 text-xs mb-3">02</div><p class="font-bold leading-snug">Можно ли вам доверять?</p></div>
+      <div class="reveal glass-dark glass-lift p-5" style="transition-delay:.12s"><div class="font-disp font-bold text-gold2 text-xs mb-3">03</div><p class="font-bold leading-snug">Как всё проходит?</p></div>
+      <div class="reveal glass-dark glass-lift p-5" style="transition-delay:.18s"><div class="font-disp font-bold text-gold2 text-xs mb-3">04</div><p class="font-bold leading-snug">Сколько это стоит?</p></div>
+      <div class="reveal glass-dark glass-lift p-5" style="transition-delay:.24s"><div class="font-disp font-bold text-gold2 text-xs mb-3">05</div><p class="font-bold leading-snug">Что будет после обращения?</p></div>
     </div>
 
     <div class="mt-10 max-w-3xl reveal">
-      <p class="text-mutd leading-relaxed border-l-2 border-gold/50 pl-5">
+      <p class="text-mutd leading-relaxed border-l-2 border-gold2/60 pl-5">
         Когда ответов нет, клиенту приходится додумывать. И иногда он просто откладывает решение — или выбирает того, у кого разобраться оказалось проще.
       </p>
       <a href="#audit" class="btn btn-gold mt-9 px-8 py-4">Узнать, что не так с моим сайтом</a>
@@ -562,7 +590,10 @@
 </section>
 
 <!-- ============ 5. ПРОЦЕСС ============ -->
-<section id="process" class="py-20 md:py-28">
+<section id="process" class="relative overflow-x-clip py-20 md:py-28">
+  <!-- ambient light behind the glass -->
+  <div class="glow glow-peach w-[460px] h-[460px] top-20 -right-32 float-slow" aria-hidden="true"></div>
+  <div class="glow glow-cyan w-[420px] h-[420px] bottom-0 -left-32 float" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <div class="max-w-2xl reveal">
       <div class="eyebrow">05 · Как я работаю</div>
@@ -570,50 +601,61 @@
       <p class="mt-5 text-mut text-lg">Как всё происходит на деле: от брифа до готового сайта.</p>
     </div>
 
-    <ol class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <li class="reveal rounded-3xl bg-white border border-line p-7 md:p-8 shadow-sm hover:shadow-lg transition-shadow flex flex-col">
+    <div class="flow-wrap relative mt-12">
+    <div class="flow hidden md:block" aria-hidden="true">
+      <svg viewBox="0 0 1200 760" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="flowGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#68DDD7"/><stop offset=".5" stop-color="#7164F5"/><stop offset="1" stop-color="#E9A6E7"/></linearGradient>
+          <filter id="flowBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+        </defs>
+        <path d="M40 190 C 300 90, 520 300, 800 180 S 1180 140, 1160 330 S 760 440, 520 560 S 140 600, 60 560" fill="none" stroke="url(#flowGrad)" stroke-width="40" stroke-linecap="round" opacity=".8" filter="url(#flowBlur)"/>
+        <path d="M40 190 C 300 90, 520 300, 800 180 S 1180 140, 1160 330 S 760 440, 520 560 S 140 600, 60 560" fill="none" stroke="url(#flowGrad)" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+      </svg>
+    </div>
+    <ol class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col">
         <div class="flex items-baseline gap-4">
-          <span class="font-disp font-semibold text-4xl text-gold/40" aria-hidden="true">01</span>
+          <span class="step-num font-disp text-4xl" aria-hidden="true">01</span>
           <h3 class="font-extrabold text-xl">Бриф</h3>
         </div>
         <p class="mt-4 text-mut leading-relaxed flex-1">Вы заполняете короткий бриф — <b class="text-ink">около 15 минут вашего времени</b>. Рассказываете о бизнесе, клиентах и о том, что сейчас мешает получать заявки.</p>
-        <div class="mt-5 rounded-2xl bg-cream/70 border border-line p-4 text-sm leading-relaxed"><b>На выходе:</b> понятная задача и отправная точка для исследования.</div>
+        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>На выходе:</b> понятная задача и отправная точка для исследования.</div>
         <!-- The brief is a separate Cloudflare Pages project (repo Nutamy/Brief) -->
         <a href="https://brief-aq7.pages.dev/" target="_blank" rel="noopener" data-goal="brief_click" class="btn btn-gold px-6 py-3 mt-5 self-start">Заполнить бриф<svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
       </li>
-      <li class="reveal rounded-3xl bg-white border border-line p-7 md:p-8 shadow-sm hover:shadow-lg transition-shadow flex flex-col" style="transition-delay:.06s">
+      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col" style="transition-delay:.06s">
         <div class="flex items-baseline gap-4">
-          <span class="font-disp font-semibold text-4xl text-gold/40" aria-hidden="true">02</span>
+          <span class="step-num font-disp text-4xl" aria-hidden="true">02</span>
           <h3 class="font-extrabold text-xl">Исследование</h3>
         </div>
         <p class="mt-4 text-mut leading-relaxed flex-1">Изучаю вашу нишу, клиентов и контекст, в котором они выбирают услугу. Смотрю сайты конкурентов и реальные отзывы, чтобы понять, какие вопросы, ожидания и возражения важно учесть.</p>
-        <div class="mt-5 rounded-2xl bg-cream/70 border border-line p-4 text-sm leading-relaxed"><b>На выходе:</b> понимание аудитории, её запросов и точек, на которых можно построить предложение.</div>
+        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>На выходе:</b> понимание аудитории, её запросов и точек, на которых можно построить предложение.</div>
       </li>
-      <li class="reveal rounded-3xl bg-white border border-line p-7 md:p-8 shadow-sm hover:shadow-lg transition-shadow flex flex-col" style="transition-delay:.12s">
+      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col" style="transition-delay:.12s">
         <div class="flex items-baseline gap-4">
-          <span class="font-disp font-semibold text-4xl text-gold/40" aria-hidden="true">03</span>
+          <span class="step-num font-disp text-4xl" aria-hidden="true">03</span>
           <h3 class="font-extrabold text-xl">Предложение и структура</h3>
         </div>
         <p class="mt-4 text-mut leading-relaxed flex-1">Определяю, что важно показать в первую очередь, какие вопросы закрыть и как выстроить путь к заявке. Собираю прототип страницы и согласовываю его с вами до начала разработки.</p>
-        <div class="mt-5 rounded-2xl bg-cream/70 border border-line p-4 text-sm leading-relaxed"><b>На выходе:</b> логика страницы, структура блоков и понятное предложение.</div>
+        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>На выходе:</b> логика страницы, структура блоков и понятное предложение.</div>
       </li>
-      <li class="reveal rounded-3xl bg-white border border-line p-7 md:p-8 shadow-sm hover:shadow-lg transition-shadow flex flex-col">
+      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col">
         <div class="flex items-baseline gap-4">
-          <span class="font-disp font-semibold text-4xl text-gold/40" aria-hidden="true">04</span>
+          <span class="step-num font-disp text-4xl" aria-hidden="true">04</span>
           <h3 class="font-extrabold text-xl">Тексты, дизайн и вёрстка</h3>
         </div>
         <p class="mt-4 text-mut leading-relaxed flex-1">Перевожу сильные стороны бизнеса в понятные сообщения, визуальную систему и удобный интерфейс. Показываю рабочий черновик — <b class="text-ink">все правки на этом этапе бесплатны</b>.</p>
-        <div class="mt-5 rounded-2xl bg-cream/70 border border-line p-4 text-sm leading-relaxed"><b>На выходе:</b> согласованные тексты, дизайн и рабочий черновик сайта.</div>
+        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>На выходе:</b> согласованные тексты, дизайн и рабочий черновик сайта.</div>
       </li>
-      <li class="reveal rounded-3xl bg-white border border-line p-7 md:p-8 shadow-sm hover:shadow-lg transition-shadow flex flex-col" style="transition-delay:.06s">
+      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col" style="transition-delay:.06s">
         <div class="flex items-baseline gap-4">
-          <span class="font-disp font-semibold text-4xl text-gold/40" aria-hidden="true">05</span>
+          <span class="step-num font-disp text-4xl" aria-hidden="true">05</span>
           <h3 class="font-extrabold text-xl">Запуск</h3>
         </div>
         <p class="mt-4 text-mut leading-relaxed flex-1">Проверяю сайт на разных устройствах, подключаю ваш домен и настраиваю отправку заявок в Telegram. Передаю архив файлов и короткую видеоинструкцию.</p>
-        <div class="mt-5 rounded-2xl bg-cream/70 border border-line p-4 text-sm leading-relaxed"><b>На выходе:</b> готовый сайт, опубликованный в интернете и готовый принимать обращения.</div>
+        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>На выходе:</b> готовый сайт, опубликованный в интернете и готовый принимать обращения.</div>
       </li>
-      <li class="reveal rounded-3xl bg-ink text-cream p-7 md:p-8 flex flex-col justify-between gap-6" style="transition-delay:.12s">
+      <li class="reveal glass-night glass-lift p-7 md:p-8 flex flex-col justify-between gap-6" style="transition-delay:.12s">
         <div>
           <h3 class="font-extrabold text-xl">С чего начать?</h3>
           <p class="mt-4 text-mutd leading-relaxed">Оставьте заявку — бесплатно разберу ваш сайт или Instagram и отвечу, с чего стоит начать.</p>
@@ -621,11 +663,15 @@
         <a href="#audit" class="btn btn-gold px-7 py-3.5 self-start">Обсудить мой проект</a>
       </li>
     </ol>
+    </div>
   </div>
 </section>
 
 <!-- ============ 6. ОФФЕР ============ -->
-<section id="offer" class="bg-cream/60 border-y border-line py-20 md:py-28">
+<section id="offer" class="relative overflow-x-clip py-20 md:py-28">
+  <!-- ambient light behind the glass -->
+  <div class="glow glow-violet w-[480px] h-[480px] top-1/4 -left-40 float" aria-hidden="true"></div>
+  <div class="glow glow-cyan w-[420px] h-[420px] bottom-10 -right-32 float-slow" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <div class="max-w-2xl reveal">
       <div class="eyebrow">06 · Оффер</div>
@@ -635,8 +681,8 @@
 
     <div class="mt-12 grid lg:grid-cols-3 gap-5">
       <!-- группа 1 -->
-      <div class="reveal rounded-3xl bg-white border border-line p-7 shadow-sm">
-        <div class="w-12 h-12 rounded-2xl bg-gold/12 text-golddeep flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <div class="reveal glass glass-card glass-lift p-7">
+        <div class="w-12 h-12 glass-icon flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
         <h3 class="font-extrabold text-lg">Исследование и основа для сайта</h3>
         <ul class="mt-5 space-y-4">
           <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Анализ ниши, конкурентов и аудитории.</b> Чтобы сайт опирался на реальные потребности клиентов и сильные стороны вашего бизнеса.</p></li>
@@ -645,8 +691,8 @@
         </ul>
       </div>
       <!-- группа 2 -->
-      <div class="reveal rounded-3xl bg-white border border-line p-7 shadow-sm" style="transition-delay:.08s">
-        <div class="w-12 h-12 rounded-2xl bg-gold/12 text-golddeep flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <div class="reveal glass glass-card glass-lift p-7" style="transition-delay:.08s">
+        <div class="w-12 h-12 glass-icon flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>
         <h3 class="font-extrabold text-lg">Дизайн и разработка</h3>
         <ul class="mt-5 space-y-4">
           <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Индивидуальный дизайн без готовых шаблонов.</b> Создаю визуальную систему под ваш бизнес, с опорой на принципы удобства, восприятия и современных веб-практик.</p></li>
@@ -655,8 +701,8 @@
         </ul>
       </div>
       <!-- группа 3 -->
-      <div class="reveal rounded-3xl bg-white border border-line p-7 shadow-sm" style="transition-delay:.16s">
-        <div class="w-12 h-12 rounded-2xl bg-gold/12 text-golddeep flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.3L20 8l-4 3.9.9 5.6L12 14.8 7.1 17.5 8 11.9 4 8l5.6-.7z"/></svg></div>
+      <div class="reveal glass glass-card glass-lift p-7" style="transition-delay:.16s">
+        <div class="w-12 h-12 glass-icon flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.3L20 8l-4 3.9.9 5.6L12 14.8 7.1 17.5 8 11.9 4 8l5.6-.7z"/></svg></div>
         <h3 class="font-extrabold text-lg">Запуск и техническая часть</h3>
         <ul class="mt-5 space-y-4">
           <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Безопасная отправка форм.</b> Базовая защита от спама и проверка корректности работы форм.</p></li>
@@ -668,13 +714,13 @@
 
     <!-- домен + правки -->
     <div class="mt-6 grid md:grid-cols-2 gap-5">
-      <div class="reveal rounded-3xl bg-white border border-line p-7">
+      <div class="reveal glass glass-card glass-lift p-7">
         <h3 class="font-extrabold text-lg">Помощь с доменом и хостингом</h3>
         <ul class="mt-4 space-y-3">
           <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Помогу выбрать, настроить и объясню всё простыми словами.</p></li>
         </ul>
       </div>
-      <div class="reveal rounded-3xl bg-white border border-line p-7" style="transition-delay:.08s">
+      <div class="reveal glass glass-card glass-lift p-7" style="transition-delay:.08s">
         <h3 class="font-extrabold text-lg">30 дней на правки после запуска</h3>
         <ul class="mt-4 space-y-3">
           <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Чтобы вы могли спокойно проверить сайт в работе и сообщить, что нужно скорректировать.</p></li>
@@ -691,9 +737,9 @@
 </section>
 
 <!-- ============ 7. ОГРАНИЧЕНИЯ ============ -->
-<section id="limits" class="relative bg-ink text-cream overflow-hidden">
-  <div class="absolute inset-0 dots-light pointer-events-none"></div>
-  <div class="absolute -bottom-40 -left-32 w-[460px] h-[460px] bg-gold/8 blur-3xl rounded-full pointer-events-none"></div>
+<section id="limits" class="night text-cream overflow-hidden">
+  <div class="glow glow-cyan w-[460px] h-[460px] -bottom-40 -left-32 float"></div>
+  <div class="glow glow-pink w-[300px] h-[300px] top-10 right-1/4 float-late"></div>
 
   <div class="relative max-w-6xl mx-auto px-4 md:px-8 py-20 md:py-28 grid lg:grid-cols-[1.1fr_.9fr] gap-14 items-center">
     <div class="reveal">
@@ -708,7 +754,7 @@
       <a href="#audit" class="btn btn-gold mt-9 px-8 py-4">Узнать ближайшую дату старта</a>
     </div>
 
-    <div class="reveal rounded-3xl bg-white/[.04] border border-white/10 p-8 md:p-10" style="transition-delay:.1s">
+    <div class="reveal glass-dark rounded-[32px] p-8 md:p-10" style="transition-delay:.1s">
       <div class="flex items-end gap-4">
         <span class="font-disp font-bold text-[96px] md:text-[120px] leading-none text-gold2">3</span>
         <span class="text-mutd font-semibold pb-3 leading-snug">проекта<br>в месяц —<br>не больше</span>
@@ -723,7 +769,9 @@
 </section>
 
 <!-- ============ 8. УСЛОВИЯ ============ -->
-<section id="terms" class="py-20 md:py-28">
+<section id="terms" class="relative overflow-x-clip py-20 md:py-28">
+  <!-- ambient light behind the glass -->
+  <div class="glow glow-pink w-[380px] h-[380px] top-10 right-10 float-late" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <div class="max-w-2xl reveal">
       <div class="eyebrow">08 · Условия</div>
@@ -731,10 +779,10 @@
     </div>
 
     <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
-      <div class="rounded-3xl bg-white border border-line p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Сроки</div><p class="font-bold leading-snug">От 5 до 12 рабочих дней</p></div>
-      <div class="rounded-3xl bg-white border border-line p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Оплата</div><p class="font-bold leading-snug">50% перед стартом, 50% — после утверждения черновика</p></div>
-      <div class="rounded-3xl bg-white border border-line p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Договор</div><p class="font-bold leading-snug">Работаем официально, все этапы и обязательства зафиксированы</p></div>
-      <div class="rounded-3xl bg-ink text-cream border border-ink p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-gold2 mb-2.5">Второй язык (KZ/EN)</div><p class="font-bold leading-snug">+30 000 ₸</p></div>
+      <div class="glass glass-card glass-lift p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Сроки</div><p class="font-bold leading-snug">От 5 до 12 рабочих дней</p></div>
+      <div class="glass glass-card glass-lift p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Оплата</div><p class="font-bold leading-snug">50% перед стартом, 50% — после утверждения черновика</p></div>
+      <div class="glass glass-card glass-lift p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Договор</div><p class="font-bold leading-snug">Работаем официально, все этапы и обязательства зафиксированы</p></div>
+      <div class="glass-night glass-lift p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-gold2 mb-2.5">Второй язык (KZ/EN)</div><p class="font-bold leading-snug">+30 000 ₸</p></div>
     </div>
     <div class="mt-9 reveal">
       <a href="#audit" class="btn btn-gold w-full sm:w-auto px-8 py-4">Обсудить мой проект</a>
@@ -743,7 +791,10 @@
 </section>
 
 <!-- ============ 9. ДОПОЛНИТЕЛЬНЫЕ ОПЦИИ ============ -->
-<section id="addons" class="py-20 md:py-28">
+<section id="addons" class="relative overflow-x-clip py-20 md:py-28">
+  <!-- ambient light behind the glass -->
+  <div class="glow glow-cyan w-[440px] h-[440px] top-1/3 -right-32 float" aria-hidden="true"></div>
+  <div class="glow glow-peach w-[400px] h-[400px] bottom-0 -left-32 float-slow" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <div class="max-w-2xl reveal">
       <div class="eyebrow">09 · Дополнительно</div>
@@ -752,9 +803,9 @@
     </div>
 
     <div class="mt-11 grid md:grid-cols-3 gap-5">
-      <button type="button" aria-pressed="false" class="opt reveal text-left rounded-3xl border-2 border-line bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-lg" data-opt="lang" data-price="30000">
+      <button type="button" aria-pressed="false" class="opt reveal text-left glass glass-card glass-lift p-7" data-opt="lang" data-price="30000">
         <div class="flex items-start justify-between gap-3">
-          <span class="w-11 h-11 rounded-2xl bg-gold/12 text-golddeep flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg></span>
+          <span class="w-11 h-11 glass-icon flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg></span>
           <span class="optmark w-7 h-7 rounded-full border-2 border-line text-transparent flex items-center justify-center transition-all"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
         </div>
         <h3 class="font-extrabold text-lg mt-5">Вторая языковая версия</h3>
@@ -762,9 +813,9 @@
         <div class="font-disp font-semibold text-golddeep mt-5">+ 30 000 ₸</div>
       </button>
 
-      <button type="button" aria-pressed="false" class="opt reveal text-left rounded-3xl border-2 border-line bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-lg" data-opt="quiz" data-price="15000" style="transition-delay:.08s">
+      <button type="button" aria-pressed="false" class="opt reveal text-left glass glass-card glass-lift p-7" data-opt="quiz" data-price="15000" style="transition-delay:.08s">
         <div class="flex items-start justify-between gap-3">
-          <span class="w-11 h-11 rounded-2xl bg-gold/12 text-golddeep flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7h8M8 12h3M13 12l3-2M8 17h3M13 17l3-2"/></svg></span>
+          <span class="w-11 h-11 glass-icon flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7h8M8 12h3M13 12l3-2M8 17h3M13 17l3-2"/></svg></span>
           <span class="optmark w-7 h-7 rounded-full border-2 border-line text-transparent flex items-center justify-center transition-all"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
         </div>
         <h3 class="font-extrabold text-lg mt-5">Интерактивный калькулятор / квиз</h3>
@@ -772,9 +823,9 @@
         <div class="font-disp font-semibold text-golddeep mt-5">+ 15 000 ₸</div>
       </button>
 
-      <button type="button" aria-pressed="false" class="opt reveal text-left rounded-3xl border-2 border-line bg-white p-7 transition-all hover:-translate-y-1 hover:shadow-lg" data-opt="express" data-price="25000" style="transition-delay:.16s">
+      <button type="button" aria-pressed="false" class="opt reveal text-left glass glass-card glass-lift p-7" data-opt="express" data-price="25000" style="transition-delay:.16s">
         <div class="flex items-start justify-between gap-3">
-          <span class="w-11 h-11 rounded-2xl bg-gold/12 text-golddeep flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span>
+          <span class="w-11 h-11 glass-icon flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span>
           <span class="optmark w-7 h-7 rounded-full border-2 border-line text-transparent flex items-center justify-center transition-all"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
         </div>
         <h3 class="font-extrabold text-lg mt-5">Экспресс-разработка</h3>
@@ -784,7 +835,7 @@
     </div>
 
     <!-- итог -->
-    <div class="mt-7 reveal rounded-3xl bg-ink text-cream p-7 md:p-9 flex flex-col md:flex-row md:items-center justify-between gap-7">
+    <div class="mt-7 reveal glass-night rounded-[40px] p-7 md:p-9 flex flex-col md:flex-row md:items-center justify-between gap-7">
       <div>
         <div class="text-[11px] font-disp uppercase tracking-[0.22em] text-gold2 mb-3">Ваш расчёт</div>
         <div class="text-mutd text-sm leading-relaxed">120 000 ₸ (база) <span id="optSumLabel" class="text-cream font-bold">— пока без опций</span></div>
@@ -803,7 +854,10 @@
 </section>
 
 <!-- ============ 10. FAQ ============ -->
-<section id="faq" class="bg-cream/60 border-y border-line py-20 md:py-28">
+<section id="faq" class="relative overflow-x-clip py-20 md:py-28">
+  <!-- ambient light behind the glass -->
+  <div class="glow glow-violet w-[420px] h-[420px] top-10 -left-24 float-slow" aria-hidden="true"></div>
+  <div class="glow glow-pink w-[380px] h-[380px] bottom-10 -right-24 float" aria-hidden="true"></div>
   <div class="max-w-3xl mx-auto px-4 md:px-8">
     <div class="text-center reveal">
       <div class="eyebrow">10 · Вопросы и ответы</div>
@@ -812,7 +866,7 @@
 
     <div class="mt-12 space-y-3.5" id="faqList">
       <!-- Q1 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           Что, если мне не понравится вариант, который вы предложите?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -820,7 +874,7 @@
         <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Мы двигаемся по шагам, поэтому сюрпризов не бывает. Сначала я утверждаю с вами структуру и текст (прототип), и только после этого перехожу к визуалу и вёрстке. Все правки на этапе черновика входят в стоимость. Мы доводим проект до состояния, когда он нравится вам и работает на ваших клиентов.</p></div></div>
       </div>
       <!-- Q2 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden" style="transition-delay:.05s">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.05s">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           А если у меня нет текстов, логотипа и нормальных фото?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -828,7 +882,7 @@
         <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Это частая ситуация. Тексты я полностью беру на себя: беру интервью, изучаю отзывы ваших клиентов и пишу понятные смысловые заголовки. По визуалу: помогу подобрать качественные графические материалы, оформить аккуратный логотип и выстроить стиль.</p></div></div>
       </div>
       <!-- Q3 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden" style="transition-delay:.1s">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.1s">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           Точно ли хватит базового тарифа за 120 000 ₸ или придётся за что-то доплачивать?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -836,7 +890,7 @@
         <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Пакет полностью самодостаточен: от исследования и текстов до вёрстки, адаптации под мобильные и настройки отправки заявок в Telegram. Доплата возможна только за опции, которые вы выберете сами (второй язык, калькулятор или квиз, экспресс-срок — цены указаны в блоке «Дополнительно»), и за прямые расходы сервисам: домен (обычно ~3 000–5 000 ₸ в год) и хостинг, если нужен платный тариф.</p></div></div>
       </div>
       <!-- Q4 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden" style="transition-delay:.15s">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.15s">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           Сколько времени уйдёт на всё и сколько моего участия потребуется?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -844,7 +898,7 @@
         <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Разработка занимает от 5 до 12 рабочих дней. От вас потребуется около 15–20 минут на заполнение брифа в начале и короткие согласования на двух этапах (структура и финальный черновик). Бесконечных созвонов не будет — всё чётко и по делу.</p></div></div>
       </div>
       <!-- Q5 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden" style="transition-delay:.2s">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.2s">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           Что произойдёт с сайтом после запуска? Вдруг что-то сломается?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -852,7 +906,7 @@
         <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">После передачи проекта вы получаете 30 дней бесплатной технической поддержки. Если заметите неточность или захотите точечно подправить текст — я всё бесплатно скорректирую. Также я передам вам архив файлов и короткую видеоинструкцию, чтобы проект оставался под вашим полным контролем.</p></div></div>
       </div>
       <!-- Q6 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden" style="transition-delay:.25s">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.25s">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           Как проходит оплата и работаем ли мы по договору?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -860,7 +914,7 @@
         <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Да, всё официально. Мы фиксируем этапы и обязательства в документе. Оплата разбита на две равные части: 50% перед стартом работ и 50% — только после того, как вы утвердите готовый рабочий черновик перед публикацией.</p></div></div>
       </div>
       <!-- Q7 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden" style="transition-delay:.05s">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.05s">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           Зачем сайт, если у меня уже есть Instagram?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -868,7 +922,7 @@
         <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Instagram хорошо работает с теми, кто уже на вас подписан. Сайт отвечает на вопросы до переписки: что вы предлагаете, сколько это стоит, как проходит работа и почему вам можно доверять. Его находят через поиск и по ссылке из 2ГИС, а заявка сразу приходит вам в Telegram. Instagram и сайт не конкурируют: ссылку на сайт удобно поставить в шапку профиля.</p></div></div>
       </div>
       <!-- Q8 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden" style="transition-delay:.1s">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.1s">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           Вы гарантируете, что будут заявки?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -876,7 +930,7 @@
         <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Количество заявок зависит от трафика, спроса и самой услуги, поэтому обещать конкретные цифры я не буду — это было бы нечестно. Я отвечаю за то, чтобы человек, который зашёл на сайт, быстро понял ваше предложение, нашёл ответы на свои сомнения и мог оставить заявку за пару касаний.</p></div></div>
       </div>
       <!-- Q9 -->
-      <div class="faq-item reveal rounded-2xl bg-white border border-line overflow-hidden" style="transition-delay:.15s">
+      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.15s">
         <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
           Кому принадлежит сайт после запуска?
           <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
@@ -894,9 +948,9 @@
 </section>
 
 <!-- ============ 11. БЕСПЛАТНЫЙ АУДИТ ============ -->
-<section id="audit" class="relative bg-ink text-cream overflow-hidden">
-  <div class="absolute inset-0 dots-light pointer-events-none"></div>
-  <div class="absolute -top-32 left-1/3 w-[420px] h-[420px] bg-gold/10 blur-3xl rounded-full pointer-events-none"></div>
+<section id="audit" class="night text-cream overflow-hidden">
+  <div class="glow glow-cyan w-[460px] h-[460px] -top-32 left-1/3 float"></div>
+  <div class="glow glow-violet w-[420px] h-[420px] bottom-0 right-0 float-slow"></div>
 
   <div class="relative max-w-6xl mx-auto px-4 md:px-8 py-20 md:py-28 grid lg:grid-cols-[1.05fr_.95fr] gap-14 items-center">
     <div class="reveal">
@@ -912,7 +966,7 @@
         <li class="chk chk-d"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Какие 2–3 изменения стоит рассмотреть в первую очередь</p></li>
       </ul>
 
-      <div class="mt-8 rounded-2xl bg-white/[.05] border border-white/10 p-5 text-sm leading-relaxed text-mutd">
+      <div class="mt-8 glass-dark p-5 text-sm leading-relaxed text-mutd">
         <p><b class="text-cream">Сайт уже есть</b> — разберу его, даже если он давно не обновлялся.</p>
         <p class="mt-2"><b class="text-cream">Сайта пока нет</b> — посмотрю Instagram или 2ГИС и подскажу, что важно показать на будущем сайте.</p>
       </div>
@@ -920,7 +974,7 @@
 
     <!-- форма -->
     <div class="reveal" style="transition-delay:.12s">
-      <div class="rounded-3xl bg-paper text-ink p-7 md:p-9 shadow-2xl">
+      <div class="glass-form p-7 md:p-9">
         <h3 class="font-extrabold text-xl">Заявка на аудит или расчёт сайта</h3>
         <p class="text-sm text-mut mt-1.5">Отвечаю лично, обычно в течение дня.</p>
 
@@ -952,7 +1006,7 @@
             </div>
           </div>
           <!-- Shown when options are picked in the calculator or a promo code is applied -->
-          <div id="calcSummary" class="rounded-2xl bg-cream/70 border border-line p-4 text-sm leading-relaxed" hidden></div>
+          <div id="calcSummary" class="glass-inset p-4 text-sm leading-relaxed" hidden></div>
           <input type="hidden" name="options" id="f-options">
           <input type="hidden" name="utm_source">
           <input type="hidden" name="utm_medium">
@@ -962,7 +1016,7 @@
           <div>
             <div class="flex items-start gap-3">
               <input type="checkbox" id="f-consent" name="consent" value="yes" required aria-describedby="f-consent-err"
-                     class="mt-0.5 w-5 h-5 flex-none rounded border-[#8F7F62] accent-[#7E5B1C] cursor-pointer">
+                     class="mt-0.5 w-5 h-5 flex-none rounded border-[#536879] accent-[#5B5BEA] cursor-pointer">
               <label for="f-consent" class="text-sm leading-snug text-ink/85 cursor-pointer">
                 Даю согласие на обработку моих персональных данных из этой формы для ответа на заявку — согласно
                 <a href="privacy.html" target="_blank" rel="noopener" class="font-bold underline text-golddeep">политике конфиденциальности</a>.
@@ -978,7 +1032,7 @@
         </form>
 
         <div id="auditOk" class="hidden text-center py-8">
-          <div class="w-16 h-16 mx-auto rounded-full bg-green/15 text-green flex items-center justify-center"><svg aria-hidden="true" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div class="ok-bead w-16 h-16 mx-auto rounded-full text-green flex items-center justify-center"><svg aria-hidden="true" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
           <h4 id="auditOkTitle" tabindex="-1" class="font-extrabold text-xl mt-5">Заявка отправлена!</h4>
           <p class="text-sm text-mut mt-2.5 leading-relaxed">Спасибо! Посмотрю, что вы прислали, и отвечу в течение дня.<br>Если срочно — напишите сразу в
             <a href="https://t.me/altynclick" target="_blank" rel="noopener" class="text-golddeep font-bold underline">Telegram</a> или
@@ -993,7 +1047,7 @@
 </main>
 
 <!-- ============ ФУТЕР ============ -->
-<footer class="bg-ink text-cream pt-16 pb-8">
+<footer class="night text-cream pt-16 pb-8 mt-10">
   <div class="max-w-6xl mx-auto px-4 md:px-8">
     <div class="grid md:grid-cols-[1.2fr_1fr_1fr] gap-10 pb-12 border-b border-white/10">
       <div>
@@ -1035,9 +1089,9 @@
 
 <!-- ============ МОДАЛКА ПРОЕКТА ============ -->
 <div id="workModal" class="fixed inset-0 z-[90] hidden" role="dialog" aria-modal="true" aria-labelledby="workTitle">
-  <div class="absolute inset-0 bg-ink/85 backdrop-blur-sm" data-close></div>
+  <div class="absolute inset-0 modal-scrim" data-close></div>
   <div class="relative h-full overflow-y-auto p-4 md:p-8">
-    <div class="panel max-w-3xl mx-auto bg-paper rounded-3xl overflow-hidden shadow-2xl" id="modalBody"></div>
+    <div class="panel max-w-3xl mx-auto glass-modal rounded-[32px] overflow-hidden" id="modalBody"></div>
   </div>
 </div>
 

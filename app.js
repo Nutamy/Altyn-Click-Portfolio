@@ -104,7 +104,8 @@ document.addEventListener('click', e => {
 
 /* ---------- 1. Шапка, меню, reveal ---------- */
 const hdr = document.getElementById('hdr');
-const HDR_ON = ['bg-paper/90', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-line'];
+// Glass bar styles live in src/input.css (#hdr.hdr-on .hdr-bar)
+const HDR_ON = ['hdr-on'];
 let hdrScrolled = false;
 addEventListener('scroll', () => {
   const on = scrollY > 12;
@@ -519,8 +520,9 @@ works.forEach((w, i) => {
   sp.innerHTML =
     // Visible text stays the accessible name; the prefix only adds context for screen readers
     '<span class="sr-only">' + T.openCase + '</span>' +
-    '<div class="ws-card w-40 sm:w-56 md:w-72 rounded-3xl bg-white border border-line shadow-xl overflow-hidden">' +
-      pic(w, 'w-full aspect-square sm:aspect-[59/32] object-cover object-top pointer-events-none select-none') +
+    '<div class="ws-card glass glass-fan w-40 sm:w-56 md:w-72 overflow-hidden">' +
+      '<div class="shot-frame overflow-hidden m-1.5 md:m-2 mb-0 md:mb-0 rounded-[20px]">' +
+      pic(w, 'w-full aspect-square sm:aspect-[59/32] object-cover object-top pointer-events-none select-none') + '</div>' +
       '<div class="p-3 md:p-4"><div class="text-[10px] font-disp uppercase tracking-[0.2em] text-golddeep">' + w.cat + '</div>' +
       '<div class="font-extrabold text-sm md:text-base leading-tight mt-1">' + w.name + '</div></div></div>';
   // Hovered or focused card comes to the front so it's fully visible
@@ -603,17 +605,17 @@ let curWork = null, shotIdx = 0, lastFocus = null;
 const curShots = () => MOBILE.matches ? curWork.mshots : curWork.shots;
 const shotAlt = i => T.shotAlt(curWork.name, i + 1, curShots().length);
 const thumbCls = on => 'th flex-none w-12 h-20 sm:w-20 sm:h-14 rounded-xl overflow-hidden border-2 ' +
-  (on ? 'border-gold' : 'border-transparent opacity-70 hover:opacity-100') + ' transition bg-ink';
+  (on ? 'border-gold' : 'border-transparent opacity-70 hover:opacity-100') + ' transition bg-slate';
 
 const EXT = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
 function renderWork() {
   modalBody.innerHTML =
-    '<div class="relative bg-ink select-none">' +
-      '<img id="shotImg" src="' + curShots()[0] + '" alt="' + shotAlt(0) + '" ' + (MOBILE.matches ? 'width="585" height="1266"' : 'width="1416" height="768"') + ' class="w-full aspect-[585/1266] max-h-[75vh] object-contain sm:aspect-[59/32] sm:max-h-none sm:object-cover object-top bg-ink">' +
-      '<button type="button" data-dir="-1" aria-label="' + T.prevShot + '" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/40 hover:bg-gold text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
-      '<button type="button" data-dir="1" aria-label="' + T.nextShot + '" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/40 hover:bg-gold text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>' +
-      '<div id="shotCnt" aria-live="polite" class="absolute bottom-3 right-4 text-xs font-bold text-white bg-black/50 backdrop-blur px-3 py-1.5 rounded-full">1 / ' + curShots().length + '</div>' +
-      '<button type="button" data-close aria-label="' + T.closeCase + '" class="absolute top-3 right-3 w-11 h-11 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' +
+    '<div class="relative bg-slate select-none">' +
+      '<img id="shotImg" src="' + curShots()[0] + '" alt="' + shotAlt(0) + '" ' + (MOBILE.matches ? 'width="585" height="1266"' : 'width="1416" height="768"') + ' class="w-full aspect-[585/1266] max-h-[75vh] object-contain sm:aspect-[59/32] sm:max-h-none sm:object-cover object-top bg-slate">' +
+      '<button type="button" data-dir="-1" aria-label="' + T.prevShot + '" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass-tag hover:bg-gold text-white flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
+      '<button type="button" data-dir="1" aria-label="' + T.nextShot + '" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass-tag hover:bg-gold text-white flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>' +
+      '<div id="shotCnt" aria-live="polite" class="absolute bottom-3 right-4 text-xs font-bold glass-tag px-3 py-1.5 rounded-full">1 / ' + curShots().length + '</div>' +
+      '<button type="button" data-close aria-label="' + T.closeCase + '" class="absolute top-3 right-3 w-11 h-11 rounded-full glass-tag hover:bg-ink/70 flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' +
     '</div>' +
     '<div id="thumbs" class="flex gap-2 px-5 md:px-8 -mt-6 relative z-10 overflow-x-auto pb-1">' +
       curShots().map((s, i) =>
@@ -622,17 +624,17 @@ function renderWork() {
     '</div>' +
     '<div class="p-6 md:p-9">' +
       '<div class="flex flex-wrap items-center gap-2">' +
-        '<span class="text-[10px] font-disp uppercase tracking-[0.2em] bg-gold/15 text-golddeep px-3 py-1.5 rounded-full">' + curWork.cat + '</span>' +
-        '<span class="text-[10px] font-disp uppercase tracking-[0.2em] border border-line text-mut px-3 py-1.5 rounded-full">' + T.city + '</span></div>' +
-      '<h3 id="workTitle" class="font-disp font-semibold text-2xl md:text-[1.7rem] mt-4 leading-tight">' + curWork.name + '</h3>' +
+        '<span class="text-[11px] font-disp uppercase tracking-[0.2em] bg-gold/15 text-golddeep px-3 py-1.5 rounded-full">' + curWork.cat + '</span>' +
+        '<span class="text-[11px] font-disp uppercase tracking-[0.2em] glass-chip text-mut px-3 py-1.5 rounded-full">' + T.city + '</span></div>' +
+      '<h3 id="workTitle" class="font-disp font-extrabold text-2xl md:text-[1.7rem] mt-4 leading-tight">' + curWork.name + '</h3>' +
       '<p class="text-golddeep font-bold mt-1.5">' + curWork.tagline + '</p>' +
       '<p class="mt-4 text-mut leading-relaxed">' + curWork.about + '</p>' +
       '<h4 class="mt-8 text-[11px] font-disp uppercase tracking-[0.22em] text-mut font-normal">' + T.done + '</h4>' +
       '<ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-3">' +
         curWork.done.map(d => '<li class="chk"><span class="ic">' + CHK + '</span><p>' + d + '</p></li>').join('') +
       '</ul>' +
-      '<div class="mt-8 rounded-2xl bg-gold/10 border-l-4 border-gold p-5">' +
-        '<div class="text-[10px] font-disp uppercase tracking-[0.22em] text-golddeep mb-2">' + T.highlight + '</div>' +
+      '<div class="mt-8 glass-inset p-5" style="background:linear-gradient(120deg,rgba(141,232,226,.32),rgba(188,168,248,.3))">' +
+        '<div class="text-[11px] font-disp uppercase tracking-[0.22em] text-golddeep mb-2">' + T.highlight + '</div>' +
         '<p class="leading-relaxed text-ink/85">' + curWork.highlight + '</p></div>' +
       '<div class="mt-8 flex flex-wrap items-center gap-4">' +
         '<a href="#audit" data-to-form class="btn btn-gold px-7 py-3.5">' + T.wantSimilar + ' ' + ARR + '</a>' +
@@ -717,3 +719,20 @@ addEventListener('keydown', e => {
 
 /* ---------- 8. Год в футере ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- 9. Свет внутри стекла следует за курсором ---------- */
+// Moves the inner glow (--gx/--gy, registered in input.css) towards the pointer; mouse/pen only, never on touch or reduced motion
+if (matchMedia('(hover: hover) and (pointer: fine)').matches && !REDUCED.matches) {
+  document.addEventListener('pointermove', e => {
+    const el = e.target.closest && e.target.closest('.glass-lift, .hero-panel, .glass-form');
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--gx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+    el.style.setProperty('--gy', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+  }, { passive: true });
+  // Leaving a card hands the light back to its resting position from CSS
+  document.addEventListener('pointerout', e => {
+    const el = e.target.closest && e.target.closest('.glass-lift, .hero-panel, .glass-form');
+    if (el && !el.contains(e.relatedTarget)) { el.style.removeProperty('--gx'); el.style.removeProperty('--gy'); }
+  }, { passive: true });
+}

@@ -14,8 +14,8 @@ const SITE = 'https://altyn-click.pages.dev/';
 const LANGS = {
   kk: {
     dir: 'kz', col: 1, og: 'kk_KZ',
-    // Unbounded and Manrope lack Kazakh letters; Unbounded stays only for the Latin wordmark
-    fonts: 'https://fonts.googleapis.com/css2?family=Geologica:wght@400;600;700&family=Onest:wght@400;600;700;800&family=Unbounded:wght@600&display=swap',
+    // Manrope lacks Kazakh letters, so Onest covers both headings and text; Unbounded stays only for the Latin wordmark
+    fonts: 'https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;800&family=Unbounded:wght@600&display=swap',
   },
   en: { dir: 'en', col: 2, og: 'en_US', fonts: null },
 };

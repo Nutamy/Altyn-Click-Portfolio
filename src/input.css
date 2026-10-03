@@ -4,80 +4,253 @@
 /* Custom styles sit between components and utilities, matching the old CDN setup:
    utility classes in markup still override them. */
 
-/* Font stacks per language: Unbounded and Manrope have no Kazakh letters (Ә Ғ Қ Ң Ө Ұ Ү Һ),
-   so the Kazakh page swaps to the closest families that do: Geologica (display) and Onest (text) */
-:root{--f-disp:'Unbounded',sans-serif;--f-sans:'Manrope',sans-serif}
-:root:lang(kk){--f-disp:'Geologica',sans-serif;--f-sans:'Onest',sans-serif}
+/* ================= Liquid Glass design tokens =================
+   One material, several thicknesses: page atmosphere (blur 80–120) → large panels (30–50)
+   → buttons (15–25) → small chips (10–18). Shadows are always cool-tinted, never black. */
+:root{
+  --f-disp:'Manrope',sans-serif;--f-sans:'Manrope',sans-serif;
+  --ink:#141A21;--mut:#48515C;--mutd:#C6D0DA;
+  --slate:#263746;--slate2:#536879;--ivory:#F8F2EC;--milk:#F3ECE5;--coldwhite:#F5F7FA;
+  --violet:#7164F5;--blue:#6475F5;--cyan:#68DDD7;--aqua:#8DE8E2;--lav:#BCA8F8;--pink:#E9A6E7;--amber:#FFB84D;
 
-html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{font-family:var(--f-sans);background:#FAF6EE;color:#181410}
+  --glass-fill:linear-gradient(150deg,rgba(255,255,255,.58),rgba(255,255,255,.26) 60%,rgba(255,255,255,.34));
+  --glass-edge:rgba(255,255,255,.62);
+  --glass-shadow:
+    0 0 0 1px rgba(38,55,70,.05),
+    0 24px 60px -12px rgba(30,45,70,.18),
+    0 8px 20px -6px rgba(30,45,70,.08),
+    inset 0 1px 0 rgba(255,255,255,.8),
+    inset 0 -1px 0 rgba(255,255,255,.18);
+  --glass-shadow-hover:
+    0 0 0 1px rgba(38,55,70,.05),
+    0 34px 70px -14px rgba(30,45,70,.22),
+    0 14px 34px -10px rgba(100,110,255,.22),
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 -1px 0 rgba(255,255,255,.2);
+  --r-xl:40px;--r-lg:32px;--r-md:24px;--r-btn:22px;--r-sm:16px;
+}
+/* Unbounded and Manrope have no Kazakh letters (Ә Ғ Қ Ң Ө Ұ Ү Һ): Onest is the closest family that does */
+:root:lang(kk){--f-disp:'Onest',sans-serif;--f-sans:'Onest',sans-serif}
+
+/* Animatable light position for the "light inside the glass" layer */
+/* Inherited so the ::after light layer follows values set on the card (CSS variants or the pointer script in app.js) */
+@property --gx{syntax:'<percentage>';inherits:true;initial-value:85%}
+@property --gy{syntax:'<percentage>';inherits:true;initial-value:12%}
+
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{font-family:var(--f-sans);background:#EDF0F4;color:var(--ink);position:relative;isolation:isolate}
+/* Atmospheric backdrop: huge soft light pools that drift into each other, fixed so glass always has something to refract */
+body::before{content:"";position:fixed;inset:-10vmax;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(42vmax 38vmax at 12% 8%,rgba(255,222,204,.85),transparent 70%),
+    radial-gradient(40vmax 36vmax at 88% 14%,rgba(130,210,235,.55),transparent 70%),
+    radial-gradient(46vmax 40vmax at 72% 78%,rgba(188,168,248,.5),transparent 70%),
+    radial-gradient(36vmax 34vmax at 10% 88%,rgba(233,166,231,.32),transparent 70%),
+    radial-gradient(30vmax 30vmax at 45% 45%,rgba(248,242,236,.9),transparent 70%),
+    linear-gradient(180deg,#F3EFEA,#E9EDF3 55%,#ECE8F3);
+  filter:blur(40px)}
+
+/* Headings: bold, compact, near-black — the futuristic part is the material, not the font */
+h1,h2,h3,h4{letter-spacing:-.03em}
+h1,h2{font-weight:800;letter-spacing:-.04em}
+h1.font-disp{font-weight:800}
 /* The wordmark is Latin-only and stays in Unbounded on every language version */
-.brand{font-family:'Unbounded',sans-serif}
+.brand{font-family:'Unbounded',sans-serif;letter-spacing:-.02em}
+/* The one warm accent on the page: amber → coral, used sparingly against the cool palette */
+.brand .text-gold{background:linear-gradient(120deg,#FFB84D,#F38A5E);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* Language switcher: segmented pill; the current language is marked with aria-current */
-.lang-sw{display:inline-flex;gap:2px;padding:3px;border-radius:9999px;border:1px solid #E6DEC9;background:#fff;font-size:.8rem;font-weight:800;line-height:1}
-.lang-sw a{padding:.5rem .7rem;border-radius:9999px;color:#6F6553;transition:color .2s,background-color .2s}
-.lang-sw a:hover{color:#181410}
-.lang-sw a[aria-current="page"]{background:#181410;color:#FAF6EE}
+::selection{background:var(--violet);color:#fff}
+
+/* Visible keyboard focus everywhere; mouse clicks don't trigger it */
+:focus-visible{outline:3px solid #4B3FD6;outline-offset:3px;border-radius:10px}
+.night :focus-visible,footer :focus-visible,#workModal :focus-visible{outline-color:var(--aqua)}
+
+.eyebrow{font-family:var(--f-disp);font-weight:700;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#4B3FD6;display:inline-flex;align-items:center;gap:.6rem}
+/* Small glowing bead in front of every section label */
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:9999px;flex:none;background:radial-gradient(circle at 35% 35%,#fff,var(--cyan) 45%,var(--violet));box-shadow:0 0 10px rgba(104,221,215,.8)}
+.night .eyebrow{color:var(--aqua)}
+
+/* ================= Glass material ================= */
+.glass,.glass-night,.glass-dark,.glass-form,.glass-chip,.glass-inset,.glass-icon,.glass-orb,.glass-tag,.btn-ghost,.lang-sw{
+  -webkit-backdrop-filter:blur(var(--blur,30px)) saturate(160%);backdrop-filter:blur(var(--blur,30px)) saturate(160%)}
+
+.glass{position:relative;isolation:isolate;background:var(--glass-fill);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow);border-radius:var(--r-lg)}
+/* Specular highlight: light hitting the top-left edge of the slab */
+.glass::before,.glass-night::before,.glass-dark::before,.glass-form::before{content:"";position:absolute;inset:1px;border-radius:inherit;z-index:-1;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.55),transparent 32%)}
+/* Light inside the glass: a local colored glow; its colour comes from --glow, its position animates on hover */
+.glass::after,.glass-night::after,.glass-dark::after,.glass-form::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at var(--gx) var(--gy),var(--glow,transparent),transparent 48%);
+  transition:--gx .9s cubic-bezier(.22,.61,.36,1),--gy .9s cubic-bezier(.22,.61,.36,1),opacity .6s}
+
+/* Card rhythm: same geometry, different light — clear, cyan, violet, near-white, lavender→pink */
+.glass-card{border-radius:var(--r-lg)}
+.glass-card:nth-child(5n+2){--glow:rgba(104,221,215,.42)}
+.glass-card:nth-child(5n+3){--glow:rgba(124,108,248,.34)}
+.glass-card:nth-child(5n+4){background:linear-gradient(150deg,rgba(255,255,255,.82),rgba(255,255,255,.55))}
+.glass-card:nth-child(5n){--glow:rgba(233,166,231,.38);--gx:15%;--gy:95%}
+.glass-card:nth-child(5n)::before{background:linear-gradient(135deg,rgba(255,255,255,.55),transparent 32%),linear-gradient(200deg,rgba(188,168,248,.18),transparent 55%)}
+
+/* Lift on hover: `translate` is used instead of `transform` so it never fights the reveal animation */
+.glass-lift{transition:translate .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s ease,border-color .45s}
+.glass-lift:hover{translate:0 -4px;box-shadow:var(--glass-shadow-hover);border-color:rgba(255,255,255,.85)}
+.glass-lift:not(:nth-child(5n+2)):not(:nth-child(5n+3)):not(:nth-child(5n)):hover{--glow:rgba(141,232,226,.3)}
+
+/* Deep glass: a slab of tinted slate glass on the light page */
+.glass-night{position:relative;isolation:isolate;color:#F5F7FA;border-radius:var(--r-lg);
+  background:linear-gradient(150deg,rgba(46,62,76,.94),rgba(34,49,63,.92));
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 30px 60px -16px rgba(30,45,70,.4),0 12px 30px -10px rgba(91,92,240,.28),inset 0 1px 0 rgba(255,255,255,.28);
+  --glow:rgba(104,221,215,.22)}
+.glass-night::before{background:linear-gradient(135deg,rgba(255,255,255,.14),transparent 26%)}
+.glass-night .eyebrow,.glass-night .text-gold2{color:var(--aqua)}
+
+/* Glass on dark sections: thinner, cooler, with a brighter rim */
+.glass-dark{position:relative;isolation:isolate;--blur:24px;
+  background:linear-gradient(150deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.18);border-radius:var(--r-md);
+  box-shadow:0 20px 44px -14px rgba(5,12,22,.45),inset 0 1px 0 rgba(255,255,255,.22)}
+.glass-dark::before{background:linear-gradient(135deg,rgba(255,255,255,.16),transparent 30%)}
+.glass-dark:nth-child(3n+1){--glow:rgba(104,221,215,.16)}
+.glass-dark:nth-child(3n+2){--glow:rgba(124,108,248,.2)}
+.glass-dark:nth-child(3n){--glow:rgba(233,166,231,.15)}
+
+/* Milky glass for the lead form: thick enough for comfortable reading on a dark backdrop */
+.glass-form{position:relative;isolation:isolate;--blur:40px;color:var(--ink);border-radius:var(--r-xl);
+  background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(245,247,250,.78));
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 40px 90px -20px rgba(5,12,22,.55),0 18px 50px -12px rgba(104,221,215,.35),inset 0 1px 0 #fff;
+  --glow:rgba(141,232,226,.35);--gx:100%;--gy:0%}
+
+.glass-inset{--blur:16px;border-radius:var(--r-md);background:rgba(255,255,255,.42);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -8px 20px -12px rgba(83,104,121,.18)}
+.glass-chip{--blur:14px;background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.75);box-shadow:0 8px 20px -10px rgba(30,45,70,.2),inset 0 1px 0 #fff}
+.glass-icon{--blur:12px;border-radius:var(--r-sm);color:#4B3FD6;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.95),rgba(255,255,255,.4) 55%),linear-gradient(140deg,rgba(141,232,226,.55),rgba(188,168,248,.55));
+  border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 22px -10px rgba(100,110,255,.45),inset 0 1px 0 #fff}
+.glass-orb{--blur:12px;border-radius:9999px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.85);color:var(--ink);box-shadow:0 6px 16px -8px rgba(30,45,70,.3),inset 0 1px 0 #fff;transition:background .35s,color .35s,box-shadow .35s}
+.group:hover .glass-orb{background:linear-gradient(135deg,#6A5CF0,#4F63E8);color:#fff;border-color:rgba(255,255,255,.5);box-shadow:0 10px 22px -8px rgba(91,92,240,.55),inset 0 1px 1px rgba(255,255,255,.45)}
+.glass-tag{--blur:14px;background:rgba(20,26,33,.42);color:#fff;border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+
+/* Screenshots stay crisp: the glass is the frame around them, never a filter on top */
+.shot-frame{border-radius:var(--r-md);box-shadow:0 0 0 1px rgba(38,55,70,.08),0 10px 24px -14px rgba(30,45,70,.35)}
+
+/* ================= Sections ================= */
+/* Dark sections are slabs of deep slate glass floating over the page, lit from inside */
+.night{position:relative;isolation:isolate;color:#F5F7FA;margin-inline:10px;border-radius:var(--r-xl);
+  background:
+    radial-gradient(60% 70% at 12% 10%,rgba(104,221,215,.17),transparent 70%),
+    radial-gradient(55% 65% at 92% 25%,rgba(113,100,245,.3),transparent 70%),
+    radial-gradient(60% 60% at 60% 110%,rgba(233,166,231,.14),transparent 70%),
+    linear-gradient(160deg,#2E4152,#263746 55%,#22303F);
+  box-shadow:0 40px 80px -30px rgba(20,35,50,.45),inset 0 1px 0 rgba(255,255,255,.14)}
+/* Inside dark slabs the light stays dimmer so muted text keeps 4.5:1 */
+.night .glow{opacity:.42}
+.glass-dark .text-mutd,.glass-dark.text-mutd{color:#D6DEE6}
+footer.night{border-radius:var(--r-xl) var(--r-xl) 0 0;margin-bottom:0}
+@media (min-width:768px){.night{margin-inline:18px}}
+
+/* Ambient light sources; float very slowly (6–7s), never as decoration for its own sake */
+.glow{position:absolute;border-radius:9999px;pointer-events:none;filter:blur(70px);opacity:.75;z-index:-1}
+.glow-cyan{background:radial-gradient(circle,rgba(104,221,215,.9),transparent 70%)}
+.glow-violet{background:radial-gradient(circle,rgba(113,100,245,.85),transparent 70%)}
+.glow-pink{background:radial-gradient(circle,rgba(233,166,231,.8),transparent 70%)}
+.glow-peach{background:radial-gradient(circle,rgba(255,206,178,.9),transparent 70%)}
+@keyframes floatY{0%,100%{transform:translateY(-6px)}50%{transform:translateY(6px)}}
+.float{animation:floatY 6.5s ease-in-out infinite}
+.float-slow{animation:floatY 7.5s ease-in-out infinite;animation-delay:-2.5s}
+.float-late{animation:floatY 5.5s ease-in-out infinite;animation-delay:-1.2s}
+
+/* Hero: one large glass panel with a floating 3D composition on the right */
+.hero-panel{border-radius:28px}
+@media (min-width:768px){.hero-panel{border-radius:var(--r-xl)}}
+.hero-panel{--glow:rgba(104,221,215,.3);--gx:78%;--gy:40%}
+.mock-glass{background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.5));border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 40px 80px -24px rgba(30,45,70,.35),0 16px 40px -16px rgba(100,110,255,.3),inset 0 1px 0 #fff;
+  -webkit-backdrop-filter:blur(24px) saturate(150%);backdrop-filter:blur(24px) saturate(150%)}
+.mock-bar{background:rgba(83,104,121,.16)}
+.amber-dot{background:radial-gradient(circle at 35% 30%,#FFE2AE,#FFB84D 55%,#F38A5E);box-shadow:0 0 14px rgba(255,184,77,.75)}
+
+/* Process: a soft stream of light runs behind the translucent cards */
+.flow{position:absolute;inset:-40px -20px;z-index:0;pointer-events:none}
+.flow svg{width:100%;height:100%;overflow:visible}
+.flow-wrap>ol{position:relative;z-index:1}
+.step-num{font-weight:800;letter-spacing:-.04em;background:linear-gradient(135deg,var(--violet),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.75}
+
+/* Glass ribbon marquee */
+.marquee-glass{--blur:20px;position:relative;background:rgba(255,255,255,.38);border-block:1px solid rgba(255,255,255,.7);box-shadow:0 10px 30px -18px rgba(30,45,70,.3),inset 0 1px 0 rgba(255,255,255,.8);color:#3B4652}
+.marquee-glass .text-gold{color:#F39A4A}
+
+/* Language switcher: segmented glass pill; the current language is marked with aria-current */
+.lang-sw{--blur:14px;display:inline-flex;gap:2px;padding:3px;border-radius:9999px;border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.4);box-shadow:inset 0 1px 0 #fff;font-size:.8rem;font-weight:800;line-height:1}
+.lang-sw a{padding:.5rem .7rem;border-radius:9999px;color:var(--mut);transition:color .2s,background-color .2s,box-shadow .2s}
+.lang-sw a:hover{color:var(--ink)}
+.lang-sw a[aria-current="page"]{background:var(--ink);color:#F5F7FA;box-shadow:0 6px 14px -6px rgba(20,26,33,.5)}
 /* Bigger tap targets in the mobile menu (44px) */
 .lang-sw-lg{font-size:.9rem}
 .lang-sw-lg a{padding:.9rem 1.15rem}
-.lang-sw-dark{background:transparent;border-color:rgba(255,255,255,.14)}
-.lang-sw-dark a{color:#A99F8C}
-.lang-sw-dark a:hover{color:#E2B75C}
-.lang-sw-dark a[aria-current="page"]{background:#E2B75C;color:#181410}
-::selection{background:#C89A3C;color:#fff}
+.lang-sw-dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
+.lang-sw-dark a{color:var(--mutd,#B4C0CC)}
+.lang-sw-dark a:hover{color:var(--aqua)}
+.lang-sw-dark a[aria-current="page"]{background:linear-gradient(135deg,var(--aqua),#B9C7FF);color:var(--ink)}
 
-/* Visible keyboard focus everywhere; mouse clicks don't trigger it */
-:focus-visible{outline:3px solid #7E5B1C;outline-offset:3px;border-radius:6px}
-.bg-ink :focus-visible,footer :focus-visible,#workModal :focus-visible{outline-color:#E2B75C}
+/* Header: transparent at the top, becomes a floating glass bar once the page scrolls */
+.hdr-bar{transition:background .35s,box-shadow .35s,border-color .35s,margin .35s;border:1px solid transparent;border-radius:26px}
+#hdr.hdr-on .hdr-bar{margin-top:10px;background:rgba(255,255,255,.5);border-color:rgba(255,255,255,.75);
+  box-shadow:0 18px 40px -18px rgba(30,45,70,.3),inset 0 1px 0 #fff;
+  -webkit-backdrop-filter:blur(26px) saturate(170%);backdrop-filter:blur(26px) saturate(170%)}
+.glass-menu{margin:8px 10px 0;border-radius:var(--r-md);background:rgba(245,247,250,.82);border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 30px 60px -20px rgba(30,45,70,.35),inset 0 1px 0 #fff;
+  -webkit-backdrop-filter:blur(30px) saturate(160%);backdrop-filter:blur(30px) saturate(160%)}
 
-.dots{background-image:radial-gradient(rgba(24,20,16,.07) 1px,transparent 1px);background-size:22px 22px}
-.dots-light{background-image:radial-gradient(rgba(250,246,238,.08) 1px,transparent 1px);background-size:22px 22px}
-
-/* Darker gold on light backgrounds for AA contrast; dark sections keep the bright gold */
-.eyebrow{font-family:var(--f-disp);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#7E5B1C}
-.bg-ink .eyebrow{color:#E2B75C}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border-radius:9999px;font-weight:800;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,color .25s ease;white-space:nowrap}
-/* Dark text on the gold gradient: 8.3:1 → 5.7:1 (white text was 2.2–3.2:1) */
-.btn-gold{background:linear-gradient(135deg,#D6A84B,#B9862C);color:#181410;box-shadow:0 12px 26px -10px rgba(200,154,60,.6)}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 32px -10px rgba(200,154,60,.7)}
-.btn-ghost{border:1.5px solid #E6DEC9;color:#181410;background:#fff}
-.btn-ghost:hover{border-color:#C89A3C;color:#7E5B1C;transform:translateY(-2px)}
+/* ================= Buttons ================= */
+.btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border-radius:var(--r-btn);font-weight:800;transition:translate .3s cubic-bezier(.22,.61,.36,1),scale .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease,border-color .3s ease,color .3s ease,background-color .3s;white-space:nowrap}
+/* Primary: violet → blue glass bead. Slightly deeper than #7164F5→#586CF2 so white text keeps AA (4.8:1+) */
+.btn-gold{color:#fff;background:linear-gradient(135deg,#6253EC,#4659E0);border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 12px 25px -6px rgba(91,92,240,.42),inset 0 1px 1px rgba(255,255,255,.45),inset 0 -6px 14px -6px rgba(30,20,120,.35)}
+.btn-gold::before{content:"";position:absolute;inset:1px;border-radius:inherit;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 40%),radial-gradient(50% 60% at 92% 120%,rgba(104,221,215,.3),transparent 70%);transition:opacity .3s}
+.btn-gold:hover{translate:0 -2px;scale:1.02;box-shadow:0 18px 34px -8px rgba(91,92,240,.55),0 0 0 4px rgba(124,108,248,.12),inset 0 1px 1px rgba(255,255,255,.55),inset 0 -6px 14px -6px rgba(30,20,120,.35)}
+/* Secondary: clear glass */
+.btn-ghost{--blur:20px;color:var(--ink);background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 24px -12px rgba(30,45,70,.3),inset 0 1px 0 #fff}
+.btn-ghost:hover{translate:0 -2px;scale:1.02;color:#4B3FD6;background:rgba(255,255,255,.6);box-shadow:0 16px 30px -12px rgba(100,110,255,.35),inset 0 1px 0 #fff}
 /* Long CTA labels wrap on phones instead of pushing the page sideways */
 @media (max-width:639px){.btn{white-space:normal;text-align:center}}
 
 /* чек-лист */
 .chk{display:flex;gap:.75rem}
-.chk .ic{flex:none;margin-top:2px;width:22px;height:22px;border-radius:9999px;background:rgba(200,154,60,.15);color:#7E5B1C;display:flex;align-items:center;justify-content:center}
-.chk p{font-size:.95rem;line-height:1.55;color:#4E463A}
-.chk b{color:#181410}
-.chk-d .ic{background:rgba(226,183,92,.16);color:#E2B75C}
-.chk-d p{color:#BDB3A0}
-.chk-d b{color:#F3EDE0}
+.chk .ic{flex:none;margin-top:2px;width:22px;height:22px;border-radius:9999px;color:#4B3FD6;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 30% 25%,#fff,rgba(255,255,255,.5) 60%),linear-gradient(140deg,rgba(141,232,226,.7),rgba(188,168,248,.7));box-shadow:0 4px 10px -4px rgba(100,110,255,.5),inset 0 1px 0 #fff}
+.chk p{font-size:.95rem;line-height:1.55;color:#3D4650}
+.chk b{color:var(--ink)}
+.chk-d .ic{background:linear-gradient(140deg,rgba(141,232,226,.3),rgba(188,168,248,.3));color:var(--aqua);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.chk-d p{color:#D0D8E0}
+.chk-d b{color:#F5F7FA}
 
 /* анимации */
-.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
 .js .reveal.in{opacity:1;transform:none}
 @keyframes toastLoop{0%,14%{opacity:1;transform:translateY(0) scale(1)}24%{opacity:0;transform:translateY(-10px) scale(.95)}72%{opacity:0}84%{opacity:0;transform:translateY(12px) scale(.95)}94%,100%{opacity:1;transform:translateY(0) scale(1)}}
 .toast-loop{animation:toastLoop 6.5s ease-in-out infinite}
 @keyframes marquee{to{transform:translateX(-50%)}}
-.marquee-track{animation:marquee 28s linear infinite}
+.marquee-track{animation:marquee 34s linear infinite}
 
 /* FAQ: collapsed answers are also hidden from screen readers and Tab */
 .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,.61,.36,1)}
 .faq-a>div{overflow:hidden;visibility:hidden;transition:visibility 0s .45s}
 .faq-item.open .faq-a{grid-template-rows:1fr}
 .faq-item.open .faq-a>div{visibility:visible;transition-delay:0s}
-.faq-item.open .faq-chev{transform:rotate(45deg);background:#C89A3C;color:#fff;border-color:#C89A3C}
+.faq-item.open{--glow:rgba(141,232,226,.35)}
+.faq-chev{background:rgba(255,255,255,.5);border-color:rgba(255,255,255,.85)!important;box-shadow:inset 0 1px 0 #fff,0 4px 10px -6px rgba(30,45,70,.3)}
+.faq-item.open .faq-chev{transform:rotate(45deg);background:linear-gradient(135deg,#6A5CF0,#4F63E8);color:#fff}
 
 /* галерея работ */
 .work-stack{transition:opacity .4s ease,transform .4s ease}
 .work-stack.hide{opacity:0;transform:scale(.94);pointer-events:none}
-.ws-pos{position:absolute;left:50%;top:50%;will-change:transform;transition:transform .55s cubic-bezier(.22,.9,.32,1.18);border-radius:1.5rem}
-.ws-card{transition:transform .3s ease,box-shadow .3s ease}
-.ws-pos:hover .ws-card,.ws-pos:focus-visible .ws-card{transform:translateY(-10px) scale(1.03)}
+.ws-pos{position:absolute;left:50%;top:50%;will-change:transform;transition:transform .55s cubic-bezier(.22,.9,.32,1.18);border-radius:var(--r-lg)}
+.ws-card{transition:transform .35s ease,box-shadow .35s ease}
+.ws-pos:hover .ws-card,.ws-pos:focus-visible .ws-card{transform:translateY(-10px) scale(1.03);box-shadow:var(--glass-shadow-hover)}
+/* Fan cards overlap, so they use a thicker glass to keep names readable */
+.glass-fan{background:linear-gradient(150deg,rgba(255,255,255,.86),rgba(255,255,255,.62))}
 .work-grid{transition:opacity .45s ease,transform .45s ease}
 .work-grid.prep{opacity:0;transform:translateY(18px);pointer-events:none}
 
@@ -86,23 +259,56 @@ body{font-family:var(--f-sans);background:#FAF6EE;color:#181410}
 #workModal.open{opacity:1}
 #workModal .panel{transform:translateY(26px) scale(.98);transition:transform .38s cubic-bezier(.22,.61,.36,1)}
 #workModal.open .panel{transform:none}
+.glass-modal{background:linear-gradient(160deg,rgba(248,249,252,.94),rgba(240,243,248,.9));border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 50px 100px -30px rgba(5,12,22,.6),inset 0 1px 0 #fff;-webkit-backdrop-filter:blur(40px) saturate(160%);backdrop-filter:blur(40px) saturate(160%)}
+.modal-scrim{background:rgba(25,38,50,.55);-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
 
 /* опции */
-.opt.on{border-color:#C89A3C;background:#FBF3DF}
-.opt.on .optmark{background:#C89A3C;border-color:#C89A3C;color:#fff}
+.opt.on{border-color:rgba(124,108,248,.55);--glow:rgba(124,108,248,.38);box-shadow:var(--glass-shadow-hover),0 0 0 3px rgba(124,108,248,.18)}
+.optmark{background:rgba(255,255,255,.5);border-color:rgba(83,104,121,.45)!important}
+.opt.on .optmark{background:linear-gradient(135deg,#6A5CF0,#4F63E8);border-color:transparent!important;color:#fff}
 
-/* Field border 3.9:1 on white (WCAG 1.4.11 needs 3:1 for UI boundaries) */
-.input{width:100%;border-radius:.9rem;border:1.5px solid #8F7F62;background:#fff;padding:.9rem 1.1rem;outline:none;font-size:.95rem;transition:border-color .2s,box-shadow .2s}
-.input:focus{border-color:#7E5B1C;box-shadow:0 0 0 4px rgba(200,154,60,.25)}
+/* Glass fields. The border stays at 3:1+ against the field (WCAG 1.4.11) while still reading as glass */
+.input{width:100%;border-radius:20px;border:1px solid rgba(83,104,121,.7);background:rgba(255,255,255,.55);padding:.95rem 1.15rem;outline:none;font-size:.95rem;
+  box-shadow:inset 0 1px 2px rgba(30,45,70,.06),inset 0 1px 0 rgba(255,255,255,.6);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:border-color .25s,box-shadow .25s,background-color .25s}
+.input::placeholder{color:rgba(20,30,40,.55)}
+.input:focus{border-color:#4FA8C4;background:rgba(255,255,255,.8);box-shadow:0 0 0 3px rgba(110,220,220,.28),0 10px 25px rgba(80,180,220,.16)}
 .input[aria-invalid="true"]{border-color:#B91C1C}
 .field-err{font-size:.8rem;color:#B91C1C;margin-top:.35rem}
 
 /* Respect the OS "reduce motion" setting: no decorative motion, states still switch instantly */
+/* Success state: the check grows out of a glass bead — a small reward after the main action */
+@keyframes beadIn{0%{opacity:0;transform:scale(.6)}60%{opacity:1;transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes ringOut{0%{opacity:.6;transform:scale(.9)}100%{opacity:0;transform:scale(1.7)}}
+.ok-bead{position:relative;animation:beadIn .7s cubic-bezier(.22,.9,.32,1.2) both;
+  background:radial-gradient(circle at 30% 25%,#fff,rgba(255,255,255,.55) 55%),linear-gradient(140deg,rgba(141,232,200,.8),rgba(104,221,215,.6));
+  box-shadow:0 14px 30px -10px rgba(47,158,106,.55),inset 0 1px 0 #fff}
+.ok-bead::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid rgba(104,221,215,.7);animation:ringOut 1.2s .25s ease-out both}
+
+/* Coarse pointers get 44px language targets everywhere, including the footer switcher */
+@media (pointer:coarse){.lang-sw a{padding:.95rem 1rem}}
+
+/* Users who ask the OS for less transparency get solid surfaces with the same geometry */
+@media (prefers-reduced-transparency:reduce){
+  .glass,.glass-card:nth-child(n),.glass-fan,.glass-chip,.glass-inset,.btn-ghost,.lang-sw{background:#F5F7FA}
+  .glass-dark{background:#34485B}
+  .glass-night{background:#2B3D4F}
+  .glass-form,.glass-modal,#hdr.hdr-on .hdr-bar,.glass-menu{background:#F5F7FA}
+  .glass::after,.glass-dark::after,.glass-night::after,.glass-form::after{display:none}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
   .js .reveal{opacity:1;transform:none}
   .marquee-track{animation:none}
+}
+/* Browsers without backdrop-filter get denser glass so text keeps its contrast */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass{background:rgba(255,255,255,.86)}
+  .glass-dark{background:rgba(46,65,82,.92)}
+  #hdr.hdr-on .hdr-bar,.glass-menu,.glass-modal{background:#F5F7FA}
 }
 
 @tailwind utilities;
