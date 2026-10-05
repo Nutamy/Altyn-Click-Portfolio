@@ -186,6 +186,8 @@ export const index = [
   [`Сайт, который снимает сомнения — за вас`, `Күмәнді сіздің орныңызға сейілтетін сайт`, `A website that answers doubts — so you don’t have to`],
   [`Как всё происходит на деле: от брифа до готового сайта.`, `Іс жүзінде бәрі қалай өтеді: брифтен дайын сайтқа дейін.`, `What actually happens, from brief to finished site.`],
   [`>Бриф</h3>`, `>Бриф</h3>`, `>Brief</h3>`],
+  // Social preview per language (rendered by scripts/build-og.mjs); ?v= makes networks drop their cached copy
+  [`content="https://altyn-click.pages.dev/og.jpg?v=2"`, `content="https://altyn-click.pages.dev/og-kz.jpg?v=2"`, `content="https://altyn-click.pages.dev/og-en.jpg?v=2"`],
   // The brief has its own /kz/ and /en/ versions (repo Nutamy/Brief)
   [`href="https://brief-aq7.pages.dev/"`, `href="https://brief-aq7.pages.dev/kz/"`, `href="https://brief-aq7.pages.dev/en/"`],
   [`>Заполнить бриф<svg`, `>Брифті толтыру<svg`, `>Fill in the brief<svg`],

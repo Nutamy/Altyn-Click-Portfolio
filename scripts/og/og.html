@@ -1,0 +1,116 @@
+<!doctype html>
+<!-- Social preview template (1200×630). Rendered by scripts/build-og.mjs: og.html?lang=ru|kk|en&kind=site|brief -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Onest:wght@600;700;800&family=Unbounded:wght@600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{font-family:'Manrope',sans-serif;color:#141A21;position:relative;
+    background:
+      radial-gradient(520px 460px at 6% 4%,rgba(255,222,204,.95),transparent 70%),
+      radial-gradient(520px 460px at 96% 8%,rgba(130,210,235,.7),transparent 70%),
+      radial-gradient(600px 520px at 80% 96%,rgba(188,168,248,.7),transparent 70%),
+      radial-gradient(460px 420px at 4% 100%,rgba(233,166,231,.45),transparent 70%),
+      linear-gradient(180deg,#F3EFEA,#E9EDF3 55%,#ECE8F3)}
+  :lang(kk) body{font-family:'Onest',sans-serif}
+  .glow{position:absolute;border-radius:50%;filter:blur(2px)}
+  .g1{width:420px;height:420px;left:-120px;top:-140px;background:radial-gradient(circle closest-side,rgba(255,206,178,.85),transparent)}
+  .g2{width:460px;height:460px;right:120px;top:-60px;background:radial-gradient(circle closest-side,rgba(104,221,215,.7),transparent)}
+  .g3{width:420px;height:420px;right:300px;bottom:-200px;background:radial-gradient(circle closest-side,rgba(113,100,245,.55),transparent)}
+  .panel{position:absolute;inset:34px;border-radius:40px;overflow:hidden;
+    background:linear-gradient(150deg,rgba(255,255,255,.66),rgba(255,255,255,.32) 60%,rgba(255,255,255,.42));
+    border:1px solid rgba(255,255,255,.8);
+    box-shadow:0 30px 70px -20px rgba(30,45,70,.25),inset 0 1px 0 rgba(255,255,255,.9);
+    backdrop-filter:blur(30px) saturate(160%)}
+  .panel::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.6),transparent 30%),radial-gradient(circle at 72% 30%,rgba(104,221,215,.35),transparent 45%)}
+  .txt{position:absolute;left:64px;top:50px;width:640px}
+  .brand{font-family:'Unbounded',sans-serif;font-weight:600;font-size:34px;letter-spacing:-.02em}
+  .brand span{background:linear-gradient(120deg,#FFB84D,#F38A5E);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .eyebrow{margin-top:34px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:17px;letter-spacing:.2em;text-transform:uppercase;color:#4B3FD6}
+  .eyebrow::before{content:"";width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#68DDD7 45%,#7164F5);box-shadow:0 0 12px rgba(104,221,215,.9)}
+  h1{margin-top:16px;font-weight:800;font-size:60px;line-height:1.04;letter-spacing:-.045em}
+  h1 .hl{position:relative;display:inline-block}
+  h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:7px;border-radius:9px;background:linear-gradient(90deg,#FFB84D,#F38A5E 55%,#E9A6E7)}
+  .chips{position:absolute;left:64px;bottom:60px;width:680px;display:flex;flex-wrap:wrap;gap:12px}
+  .chip{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:800;font-size:21px;
+    background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 24px -12px rgba(30,45,70,.3),inset 0 1px 0 #fff}
+  .chip.main{color:#fff;background:linear-gradient(135deg,#6253EC,#4659E0);border-color:rgba(255,255,255,.3);box-shadow:0 14px 28px -8px rgba(91,92,240,.5),inset 0 1px 1px rgba(255,255,255,.45)}
+  .chip svg{width:22px;height:22px;flex:none}
+  .photo{position:absolute;right:62px;bottom:0;width:392px;height:490px;border-radius:36px 36px 0 0;overflow:hidden;
+    background:radial-gradient(circle at 82% 14%,rgba(104,221,215,.6),transparent 42%),radial-gradient(circle at 12% 88%,rgba(188,168,248,.65),transparent 45%),linear-gradient(160deg,rgba(255,255,255,.75),rgba(233,166,231,.25) 55%,rgba(113,100,245,.3));
+    box-shadow:0 0 0 1px rgba(255,255,255,.6),inset 0 1px 0 rgba(255,255,255,.7),0 25px 60px rgba(20,35,50,.18)}
+  .photo img{position:absolute;left:50%;bottom:0;height:100%;transform:translateX(-50%)}
+  .tag{position:absolute;right:86px;bottom:34px;padding:14px 20px;border-radius:20px;background:rgba(255,255,255,.82);border:1px solid #fff;box-shadow:0 16px 34px -14px rgba(30,45,70,.4)}
+  .tag b{display:block;font-size:21px}
+  .tag span{font-size:15px;color:#48515C;font-weight:600}
+  /* brief: a mock of the questionnaire instead of the photo */
+  .mock{position:absolute;right:70px;top:84px;width:380px;padding:28px;border-radius:30px;background:linear-gradient(160deg,rgba(255,255,255,.82),rgba(255,255,255,.55));border:1px solid #fff;box-shadow:0 30px 60px -20px rgba(30,45,70,.35),inset 0 1px 0 #fff}
+  .bar{height:12px;border-radius:9px;background:rgba(83,104,121,.15);overflow:hidden}
+  .bar i{display:block;height:100%;width:62%;background:linear-gradient(90deg,#68DDD7,#7164F5)}
+  .q{margin-top:22px;font-weight:800;font-size:19px}
+  .opts{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+  .opt{padding:9px 15px;border-radius:999px;font-weight:700;font-size:15px;background:rgba(255,255,255,.7);border:1px solid rgba(83,104,121,.3)}
+  .opt.on{color:#fff;background:linear-gradient(135deg,#6253EC,#4659E0);border-color:transparent}
+  .mic{margin-top:22px;display:flex;align-items:center;gap:14px;font-weight:700;font-size:15px;color:#48515C}
+  .mic b{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#6253EC,#4659E0);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 22px -8px rgba(91,92,240,.6)}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+<div class="panel">
+  <div class="txt">
+    <div class="brand">altyn<span>·click</span></div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 id="h1"></h1>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div id="side"></div>
+</div>
+<script>
+const P = new URLSearchParams(location.search), lang = P.get('lang') || 'ru', kind = P.get('kind') || 'site';
+document.documentElement.lang = lang;
+const I = {
+  money: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M17 6.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 1.6 2.7 5 3.4 5 1.6 5 3.6-2.2 3-5 3-5-1.1-5-3"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="#4B3FD6" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>',
+  send: '<svg viewBox="0 0 24 24" fill="none" stroke="#4B3FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>',
+  tap: '<svg viewBox="0 0 24 24" fill="none" stroke="#4B3FD6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+  mic: '<svg viewBox="0 0 24 24" fill="none" stroke="#4B3FD6" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4"/></svg>',
+};
+const T = {
+  site: {
+    ru: { eb: 'Продающие сайты для малого бизнеса', h1: 'Упаковываю<br><span class="hl">сильные стороны</span><br>бизнеса в сайт',
+          chips: [['main', 'money', 'Лендинг под ключ — 120 000 ₸'], ['', 'clock', '5–12 рабочих дней'], ['', 'send', 'Заявки в Telegram']],
+          name: 'Наталья', role: 'делаю сайты с 2012 года' },
+    kk: { eb: 'Шағын бизнеске арналған сататын сайттар', h1: 'Бизнесіңіздің<br><span class="hl">күшті тұстарын</span><br>сайтта сөйлетемін',
+          chips: [['main', 'money', 'Толық дайын лендинг — 120 000 ₸'], ['', 'clock', '5–12 жұмыс күні'], ['', 'send', 'Өтінімдер Telegram-ға']],
+          name: 'Наталья', role: '2012 жылдан бері сайт жасаймын' },
+    en: { eb: 'Websites that sell, for small businesses', h1: 'Your business’s<br><span class="hl">strengths</span>,<br>turned into a website',
+          chips: [['main', 'money', 'Turnkey landing page — 120,000 ₸'], ['', 'clock', '5–12 working days'], ['', 'send', 'Enquiries to Telegram']],
+          name: 'Natalya', role: 'building websites since 2012' },
+  },
+  brief: {
+    ru: { eb: 'Бриф на сайт', h1: 'Расскажите<br>о бизнесе —<br><span class="hl">план и цена</span> за день',
+          chips: [['main', 'clock', '4–10 минут'], ['', 'tap', 'Готовые варианты'], ['', 'mic', 'Можно голосом']],
+          q: 'Кто чаще всего к вам обращается?', opts: [['on', 'Семьи / пары'], ['', 'Женщины'], ['on', 'Родители для детей'], ['', 'Компании']], mic: 'Или расскажите голосом' },
+    kk: { eb: 'Сайтқа арналған бриф', h1: 'Бизнесіңіз туралы<br>айтыңыз —<br><span class="hl">жоспар мен баға</span><br>бір күнде',
+          chips: [['main', 'clock', '4–10 минут'], ['', 'tap', 'Дайын нұсқалар'], ['', 'mic', 'Дауыспен де болады']],
+          q: 'Сізге көбіне кім жүгінеді?', opts: [['on', 'Отбасылар / жұптар'], ['', 'Әйелдер'], ['on', 'Балаларына ата-аналар'], ['', 'Компаниялар']], mic: 'Немесе дауыспен айтыңыз' },
+    en: { eb: 'Website brief', h1: 'Tell me about<br>your business —<br><span class="hl">plan and price</span> in a day',
+          chips: [['main', 'clock', '4–10 minutes'], ['', 'tap', 'Ready-made options'], ['', 'mic', 'Voice notes welcome']],
+          q: 'Who comes to you most often?', opts: [['on', 'Families / couples'], ['', 'Women'], ['on', 'Parents for their kids'], ['', 'Companies']], mic: 'Or tell me in a voice note' },
+  },
+};
+const t = T[kind][lang];
+document.getElementById('eyebrow').textContent = t.eb;
+document.getElementById('h1').innerHTML = t.h1;
+document.getElementById('chips').innerHTML = t.chips.map(([c, ic, s]) =>
+  `<span class="chip ${c}">${c ? I[ic].replace(/stroke="#4B3FD6"/, 'stroke="#fff"') : I[ic]}${s}</span>`).join('');
+document.getElementById('side').innerHTML = kind === 'site'
+  ? `<div class="photo"><img src="../../img/natalya.png" alt=""></div><div class="tag"><b>${t.name}</b><span>${t.role}</span></div>`
+  : `<div class="mock"><div class="bar"><i></i></div><div class="q">${t.q}</div><div class="opts">${t.opts.map(([c, s]) => `<span class="opt ${c}">${s}</span>`).join('')}</div><div class="mic"><b>${I.mic.replace(/stroke="#4B3FD6"/, 'stroke="#fff"')}</b>${t.mic}</div></div>`;
+if (kind === 'brief') { document.querySelector('.chips').style.width = '1000px'; const h = document.getElementById('h1'); h.style.fontSize = '52px'; }
+</script>
+</body>
+</html>
