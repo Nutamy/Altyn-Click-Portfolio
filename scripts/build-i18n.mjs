@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import * as dict from '../i18n/pages.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://altyn-click.pages.dev/';
+const SITE = 'https://altyn-click.com/';
 
 const LANGS = {
   kk: {
