@@ -4,7 +4,7 @@
 
 import { PRICES, json, badOrigin, findPromo, discountFor } from './promo.js';
 
-const LIMITS = { lang: 5, name: 80, contact: 120, link: 300, promo: 32, utm_source: 100, utm_medium: 100, utm_campaign: 100 };
+const LIMITS = { lang: 5, name: 80, contact: 120, link: 300, message: 2000, promo: 32, utm_source: 100, utm_medium: 100, utm_campaign: 100 };
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 // Site language the visitor wrote from: tells the owner which language to reply in
@@ -69,6 +69,7 @@ export async function onRequestPost({ request, env }) {
     `<b>Контакт:</b> ${esc(f.contact)}`,
     f.lang && f.lang !== 'ru' && LANGS[f.lang] && `<b>Язык сайта:</b> ${LANGS[f.lang]}`,
     f.link && `<b>Сайт/Instagram/2ГИС:</b> ${esc(f.link)}`,
+    f.message && `<b>О проекте:</b> ${esc(f.message)}`,
     optIds.length && `<b>Опции:</b> ${optIds.map(id => PRICES.options[id].title).join(', ')}`,
   ];
   if (promo && promo.valid) {
