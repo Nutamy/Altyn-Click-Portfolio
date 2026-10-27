@@ -4,7 +4,7 @@
 
 import { PRICES, json, badOrigin, findPromo, discountFor } from './promo.js';
 
-const LIMITS = { lang: 5, name: 80, contact: 120, link: 300, promo: 32, utm_source: 100, utm_medium: 100, utm_campaign: 100 };
+const LIMITS = { lang: 5, name: 80, contact: 120, link: 300, message: 2000, promo: 32, utm_source: 100, utm_medium: 100, utm_campaign: 100 };
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 // Site language the visitor wrote from: tells the owner which language to reply in
@@ -47,7 +47,7 @@ export async function onRequestPost({ request, env }) {
 
   const f = {};
   for (const [key, max] of Object.entries(LIMITS)) f[key] = String(data[key] ?? '').trim().slice(0, max);
-  if (!f.name || !f.contact) return json({ ok: false, error: 'required' }, 400);
+  if (!f.name || !f.contact || (data.source === 'redesign' && !f.message)) return json({ ok: false, error: 'required' }, 400);
 
   // Contact must look like a phone (10+ digits) or a Telegram username
   const digits = f.contact.replace(/\D/g, '');
@@ -69,6 +69,7 @@ export async function onRequestPost({ request, env }) {
     `<b>Контакт:</b> ${esc(f.contact)}`,
     f.lang && f.lang !== 'ru' && LANGS[f.lang] && `<b>Язык сайта:</b> ${LANGS[f.lang]}`,
     f.link && `<b>Сайт/Instagram/2ГИС:</b> ${esc(f.link)}`,
+    f.message && `<b>О проекте:</b> ${esc(f.message)}`,
     optIds.length && `<b>Опции:</b> ${optIds.map(id => PRICES.options[id].title).join(', ')}`,
   ];
   if (promo && promo.valid) {
@@ -77,17 +78,23 @@ export async function onRequestPost({ request, env }) {
   } else if (promo) {
     lines.push(`<b>Промокод:</b> ${esc(promo.code)} — ${promo.reason === 'expired' ? 'срок истёк' : 'не найден'}, скидка не применена`);
   }
-  lines.push(`<b>Расчёт:</b> ${fmt(subtotal)} ₸${discount ? ` − ${fmt(discount)} ₸ = <b>${fmt(subtotal - discount)} ₸</b>` : ''}`);
+  if (data.source !== 'redesign') lines.push(`<b>Расчёт:</b> ${fmt(subtotal)} ₸${discount ? ` − ${fmt(discount)} ₸ = <b>${fmt(subtotal - discount)} ₸</b>` : ''}`);
   const utm = [f.utm_source, f.utm_medium, f.utm_campaign].filter(Boolean).map(esc).join(' / ');
   if (utm) lines.push(`<b>Источник (utm):</b> ${utm}`);
   lines.push('<b>Согласие на обработку ПД:</b> да');
   lines.push(`<i>${esc(request.headers.get('referer') || 'altyn click')}</i>`);
 
+  try {
   const tg = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    signal: AbortSignal.timeout(10000),
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ chat_id: env.CHAT_ID, text: lines.filter(Boolean).join('\n'), parse_mode: 'HTML', disable_web_page_preview: true }),
   });
 
-  return tg.ok ? json({ ok: true }) : json({ ok: false, error: 'telegram' }, 502);
+  const delivery = await tg.json();
+  return tg.ok && delivery.ok === true ? json({ ok: true }) : json({ ok: false, error: 'telegram' }, 502);
+  } catch {
+    return json({ ok: false, error: 'telegram' }, 502);
+  }
 }

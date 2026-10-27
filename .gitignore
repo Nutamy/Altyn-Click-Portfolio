@@ -1,1 +1,4 @@
 node_modules/
+assets/site.js
+assets/chunks/
+.impeccable/
