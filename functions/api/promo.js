@@ -20,8 +20,11 @@ export const json = (body, status = 200) =>
 
 // Only the site itself may call the API: blocks naive cross-site scripts and form spam from other origins
 export function badOrigin(request) {
+  // Browsers always send Origin on a POST fetch, so a missing one means a script, not the site
   const origin = request.headers.get('origin');
-  if (origin && new URL(origin).host !== new URL(request.url).host) return json({ ok: false, error: 'origin' }, 403);
+  let host = '';
+  try { host = new URL(origin).host; } catch {}
+  if (host !== new URL(request.url).host) return json({ ok: false, error: 'origin' }, 403);
   if (!(request.headers.get('content-type') || '').includes('application/json')) return json({ ok: false, error: 'type' }, 415);
   return null;
 }

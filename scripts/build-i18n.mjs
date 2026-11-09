@@ -7,6 +7,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as dict from '../i18n/pages.mjs';
+import { typograph } from './typograph.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://altyn-click.com/';
@@ -14,8 +15,8 @@ const SITE = 'https://altyn-click.com/';
 const LANGS = {
   kk: {
     dir: 'kz', col: 1, og: 'kk_KZ',
-    // Manrope lacks Kazakh letters, so Onest covers both headings and text; Unbounded stays only for the Latin wordmark
-    fonts: 'https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;800&family=Unbounded:wght@600&display=swap',
+    // Commissioner covers Kazakh letters, so all three languages share one font link
+    fonts: null,
   },
   en: { dir: 'en', col: 2, og: 'en_US', fonts: null },
 };
@@ -101,7 +102,7 @@ function check(src, out, lang, file) {
 for (const [file, entries] of [['index.html', dict.index], ['privacy.html', dict.privacy]]) {
   const src = readFileSync(join(ROOT, file), 'utf8');
   for (const [lang, L] of Object.entries(LANGS)) {
-    const out = localize(translate(src, entries, L.col, `${lang}/${file}`), lang, file);
+    const out = typograph(localize(translate(src, entries, L.col, `${lang}/${file}`), lang, file), lang);
     check(src, out, lang, file);
     const dest = join(ROOT, L.dir, file);
     mkdirSync(dirname(dest), { recursive: true });

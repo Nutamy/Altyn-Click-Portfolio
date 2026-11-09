@@ -4,7 +4,10 @@
 
 import { PRICES, json, badOrigin, findPromo, discountFor } from './promo.js';
 
-const LIMITS = { lang: 5, name: 80, contact: 120, link: 300, promo: 32, utm_source: 100, utm_medium: 100, utm_campaign: 100 };
+const LIMITS = { lang: 5, goal: 10, channel: 10, name: 80, contact: 120, message: 1500, link: 300, promo: 32, utm_source: 100, utm_medium: 100, utm_campaign: 100 };
+// Option ids from the form's radio groups → how they read in the Telegram message
+const GOALS = { site: 'Новый сайт', audit: 'Разбор текущего сайта' };
+const CHANNELS = { telegram: 'Telegram', whatsapp: 'WhatsApp', call: 'Звонок' };
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 // Site language the visitor wrote from: tells the owner which language to reply in
@@ -47,7 +50,7 @@ export async function onRequestPost({ request, env }) {
 
   const f = {};
   for (const [key, max] of Object.entries(LIMITS)) f[key] = String(data[key] ?? '').trim().slice(0, max);
-  if (!f.name || !f.contact) return json({ ok: false, error: 'required' }, 400);
+  if (!f.name || !f.contact || !f.message) return json({ ok: false, error: 'required' }, 400);
 
   // Contact must look like a phone (10+ digits) or a Telegram username
   const digits = f.contact.replace(/\D/g, '');
@@ -65,10 +68,12 @@ export async function onRequestPost({ request, env }) {
 
   const lines = [
     '<b>🟡 Новая заявка с сайта</b>',
+    GOALS[f.goal] && `<b>Запрос:</b> ${GOALS[f.goal]}`,
     `<b>Имя:</b> ${esc(f.name)}`,
-    `<b>Контакт:</b> ${esc(f.contact)}`,
+    `<b>Контакт:</b> ${esc(f.contact)}${CHANNELS[f.channel] ? ` (удобно: ${CHANNELS[f.channel]})` : ''}`,
     f.lang && f.lang !== 'ru' && LANGS[f.lang] && `<b>Язык сайта:</b> ${LANGS[f.lang]}`,
     f.link && `<b>Сайт/Instagram/2ГИС:</b> ${esc(f.link)}`,
+    `<b>О проекте:</b> ${esc(f.message)}`,
     optIds.length && `<b>Опции:</b> ${optIds.map(id => PRICES.options[id].title).join(', ')}`,
   ];
   if (promo && promo.valid) {

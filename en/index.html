@@ -11,7 +11,7 @@
 <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=2">
 <link rel="manifest" href="../site.webmanifest">
-<meta name="theme-color" content="#263746">
+<meta name="theme-color" content="#E8DFD1">
 <link rel="canonical" href="https://altyn-click.com/en/">
 <link rel="alternate" hreflang="ru" href="https://altyn-click.com/">
 <link rel="alternate" hreflang="kk" href="https://altyn-click.com/kz/">
@@ -69,7 +69,6 @@
  }
 }
 </script>
-
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -153,989 +152,613 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:FLAR,VOLM,wght@0..100,0..100,300..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600&text=altynclick%C2%B7&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../dist/styles.css">
-
 <script>document.documentElement.classList.add('js')</script>
 </head>
 
-<body class="antialiased">
+<body>
 <noscript><img src="https://mc.yandex.ru/watch/113005383" style="position:absolute;left:-9999px" alt=""></noscript>
+<a class="skip" href="#works">Skip to the work</a>
 
-
-<header id="hdr" class="fixed top-0 inset-x-0 z-[60] transition-all duration-300">
-  <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="hdr-bar flex items-center justify-between h-16 md:h-[72px] px-3 md:px-5 -mx-3 md:-mx-5">
-      <a href="#top" class="brand font-semibold text-lg tracking-tight">altyn<span class="text-gold">·click</span></a>
-
-      <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-bold text-mut" aria-label="Page navigation">
-        <a href="#works" class="hover:text-ink transition-colors">Work</a>
-        <a href="#about" class="hover:text-ink transition-colors">About</a>
-        <a href="#process" class="hover:text-ink transition-colors">Process</a>
-        <a href="#offer" class="hover:text-ink transition-colors">Package</a>
-        <a href="#faq" class="hover:text-ink transition-colors">FAQ</a>
-        <a href="#partners" class="hover:text-ink transition-colors">For agencies</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <div class="hidden lg:block"><nav class="lang-sw" aria-label="Site language">
-            <a href="/" hreflang="ru" lang="ru" data-lang="ru">Рус</a>
-            <a href="/kz/" hreflang="kk" lang="kk" data-lang="kk">Қаз</a>
-            <a href="/en/" hreflang="en" lang="en" data-lang="en" aria-current="page">Eng</a>
-          </nav></div>
-        
-        <a href="#audit" class="btn btn-gold text-sm px-4 sm:px-5 py-2.5 whitespace-nowrap">Free audit</a>
-        <button id="burger" type="button" class="lg:hidden w-11 h-11 rounded-[16px] glass-chip flex items-center justify-center" aria-label="Open menu" aria-expanded="false" aria-controls="mobMenu">
-          <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-  
-  <nav id="mobMenu" class="hidden lg:hidden glass-menu" aria-label="Mobile menu">
-    <div class="px-4 md:px-8 py-3 flex flex-col font-bold">
-      <div class="lang-sw lang-sw-lg self-start mb-2" role="group" aria-label="Site language">
+<header id="hdr" class="hdr">
+  <div class="hdr-bar">
+    <a href="#top" class="brand" aria-label="Altyn Click">altyn<span>·click</span></a>
+    <nav class="nav" aria-label="Page navigation">
+      <a href="#works">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#price">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#partners">For agencies</a>
+    </nav>
+    <div class="hdr-end">
+      <nav class="lang-sw" aria-label="Site language">
         <a href="/" hreflang="ru" lang="ru" data-lang="ru">Рус</a>
         <a href="/kz/" hreflang="kk" lang="kk" data-lang="kk">Қаз</a>
         <a href="/en/" hreflang="en" lang="en" data-lang="en" aria-current="page">Eng</a>
-      </div>
-      <a href="#works" class="mob-link py-2.5">Work</a>
-      <a href="#about" class="mob-link py-2.5">About</a>
-      <a href="#process" class="mob-link py-2.5">Process</a>
-      <a href="#offer" class="mob-link py-2.5">Package</a>
-      <a href="#faq" class="mob-link py-2.5">FAQ</a>
-      <a href="#partners" class="mob-link py-2.5">For agencies</a>
-      <a href="#audit" class="mob-link py-2.5 text-golddeep">Get a free audit →</a>
+      </nav>
+      <a href="#contact" class="btn btn-primary btn-sm hdr-cta">Discuss your project</a>
+      <button id="burger" type="button" class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobMenu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+    <nav id="mobMenu" class="mob-menu" aria-label="Mobile menu" hidden>
+    <a class="mob-link" href="#works">Work</a>
+    <a class="mob-link" href="#approach">Approach</a>
+    <a class="mob-link" href="#price">Pricing</a>
+    <a class="mob-link" href="#faq">FAQ</a>
+    <a class="mob-link" href="#partners">For agencies</a>
+    <a class="mob-link mob-cta" href="#contact">Discuss your project</a>
+    <div class="lang-sw" role="group" aria-label="Site language">
+      <a href="/" hreflang="ru" lang="ru" data-lang="ru">Рус</a>
+      <a href="/kz/" hreflang="kk" lang="kk" data-lang="kk">Қаз</a>
+      <a href="/en/" hreflang="en" lang="en" data-lang="en" aria-current="page">Eng</a>
     </div>
   </nav>
 </header>
 
+<nav class="route" id="route" aria-label="Route through the page">
+  <ol>
+    <li><a href="#top" data-route="top">Entrance</a></li>
+    <li><a href="#works" data-route="works">Work</a><span class="route-ticks" aria-hidden="true"></span></li>
+    <li><a href="#approach" data-route="approach">Approach</a></li>
+    <li><a href="#contact" data-route="contact">Request</a></li>
+  </ol>
+</nav>
+
+<div class="world" id="world" aria-hidden="true"></div>
+
 <main id="top">
 
+<section class="hero" id="hero" data-station="hero">
+  <div class="hero-copy">
+    <h1>Your business’s strengths, turned into a website</h1>
+    <p class="hero-lead">A website that tells visitors in seconds what you offer, why it’s right for them and what to do next.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary btn-lg">Discuss your project</a>
+      <a href="#works" class="btn btn-quiet btn-lg">See the work</a>
+    </div>
+    <ul class="hero-facts" aria-label="Terms at a glance">
+      <li>Turnkey landing page — $265</li>
+      <li>5–12 working days</li>
+      <li>You work with me directly</li>
+    </ul>
+  </div>
+    <div class="hero-art"><svg class="shanyrak-art" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="sg-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE3A1"/><stop offset=".35" stop-color="#D9A034"/><stop offset=".6" stop-color="#8E5C12"/><stop offset=".8" stop-color="#E9BC5C"/><stop offset="1" stop-color="#7A4B0C"/></linearGradient>
+    <linearGradient id="sg-fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".25" stop-color="#fff"/><stop offset=".95" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="sg-mask"><rect width="1000" height="1000" fill="url(#sg-fade)"/></mask>
+  </defs>
+  <g fill="none" stroke="url(#sg-gold)" stroke-linecap="round" mask="url(#sg-mask)">
+    <g stroke-width="5" opacity=".85"><path d="M806 344L854 355L901 370L949 389L996 413L1044 441L1091 474L1139 511L1186 553L1234 599L1281 650L1329 705L1376 764"/><path d="M802 359L849 372L896 389L943 411L990 437L1037 468L1084 503L1131 543L1178 587L1224 635L1271 688L1318 746L1365 807"/><path d="M791 374L836 389L881 409L927 433L972 461L1017 494L1062 532L1107 573L1152 620L1198 670L1243 726L1288 785L1333 849"/><path d="M773 388L815 405L857 427L900 453L942 484L984 519L1027 559L1069 603L1111 651L1154 704L1196 761L1238 823L1281 889"/><path d="M748 401L786 420L824 444L863 472L901 505L940 542L978 583L1017 629L1055 680L1093 735L1132 794L1170 858L1209 926"/><path d="M716 412L750 433L784 459L817 489L851 523L884 562L918 606L951 653L985 706L1019 762L1052 823L1086 889L1119 959"/><path d="M680 422L708 445L736 472L764 503L792 539L819 580L847 625L875 674L903 728L931 786L959 849L987 916L1015 987"/><path d="M639 430L660 454L682 482L704 515L725 552L747 594L768 640L790 690L811 745L833 805L855 869L876 937L898 1010"/><path d="M595 436L609 461L624 490L639 523L653 561L668 604L683 651L697 702L712 758L727 819L741 883L756 953L771 1026"/><path d="M548 439L555 465L563 494L570 529L578 567L585 610L592 658L600 710L607 766L615 827L622 892L630 962L637 1036"/><path d="M500 440L500 466L500 496L500 530L500 569L500 612L500 660L500 712L500 769L500 830L500 895L500 965L500 1040"/><path d="M452 439L445 465L437 494L430 529L422 567L415 610L408 658L400 710L393 766L385 827L378 892L370 962L363 1036"/><path d="M405 436L391 461L376 490L361 523L347 561L332 604L317 651L303 702L288 758L273 819L259 883L244 953L229 1026"/><path d="M361 430L340 454L318 482L296 515L275 552L253 594L232 640L210 690L189 745L167 805L145 869L124 937L102 1010"/><path d="M320 422L292 445L264 472L236 503L208 539L181 580L153 625L125 674L97 728L69 786L41 849L13 916L-15 987"/><path d="M284 412L250 433L216 459L183 489L149 523L116 562L82 606L49 653L15 706L-19 762L-52 823L-86 889L-119 959"/><path d="M252 401L214 420L176 444L137 472L99 505L60 542L22 583L-17 629L-55 680L-93 735L-132 794L-170 858L-209 926"/><path d="M227 388L185 405L143 427L100 453L58 484L16 519L-27 559L-69 603L-111 651L-154 704L-196 761L-238 823L-281 889"/><path d="M209 374L164 389L119 409L73 433L28 461L-17 494L-62 532L-107 573L-152 620L-198 670L-243 726L-288 785L-333 849"/><path d="M198 359L151 372L104 389L57 411L10 437L-37 468L-84 503L-131 543L-178 587L-224 635L-271 688L-318 746L-365 807"/><path d="M194 344L147 355L99 370L51 389L4 413L-44 441L-91 474L-139 511L-186 553L-234 599L-281 650L-329 705L-376 764"/><path d="M198 329L151 337L104 350L57 367L10 389L-37 415L-84 445L-131 480L-178 519L-224 563L-271 611L-318 664L-365 721"/><path d="M209 314L164 320L119 331L73 346L28 365L-17 389L-62 417L-107 449L-152 486L-198 528L-243 574L-288 624L-333 679"/><path d="M227 301L185 304L143 312L100 325L58 342L16 364L-27 390L-69 420L-111 455L-154 494L-196 538L-238 586L-281 639"/><path d="M252 288L214 289L176 296L137 306L99 321L60 341L22 365L-17 393L-55 426L-93 464L-132 505L-170 552L-209 602"/><path d="M284 276L250 276L216 281L183 289L149 303L116 320L82 343L49 369L15 400L-19 436L-52 476L-86 521L-119 569"/><path d="M320 266L292 265L264 268L236 275L208 287L181 303L153 324L125 349L97 378L69 413L41 451L13 494L-15 541"/><path d="M361 258L340 256L318 257L296 263L275 274L253 289L232 309L210 332L189 361L167 394L145 431L124 473L102 519"/><path d="M405 253L391 249L376 250L361 255L347 265L332 279L317 297L303 320L288 348L273 380L259 416L244 457L229 502"/><path d="M452 249L445 245L437 245L430 250L422 259L415 273L408 291L400 313L393 340L385 371L378 407L370 447L363 492"/><path d="M500 248L500 244L500 244L500 248L500 257L500 270L500 288L500 311L500 337L500 368L500 404L500 444L500 489"/><path d="M548 249L555 245L563 245L570 250L578 259L585 273L592 291L600 313L607 340L615 371L622 407L630 447L637 492"/><path d="M595 253L609 249L624 250L639 255L653 265L668 279L683 297L697 320L712 348L727 380L741 416L756 457L771 502"/><path d="M639 258L660 256L682 257L704 263L725 274L747 289L768 309L790 332L811 361L833 394L855 431L876 473L898 519"/><path d="M680 266L708 265L736 268L764 275L792 287L819 303L847 324L875 349L903 378L931 413L959 451L987 494L1015 541"/><path d="M716 276L750 276L784 281L817 289L851 303L884 320L918 343L951 369L985 400L1019 436L1052 476L1086 521L1119 569"/><path d="M748 288L786 289L824 296L863 306L901 321L940 341L978 365L1017 393L1055 426L1093 464L1132 505L1170 552L1209 602"/><path d="M773 301L815 304L857 312L900 325L942 342L984 364L1027 390L1069 420L1111 455L1154 494L1196 538L1238 586L1281 639"/><path d="M791 314L836 320L881 331L927 346L972 365L1017 389L1062 417L1107 449L1152 486L1198 528L1243 574L1288 624L1333 679"/><path d="M802 329L849 337L896 350L943 367L990 389L1037 415L1084 445L1131 480L1178 519L1224 563L1271 611L1318 664L1365 721"/></g>
+  </g>
+  <g fill="none" stroke="url(#sg-gold)" stroke-linecap="round">
+    <path d="M800 330L799 338L795 346L790 354L782 362L772 370L760 377L746 384L730 391L712 397L693 402L672 407L650 412L627 416L603 419L578 421L552 423L526 424L500 424L474 424L448 423L422 421L397 419L373 416L350 412L328 407L307 402L288 397L270 391L254 384L240 377L228 370L218 362L210 354L205 346L201 338L200 330L201 322L205 314L210 306L218 298L228 290L240 283L254 276L270 269L288 263L307 258L328 253L350 248L373 244L397 241L422 239L448 237L474 236L500 236L526 236L552 237L578 239L603 241L627 244L650 248L672 253L693 258L712 263L730 269L746 276L760 283L772 290L782 298L790 306L795 314L799 322L800 330" stroke-width="26"/>
+    <path d="M770 327L769 335L766 342L761 349L754 356L745 363L734 370L721 376L707 382L691 387L674 392L655 397L635 401L614 404L592 407L570 409L547 411L524 412L500 412L476 412L453 411L430 409L408 407L386 404L365 401L345 397L326 392L309 387L293 382L279 376L266 370L255 363L246 356L239 349L234 342L231 335L230 327L231 320L234 312L239 305L246 298L255 291L266 285L279 278L293 273L309 267L326 262L345 258L365 254L386 250L408 247L430 245L453 244L476 243L500 242L524 243L547 244L570 245L592 247L614 250L635 254L655 258L674 262L691 267L707 273L721 278L734 285L745 291L754 298L761 305L766 312L769 320L770 327" stroke-width="9"/>
+    <g stroke-width="10"><path d="M252 290L264 253L277 238L289 227L302 219L314 211L326 205L339 199L351 195L364 190L376 187L388 184L401 181L413 178L426 176L438 175L450 173L463 172L475 171L488 171L500 171L512 171L525 171L537 172L550 173L562 175L574 176L587 178L599 181L612 184L624 187L636 190L649 195L661 199L674 205L686 211L698 219L711 227L723 238L736 253L748 290"/><path d="M374 252L374 219L374 208L374 201L374 196L374 192L374 190L374 188L374 188L374 187L374 187L374 188L374 189L374 191L374 192L374 195L374 197L374 200L374 203L374 207L374 210L374 214L374 219L374 223L374 228L374 234L374 239L374 245L374 252L374 258L374 265L374 273L374 281L374 290L374 299L374 309L374 321L374 333L374 348L374 367L374 408"/><path d="M222 330L236 293L250 278L264 267L277 258L291 251L305 245L319 239L333 234L347 230L361 226L375 223L389 220L403 218L417 216L430 214L444 213L458 212L472 211L486 211L500 210L514 211L528 211L542 212L556 213L570 214L583 216L597 218L611 220L625 223L639 226L653 230L667 234L681 239L695 245L709 251L723 258L736 267L750 278L764 293L778 330"/><path d="M500 242L500 210L500 199L500 193L500 188L500 185L500 183L500 182L500 182L500 182L500 183L500 184L500 185L500 187L500 190L500 192L500 195L500 199L500 202L500 206L500 210L500 215L500 220L500 225L500 230L500 236L500 242L500 249L500 255L500 263L500 270L500 278L500 287L500 296L500 306L500 317L500 328L500 341L500 357L500 376L500 418"/><path d="M252 370L264 332L277 318L289 307L302 298L314 291L326 284L339 279L351 274L364 270L376 266L388 263L401 260L413 258L426 256L438 254L450 252L463 251L475 251L488 250L500 250L512 250L525 251L537 251L550 252L562 254L574 256L587 258L599 260L612 263L624 266L636 270L649 274L661 279L674 284L686 291L698 298L711 307L723 318L736 332L748 370"/><path d="M626 252L626 219L626 208L626 201L626 196L626 192L626 190L626 188L626 188L626 187L626 187L626 188L626 189L626 191L626 192L626 195L626 197L626 200L626 203L626 207L626 210L626 214L626 219L626 223L626 228L626 234L626 239L626 245L626 252L626 258L626 265L626 273L626 281L626 290L626 299L626 309L626 321L626 333L626 348L626 367L626 408"/></g>
+    <path d="M500 344L500 963" stroke-width="4" opacity=".7"/>
+    <ellipse cx="500" cy="971" rx="90" ry="14" stroke-width="5" opacity=".75"/>
+    <ellipse cx="500" cy="971" rx="170" ry="26" stroke-width="3" opacity=".4"/>
+  </g>
+</svg></div>
+</section>
 
-<section class="relative overflow-x-clip pt-24 md:pt-32 pb-12 md:pb-16">
-  <div class="relative max-w-6xl mx-auto px-3 md:px-6">
-    
-    <div class="glow glow-peach w-[460px] h-[460px] -top-24 -left-24 float-slow" aria-hidden="true"></div>
-    <div class="glow glow-cyan w-[420px] h-[420px] top-10 right-0 float" aria-hidden="true"></div>
-    <div class="glow glow-violet w-[380px] h-[380px] -bottom-16 right-1/4 float-late" aria-hidden="true"></div>
-
-    <div class="glass hero-panel px-5 py-10 sm:px-10 md:px-12 md:py-14 lg:px-14 lg:py-16 grid lg:grid-cols-[1.05fr_.95fr] gap-14 lg:gap-8 items-center">
-    
-    <div>
-      <div class="eyebrow">Altyn Click · Websites that sell, for small businesses</div>
-      <h1 class="font-disp text-[2rem] sm:text-[2.6rem] lg:text-[3.35rem] leading-[1.06] mt-6">
-        Your business’s <span class="relative inline-block">strengths
-          <svg aria-hidden="true" class="absolute -bottom-1.5 left-0 w-full" height="10" viewBox="0 0 220 10" preserveAspectRatio="none"><defs><linearGradient id="hl" x1="0" x2="1"><stop offset="0" stop-color="#FFB84D"/><stop offset=".55" stop-color="#F38A5E"/><stop offset="1" stop-color="#E9A6E7"/></linearGradient></defs><path d="M3 7C70 2 150 2 217 6" stroke="url(#hl)" stroke-width="4.5" fill="none" stroke-linecap="round"/></svg>
-        </span>, turned into a website
-      </h1>
-      <p class="mt-6 text-mut text-lg leading-relaxed max-w-xl">
-        A website that tells visitors in seconds what you offer, why it’s right for them and what to do next.
-      </p>
-      <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-5">
-        <a href="#audit" class="btn btn-gold px-8 py-4 text-base">Get a free website audit</a>
+<section class="works" id="works" aria-labelledby="works-title">
+  <div class="works-intro" data-station="dive">
+    <div class="works-intro-text">
+      <div class="intro-card">
+      <h2 id="works-title">How an idea becomes a website that works</h2>
+      <p>Not just the result, but the thinking behind it: what had to come across, who the site was for and why it’s structured the way it is.</p>
       </div>
-      <p class="mt-4 text-sm text-mut max-w-md leading-relaxed">I’ll review your current site — or, if you don’t have one yet, tell you what to plan for.</p>
+    </div>
+  </div>
 
-      <ul class="mt-9 flex flex-wrap gap-2.5 text-xs font-bold" aria-label="Terms at a glance">
-        <li class="inline-flex items-center gap-2 glass-chip rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 6.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 1.6 2.7 5 3.4 5 1.6 5 3.6-2.2 3-5 3-5-1.1-5-3"/></svg>Turnkey landing page — $265</li>
-        <li class="inline-flex items-center gap-2 glass-chip rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>5–12 working days</li>
-        <li class="inline-flex items-center gap-2 glass-chip rounded-full px-4 py-2.5"><svg aria-hidden="true" class="w-4 h-4 text-golddeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>You work with me directly</li>
+    <article class="work" id="work-savepoint" data-work="savepoint">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="savepoint" aria-haspopup="dialog" aria-describedby="wn-savepoint" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/savepoint/m/01.webp" width="585" height="1266"><img src="../screenshots/savepoint/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-savepoint">Save Point</h3>
+          <p class="work-tag">A desk with a socket and coffee ready on the minute</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Café & coworking</dd></div>
+            <div><dt>Task</dt><dd>Move choosing a seat and ordering online, and lead visitors to book a desk or pre-order a drink.</dd></div>
+            <div><dt>Solution</dt><dd>The site speaks its audience’s language: the interface is styled as a 90s gaming terminal, with TABLE_BOOKING.SYS and INVENTORY_MENU.DAT windows and a “checkpoint loaded” tag. The name Save Point becomes a promise: here you can “save your game” — grab a desk in advance instead of wasting time looking for a seat.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="savepoint" aria-haspopup="dialog" aria-describedby="wn-savepoint">Open case study</button>
+            <a class="link-out" href="https://savepoint-1hu.pages.dev/" target="_blank" rel="noopener" aria-describedby="wn-savepoint">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="work" id="work-elara" data-work="elara">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="elara" aria-haspopup="dialog" aria-describedby="wn-elara" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/elara/m/01.webp" width="585" height="1266"><img src="../screenshots/elara/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-elara">ELARA Dental</h3>
+          <p class="work-tag">Dentistry where you know the price before treatment</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Dental clinic</dd></div>
+            <div><dt>Task</dt><dd>Give a new clinic with no reviews real reasons to be trusted, and lead visitors to book a consultation with a treatment plan.</dd></div>
+            <div><dt>Solution</dt><dd>A new clinic has no reviews, and the site doesn’t pretend otherwise. Instead of social proof it offers verifiable facts: CBCT and panoramic X-rays on site, a treatment plan with the total in your hands, and an honest “be the first to leave a review” badge.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="elara" aria-haspopup="dialog" aria-describedby="wn-elara">Open case study</button>
+            <a class="link-out" href="https://elara-dental.pages.dev/" target="_blank" rel="noopener" aria-describedby="wn-elara">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="work" id="work-alba" data-work="alba">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="alba" aria-haspopup="dialog" aria-describedby="wn-alba" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/alba/m/01.webp" width="585" height="1266"><img src="../screenshots/alba/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-alba">Alba</h3>
+          <p class="work-tag">Beauty in 90 minutes · time for yourself</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Beauty salon</dd></div>
+            <div><dt>Task</dt><dd>Ease a client’s three biggest fears — “they’ll ruin my hair”, “it’ll take half my day”, “the price will change” — and lead her to book via a form or WhatsApp.</dd></div>
+            <div><dt>Solution</dt><dd>The headline “Beauty in 90 minutes” turns a vague “quick” into a concrete fact, while the “time for yourself” concept and the premium visit scenario make saving time part of the Alba brand’s value.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="alba" aria-haspopup="dialog" aria-describedby="wn-alba">Open case study</button>
+            <a class="link-out" href="https://alba-7wj.pages.dev/" target="_blank" rel="noopener" aria-describedby="wn-alba">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="work" id="work-proremont" data-work="proremont">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="proremont" aria-haspopup="dialog" aria-describedby="wn-proremont" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/proremont/m/01.webp" width="585" height="1266"><img src="../screenshots/proremont/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-proremont">ProRemont</h3>
+          <p class="work-tag">Apartment renovation without surprises</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Renovation</dd></div>
+            <div><dt>Task</dt><dd>Turn distrust into enquiries through a cost estimate, concrete guarantees and real project examples.</dd></div>
+            <div><dt>Solution</dt><dd>The guarantees aren’t a vague declaration but three clauses from the contract — the usual renovation fears are answered with specifics. And projects with before/after photos work as visual proof of experience rather than a promise.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="proremont" aria-haspopup="dialog" aria-describedby="wn-proremont">Open case study</button>
+            <a class="link-out" href="https://proremont-11k.pages.dev/" target="_blank" rel="noopener" aria-describedby="wn-proremont">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="work" id="work-tropinka" data-work="tropinka">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="tropinka" aria-haspopup="dialog" aria-describedby="wn-tropinka" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/tropinka/m/01.webp" width="585" height="1266"><img src="../screenshots/tropinka/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-tropinka">Tropinka</h3>
+          <p class="work-tag">School readiness and development for ages 3–6</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Kids’ center</dd></div>
+            <div><dt>Task</dt><dd>Calm the parental worry of “are we already too late?”, explain the teaching approach and programs clearly, and move hesitant parents to book a trial class.</dd></div>
+            <div><dt>Solution</dt><dd>The “Thought → Movement → Creativity” design block visualises the center’s method instead of just describing it. Parents grasp Tropinka’s approach before reading the program, while the soft natural palette and the image of a path create a sense of safety and care from the very first second.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="tropinka" aria-haspopup="dialog" aria-describedby="wn-tropinka">Open case study</button>
+            <a class="link-out" href="https://tropinka.pages.dev/" target="_blank" rel="noopener" aria-describedby="wn-tropinka">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="work" id="work-steps" data-work="steps">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="steps" aria-haspopup="dialog" aria-describedby="wn-steps" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/steps/m/01.webp" width="585" height="1266"><img src="../screenshots/steps/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-steps">Steps</h3>
+          <p class="work-tag">Every step is growth — and every step is visible</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Child development center</dd></div>
+            <div><dt>Task</dt><dd>Turn the fear of the unknown — “what actually happens with my child there?” — into a free trial-class booking through transparency.</dd></div>
+            <div><dt>Solution</dt><dd>The headline “Every step is growth” is backed by a concrete feature: access to class streams and monthly progress checks. Parents don’t just take it on trust — they see the progress and can make sure their child is safe.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="steps" aria-haspopup="dialog" aria-describedby="wn-steps">Open case study</button>
+            <a class="link-out" href="https://stupenky.pages.dev/" target="_blank" rel="noopener" aria-describedby="wn-steps">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="work" id="work-targetolog" data-work="targetolog">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="targetolog" aria-haspopup="dialog" aria-describedby="wn-targetolog" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/targetolog/m/01.webp" width="585" height="1266"><img src="../screenshots/targetolog/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-targetolog">Azamat Zhenisuly</h3>
+          <p class="work-tag">Targeted ads that pay back ×3 — and you can calculate it</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Paid social specialist</dd></div>
+            <div><dt>Task</dt><dd>Show the approach and the logic of the work, name the result in the language of money (×3) and lead visitors to a conversation on WhatsApp.</dd></div>
+            <div><dt>Solution</dt><dd>The site speaks the business owner’s language: not reach and clicks, but “1 ₸ → 3 ₸+”. The calculator slider turns the promise into numbers for the client’s own budget, while the dark palette with an emerald accent and the expert’s photo on the first screen set a tone of calm, professional confidence.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="targetolog" aria-haspopup="dialog" aria-describedby="wn-targetolog">Open case study</button>
+            <a class="link-out" href="https://azamat-targetolog.pages.dev/v1" target="_blank" rel="noopener" aria-describedby="wn-targetolog">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="work" id="work-wedding" data-work="wedding">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="wedding" aria-haspopup="dialog" aria-describedby="wn-wedding" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/wedding/m/01.webp" width="585" height="1266"><img src="../screenshots/wedding/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-wedding">Aigerim &amp; Timur</h3>
+          <p class="work-tag">A wedding where every guest knows their table and their ride</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Wedding invitation</dd></div>
+            <div><dt>Task</dt><dd>Gather everything at one address and get an answer from every guest about attendance, the hot dish and transfer.</dd></div>
+            <div><dt>Solution</dt><dd>The site speaks in the couple’s voice: “Three years, two peaks and one cable-car queue”, a joke about three coffee machines in the wishlist and a Kazakh greeting, “Тойымызға қош келдіңіздер!”, on the first screen. Practical blocks — seating, transfer, the form — come through the couple’s character, so the information never reads like instructions.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="wedding" aria-haspopup="dialog" aria-describedby="wn-wedding">Open case study</button>
+            <a class="link-out" href="https://azamat-targetolog.pages.dev/v2" target="_blank" rel="noopener" aria-describedby="wn-wedding">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="work" id="work-birthday" data-work="birthday">
+      <div class="work-stage">
+        <figure class="work-shot">
+          <button type="button" class="work-shot-btn" aria-hidden="true" data-open="birthday" aria-haspopup="dialog" aria-describedby="wn-birthday" tabindex="-1">
+            <picture><source media="(max-width: 767px)" srcset="../screenshots/birthday/m/01.webp" width="585" height="1266"><img src="../screenshots/birthday/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async"></picture>
+          </button>
+        </figure>
+        <div class="work-card">
+          <h3 class="work-name" id="wn-birthday">Mission “Miron-7”</h3>
+          <p class="work-tag">A birthday as a space flight with a boarding pass</p>
+          <dl class="work-facts">
+            <div><dt>Field</dt><dd>Kids’ birthday party</dd></div>
+            <div><dt>Task</dt><dd>Turn an organisational mailing into a game that adults and kids both enjoy.</dd></div>
+            <div><dt>Solution</dt><dd>All the party logistics are presented as a space flight: the invitation is an “invitation on board”, registration is a “boarding pass” and wishes go into a “ship’s log”. The interface stays clear for parents, while the child gets a rocket and a boarding pass of their own; thick outlines and orange-pink accents on pale blue keep the mood of a cartoon game.</dd></div>
+            <div><dt>My role</dt><dd>Niche research, copy, design, build and launch</dd></div>
+          </dl>
+          <div class="work-actions">
+            <button type="button" class="btn btn-primary" data-open="birthday" aria-haspopup="dialog" aria-describedby="wn-birthday">Open case study</button>
+            <a class="link-out" href="https://azamat-targetolog.pages.dev/v3" target="_blank" rel="noopener" aria-describedby="wn-birthday">Live site <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+</section>
+
+<section class="read approach" id="approach" aria-labelledby="approach-title" data-station="approach">
+  <div class="sheet">
+    <h2 id="approach-title">A website that answers doubts — so you don’t have to</h2>
+    <div class="doubt">
+      <p class="doubt-lead">The client is already interested. But they still need to make up their mind.</p>
+      <p>They found you on 2GIS. Checked your Instagram. Maybe even opened your website. But questions remain:</p>
+      <ul class="doubt-list">
+        <li>Is this service right for me?</li>
+        <li>Can I trust you?</li>
+        <li>How does it all work?</li>
+        <li>How much will it cost?</li>
+        <li>What happens after I get in touch?</li>
       </ul>
+      <p>Without answers, people fill in the gaps themselves. Sometimes they just put the decision off — or go with whoever was easier to understand.</p>
     </div>
 
-    
-    <div class="relative hidden lg:block reveal" style="transition-delay:.15s;perspective:1400px" aria-hidden="true">
-      
-      <div class="glow glow-cyan w-72 h-72 top-0 right-6"></div>
-      <div class="glow glow-violet w-64 h-64 bottom-0 left-4"></div>
+    <h3 class="sub">How I work</h3>
+    <p class="sub-lead">What actually happens, from brief to finished site.</p>
+    <ol class="steps">
+      <li>
+        <h4>Brief</h4>
+        <p>You fill in a short brief — <b>about 15 minutes of your time</b>. You tell me about your business, your clients and what’s currently getting in the way of enquiries.</p>
+        <p class="step-out"><b>Outcome:</b> a clear task and a starting point for research.</p>
+                <a class="link-out" href="https://brief-aq7.pages.dev/en/" target="_blank" rel="noopener" data-goal="brief_click">Fill in the brief <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </li>
+      <li>
+        <h4>Research</h4>
+        <p>I study your niche, your clients and how they go about choosing a service like yours. I look at competitors’ sites and real reviews to see which questions, expectations and objections need answering.</p>
+        <p class="step-out"><b>Outcome:</b> a clear picture of your audience, what they want and what your offer can be built on.</p>
+      </li>
+      <li>
+        <h4>Offer & structure</h4>
+        <p>I work out what to show first, which questions to answer and how to lead visitors to get in touch. I put together a page prototype and agree it with you before development starts.</p>
+        <p class="step-out"><b>Outcome:</b> the page logic, section structure and a clear offer.</p>
+      </li>
+      <li>
+        <h4>Copy, design & build</h4>
+        <p>I turn your strengths into clear messages, a visual system and an easy-to-use interface. Then I show you a working draft — <b>all changes at this stage are free</b>.</p>
+        <p class="step-out"><b>Outcome:</b> approved copy, design and a working draft of the site.</p>
+      </li>
+      <li>
+        <h4>Launch</h4>
+        <p>I test the site on different devices, connect your domain and set up enquiries to arrive in Telegram. You get an archive of all the files and a short video guide.</p>
+        <p class="step-out"><b>Outcome:</b> a live website, ready to receive enquiries.</p>
+      </li>
+    </ol>
 
-      
-      <div class="absolute -left-6 top-14 w-40 h-52 rounded-[28px] glass float-slow" style="--glow:rgba(188,168,248,.45);transform:rotate(-8deg)"></div>
-
-      <div class="float" style="transform-style:preserve-3d">
-      <div class="relative mock-glass rounded-[32px] overflow-hidden" style="transform:rotateY(-9deg) rotateX(4deg)">
-        
-        <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/70">
-          <span class="w-2.5 h-2.5 rounded-full bg-[#F4A8A0]"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-[#FFCF7A]"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-[#8DE8C8]"></span>
-          <div class="mx-auto text-xs font-semibold text-mut bg-white/60 border border-white rounded-full px-4 py-1 shadow-[inset_0_1px_2px_rgba(30,45,70,.08)]">your-business.kz</div>
-          <span class="w-10"></span>
-        </div>
-        
-        <div class="p-7">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-gradient-to-br from-violet to-cyan"></span><span class="h-2 w-16 bg-ink/75 rounded-full"></span></div>
-            <div class="flex items-center gap-2.5">
-              <span class="h-2 w-8 mock-bar rounded-full"></span><span class="h-2 w-8 mock-bar rounded-full"></span><span class="h-2 w-8 mock-bar rounded-full"></span>
-              <span class="h-6 w-20 rounded-full bg-ink/85"></span>
-            </div>
-          </div>
-          <div class="mt-8 space-y-2.5">
-            <div class="h-5 w-4/5 bg-ink/80 rounded-lg"></div>
-            <div class="h-5 w-3/5 rounded-lg bg-gradient-to-r from-violet via-blue to-cyan"></div>
-          </div>
-          <div class="mt-5 space-y-2">
-            <div class="h-2 w-full mock-bar rounded-full"></div>
-            <div class="h-2 w-11/12 mock-bar rounded-full"></div>
-            <div class="h-2 w-3/4 mock-bar rounded-full"></div>
-          </div>
-          <div class="mt-6 flex gap-3">
-            <span class="h-10 w-40 rounded-[14px] bg-gradient-to-br from-[#6A5CF0] to-[#4F63E8] shadow-[0_10px_20px_-8px_rgba(91,92,240,.6),inset_0_1px_1px_rgba(255,255,255,.45)] flex items-center justify-center text-[11px] font-extrabold text-white">Request a quote</span>
-            <span class="h-10 w-28 rounded-[14px] border border-white bg-white/50"></span>
-          </div>
-          <div class="mt-7 grid grid-cols-3 gap-3">
-            <div class="rounded-[18px] bg-white/55 border border-white p-3.5 shadow-[0_8px_18px_-12px_rgba(30,45,70,.35)]"><div class="w-8 h-8 rounded-xl bg-gradient-to-br from-aqua to-cyan/40 mb-2.5"></div><div class="h-1.5 w-full mock-bar rounded-full"></div><div class="h-1.5 w-2/3 mock-bar rounded-full mt-1.5"></div></div>
-            <div class="rounded-[18px] bg-white/55 border border-white p-3.5 shadow-[0_8px_18px_-12px_rgba(30,45,70,.35)]"><div class="w-8 h-8 rounded-xl bg-gradient-to-br from-lav to-violet/40 mb-2.5"></div><div class="h-1.5 w-full mock-bar rounded-full"></div><div class="h-1.5 w-2/3 mock-bar rounded-full mt-1.5"></div></div>
-            <div class="rounded-[18px] bg-white/55 border border-white p-3.5 shadow-[0_8px_18px_-12px_rgba(30,45,70,.35)]"><div class="w-8 h-8 rounded-xl bg-gradient-to-br from-pink to-lav/40 mb-2.5"></div><div class="h-1.5 w-full mock-bar rounded-full"></div><div class="h-1.5 w-2/3 mock-bar rounded-full mt-1.5"></div></div>
-          </div>
-        </div>
-      </div>
-      </div>
-
-      
-      <div class="absolute -left-10 bottom-16 w-16 h-16 glass-icon rounded-[22px] flex items-center justify-center float-late">
-        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M11 18.5h2"/></svg>
-      </div>
-      <div class="absolute -right-6 bottom-8 w-14 h-14 glass-icon rounded-[20px] flex items-center justify-center float-slow">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg>
-      </div>
-      <div class="absolute left-1/2 -bottom-6 w-14 h-14 glass-chip rounded-[20px] flex items-center justify-center float text-ink">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 7-6 2-2 6z"/></svg>
-        <span class="amber-dot absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full"></span>
-      </div>
-
-      
-      <div class="toast-loop absolute -top-8 -right-6 glass-chip rounded-[20px] px-4 py-3 flex items-center gap-3">
-        <span class="w-9 h-9 rounded-full bg-[#2AABEE] text-white flex items-center justify-center shadow-[0_6px_14px_-4px_rgba(42,171,238,.6)]"><svg class="w-4.5 h-4.5 w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
-        <div><div class="text-xs font-extrabold">New enquiry</div><div class="text-[11px] text-mut">sent to Telegram</div></div>
-      </div>
-    </div>
-    </div>
-  </div>
-</section>
-
-
-<div class="marquee-glass overflow-hidden py-3.5 my-2 select-none">
-  <div class="marquee-track flex whitespace-nowrap font-disp font-bold text-[11px] uppercase tracking-[0.3em]">
-    <span class="flex shrink-0">
-      <span class="mx-6">Niche research</span><span class="text-gold">✦</span>
-      <span class="mx-6">Prototype & structure</span><span class="text-gold">✦</span>
-      <span class="mx-6">Copywriting</span><span class="text-gold">✦</span>
-      <span class="mx-6">Custom design</span><span class="text-gold">✦</span>
-      <span class="mx-6">Responsive build</span><span class="text-gold">✦</span>
-      <span class="mx-6">Leads to Telegram</span><span class="text-gold">✦</span>
-      <span class="mx-6">Turnkey launch</span><span class="text-gold">✦</span>
-      <span class="mx-6">30 days of support</span><span class="text-gold">✦</span>
-    </span>
-    <span class="flex shrink-0" aria-hidden="true">
-      <span class="mx-6">Niche research</span><span class="text-gold">✦</span>
-      <span class="mx-6">Prototype & structure</span><span class="text-gold">✦</span>
-      <span class="mx-6">Copywriting</span><span class="text-gold">✦</span>
-      <span class="mx-6">Custom design</span><span class="text-gold">✦</span>
-      <span class="mx-6">Responsive build</span><span class="text-gold">✦</span>
-      <span class="mx-6">Leads to Telegram</span><span class="text-gold">✦</span>
-      <span class="mx-6">Turnkey launch</span><span class="text-gold">✦</span>
-      <span class="mx-6">30 days of support</span><span class="text-gold">✦</span>
-    </span>
-  </div>
-</div>
-
-
-<section id="works" class="relative py-20 md:py-28 overflow-hidden">
-  
-  <div class="glow glow-cyan w-[520px] h-[520px] top-1/3 -left-40 float" aria-hidden="true"></div>
-  <div class="glow glow-violet w-[520px] h-[520px] top-1/4 -right-40 float-slow" aria-hidden="true"></div>
-  <div class="glow glow-peach w-[360px] h-[360px] bottom-0 left-1/3 float-late" aria-hidden="true"></div>
-  <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="max-w-2xl mx-auto text-center reveal">
-      <div class="eyebrow">02 · Portfolio</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">How an idea becomes a website that works</h2>
-      <p class="mt-5 text-mut leading-relaxed">Not just the result, but the thinking behind it: what had to come across, who the site was for and why it’s structured the way it is.</p>
-    </div>
-
-    
-    
-    <div id="workStack" class="work-stack relative mt-14" hidden></div>
-
-    
-    
-    <div id="workGrid" class="work-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="savepoint" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/savepoint/m/01.webp" width="585" height="1266"><img src="../screenshots/savepoint/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Café & coworking</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">Save Point</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">A desk with a socket and coffee ready on the minute</p>
-              <p class="text-sm text-mut mt-2 leading-snug">Landing page for a specialty café and laptop-friendly space in central Almaty: book a desk and pre-order a drink online.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="elara" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/elara/m/01.webp" width="585" height="1266"><img src="../screenshots/elara/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Dental clinic</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">ELARA Dental</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Dentistry where you know the price before treatment</p>
-              <p class="text-sm text-mut mt-2 leading-snug">Landing page for a new dental clinic in Almaty: earning trust without reviews and booking a consultation with a treatment plan.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="alba" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/alba/m/01.webp" width="585" height="1266"><img src="../screenshots/alba/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Beauty salon</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">Alba</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Beauty in 90 minutes · time for yourself</p>
-              <p class="text-sm text-mut mt-2 leading-snug">Premium landing page for an Almaty beauty salon: eases clients’ worries and leads them to book via a form or WhatsApp.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="proremont" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/proremont/m/01.webp" width="585" height="1266"><img src="../screenshots/proremont/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Renovation</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">ProRemont</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Apartment renovation without surprises</p>
-              <p class="text-sm text-mut mt-2 leading-snug">Landing page for an Almaty renovation company: contract-backed guarantees, a cost calculator and before/after projects.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="tropinka" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/tropinka/m/01.webp" width="585" height="1266"><img src="../screenshots/tropinka/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Kids’ center</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">Tropinka</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">School readiness and development for ages 3–6</p>
-              <p class="text-sm text-mut mt-2 leading-snug">Website for an Almaty kids’ center: teaching approach, programs, prices and trial-class sign-up.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="steps" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/steps/m/01.webp" width="585" height="1266"><img src="../screenshots/steps/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Child development center</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">Steps</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Every step is growth — and every step is visible</p>
-              <p class="text-sm text-mut mt-2 leading-snug">Landing page for a kids’ center, ages 1.5–7: live cameras, progress checks and a free trial class.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="targetolog" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/targetolog/m/01.webp" width="585" height="1266"><img src="../screenshots/targetolog/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Paid social specialist</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">Azamat Zhenisuly</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">Targeted ads that pay back ×3 — and you can calculate it</p>
-              <p class="text-sm text-mut mt-2 leading-snug">Website for an Almaty paid-social specialist: a 7-step approach, a goal calculator and quick contact via WhatsApp.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="wedding" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/wedding/m/01.webp" width="585" height="1266"><img src="../screenshots/wedding/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Wedding invitation</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">Aigerim &amp; Timur</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">A wedding where every guest knows their table and their ride</p>
-              <p class="text-sm text-mut mt-2 leading-snug">Wedding invitation site: day program, seating with search by name, a wishlist and a guest RSVP form.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-      <article class="group glass glass-card glass-lift overflow-hidden">
-        <button type="button" data-work="birthday" aria-haspopup="dialog" class="block w-full text-left rounded-[32px]">
-          <span class="sr-only">Open case study: </span>
-          <div class="shot-frame relative aspect-[4/5] sm:aspect-[59/32] overflow-hidden m-2.5 mb-0">
-            <picture><source media="(max-width: 639px)" srcset="../screenshots/birthday/m/01.webp" width="585" height="1266"><img src="../screenshots/birthday/01.webp" alt="" width="1416" height="768" loading="lazy" decoding="async" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"></picture>
-            <span class="absolute top-3 left-3 text-[11px] font-disp uppercase tracking-[0.16em] glass-tag px-3 py-1.5 rounded-full">Kids’ birthday party</span>
-          </div>
-          <div class="p-5 flex items-start justify-between gap-4">
-            <div>
-              <h3 class="font-extrabold text-lg leading-tight">Mission “Miron-7”</h3>
-              <p class="text-sm font-bold text-ink/80 mt-1 leading-snug">A birthday as a space flight with a boarding pass</p>
-              <p class="text-sm text-mut mt-2 leading-snug">A space-themed birthday invitation: flight plan, guest crew, gift list and a boarding pass.</p>
-            </div>
-            <span aria-hidden="true" class="flex-none w-10 h-10 glass-orb flex items-center justify-center"><svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </button>
-      </article>
-    </div>
-
-    <div id="galControls" class="mt-10 text-center" hidden>
-      <button id="galToggle" type="button" class="btn btn-ghost px-8 py-4" aria-controls="workGrid" aria-expanded="false">
-        <span id="galBtnTxt">See all projects</span>
-        <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-      </button>
-      <p id="galHint" class="text-sm text-mut mt-4">Tap a project to open the case study with screenshots and the reasoning behind it</p>
-    </div>
-  </div>
-</section>
-
-
-<section id="about" class="py-20 md:py-28 overflow-hidden">
-  <div class="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-[minmax(0,340px)_1fr] gap-10 md:gap-16 items-center">
-    <div class="reveal relative max-w-[340px] mx-auto md:mx-0 w-full">
-      <div class="glow glow-cyan w-64 h-64 -top-10 -left-10 float" aria-hidden="true"></div><div class="glow glow-violet w-56 h-56 -bottom-8 -right-8 float-slow" aria-hidden="true"></div>
-      <div class="glass absolute -inset-3 rounded-[40px] -rotate-2" aria-hidden="true"></div>
-      <picture>
+    <div class="about">
+      <picture class="about-photo">
         <source srcset="../img/natalya.webp" type="image/webp">
-        <img src="../img/natalya.png" width="433" height="541" loading="lazy" decoding="async"
-             alt="Natalya, founder of Altyn Click"
-             class="relative w-full rounded-[32px] object-cover object-bottom shot-frame portrait-glass">
+        <img src="../img/natalya.png" width="433" height="541" loading="lazy" decoding="async" alt="Natalya, founder of Altyn Click">
       </picture>
-    </div>
-    <div class="reveal" style="transition-delay:.08s">
-      <div class="eyebrow">03 · Who builds your site</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">I’m Natalya.<br class="hidden sm:block"> I’ve loved building websites since 2012</h2>
-      <p class="mt-6 text-mut text-lg leading-relaxed">Altyn Click is me. I built every project in this portfolio myself, from niche research and copy to design and code. You deal with me directly — no account managers, no tasks passed down the line.</p>
-      <ul class="mt-7 flex flex-wrap gap-2.5 text-sm font-bold" aria-label="What I do on every project">
-        <li class="glass-chip rounded-full px-4 py-2">Niche research</li>
-        <li class="glass-chip rounded-full px-4 py-2">Copy & structure</li>
-        <li class="glass-chip rounded-full px-4 py-2">Design</li>
-        <li class="glass-chip rounded-full px-4 py-2">Build & launch</li>
-      </ul>
-      <div class="mt-9 flex flex-col sm:flex-row sm:items-center gap-4">
-        <a href="#audit" class="btn btn-gold px-8 py-4">Discuss my project</a>
-        <a href="https://t.me/altynclick" target="_blank" rel="noopener" class="text-sm font-bold text-golddeep underline underline-offset-4 py-2">or message me on Telegram</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="problem" class="night text-cream overflow-hidden">
-  <div class="glow glow-violet w-[420px] h-[420px] -top-32 right-0 float-slow"></div>
-  <div class="glow glow-cyan w-[320px] h-[320px] bottom-0 -left-20 float"></div>
-
-  <div class="relative max-w-6xl mx-auto px-4 md:px-8 py-20 md:py-28">
-    <div class="max-w-3xl reveal">
-      <div class="eyebrow">04 · The problem</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">
-        The client is already interested.<br class="hidden md:block"> But they still need to <span class="text-gold2">make up their mind</span>.
-      </h2>
-      <p class="mt-6 text-mutd text-lg leading-relaxed">
-        Often it’s not that your business isn’t good enough. The person simply hasn’t found the answers that help them take the next step.
-      </p>
-      <p class="mt-4 text-mutd leading-relaxed">
-        They found you on 2GIS. Checked your Instagram. Maybe even opened your website.<br class="hidden md:block"> But questions remain:
-      </p>
-    </div>
-
-    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-      <div class="reveal glass-dark glass-lift p-5"><div class="font-disp font-bold text-gold2 text-xs mb-3">01</div><p class="font-bold leading-snug">Is this service right for me?</p></div>
-      <div class="reveal glass-dark glass-lift p-5" style="transition-delay:.06s"><div class="font-disp font-bold text-gold2 text-xs mb-3">02</div><p class="font-bold leading-snug">Can I trust you?</p></div>
-      <div class="reveal glass-dark glass-lift p-5" style="transition-delay:.12s"><div class="font-disp font-bold text-gold2 text-xs mb-3">03</div><p class="font-bold leading-snug">How does it all work?</p></div>
-      <div class="reveal glass-dark glass-lift p-5" style="transition-delay:.18s"><div class="font-disp font-bold text-gold2 text-xs mb-3">04</div><p class="font-bold leading-snug">How much will it cost?</p></div>
-      <div class="reveal glass-dark glass-lift p-5" style="transition-delay:.24s"><div class="font-disp font-bold text-gold2 text-xs mb-3">05</div><p class="font-bold leading-snug">What happens after I get in touch?</p></div>
-    </div>
-
-    <div class="mt-10 max-w-3xl reveal">
-      <p class="text-mutd leading-relaxed border-l-2 border-gold2/60 pl-5">
-        Without answers, people fill in the gaps themselves. Sometimes they just put the decision off — or go with whoever was easier to understand.
-      </p>
-      <a href="#audit" class="btn btn-gold mt-9 px-8 py-4">Find out what’s holding my site back</a>
-    </div>
-  </div>
-</section>
-
-
-<section id="process" class="relative overflow-x-clip py-20 md:py-28">
-  
-  <div class="glow glow-peach w-[460px] h-[460px] top-20 -right-32 float-slow" aria-hidden="true"></div>
-  <div class="glow glow-cyan w-[420px] h-[420px] bottom-0 -left-32 float" aria-hidden="true"></div>
-  <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="max-w-2xl reveal">
-      <div class="eyebrow">05 · How I work</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">A website that answers doubts — so you don’t have to</h2>
-      <p class="mt-5 text-mut text-lg">What actually happens, from brief to finished site.</p>
-    </div>
-
-    <div class="flow-wrap relative mt-12">
-    <div class="flow hidden md:block" aria-hidden="true">
-      <svg viewBox="0 0 1200 760" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="flowGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#68DDD7"/><stop offset=".5" stop-color="#7164F5"/><stop offset="1" stop-color="#E9A6E7"/></linearGradient>
-          <filter id="flowBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
-        </defs>
-        <path d="M40 190 C 300 90, 520 300, 800 180 S 1180 140, 1160 330 S 760 440, 520 560 S 140 600, 60 560" fill="none" stroke="url(#flowGrad)" stroke-width="40" stroke-linecap="round" opacity=".8" filter="url(#flowBlur)"/>
-        <path d="M40 190 C 300 90, 520 300, 800 180 S 1180 140, 1160 330 S 760 440, 520 560 S 140 600, 60 560" fill="none" stroke="url(#flowGrad)" stroke-width="3" stroke-linecap="round" opacity=".9"/>
-      </svg>
-    </div>
-    <ol class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col">
-        <div class="flex items-baseline gap-4">
-          <span class="step-num font-disp text-4xl" aria-hidden="true">01</span>
-          <h3 class="font-extrabold text-xl">Brief</h3>
-        </div>
-        <p class="mt-4 text-mut leading-relaxed flex-1">You fill in a short brief — <b class="text-ink">about 15 minutes of your time</b>. You tell me about your business, your clients and what’s currently getting in the way of enquiries.</p>
-        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>Outcome:</b> a clear task and a starting point for research.</div>
-        
-        <a href="https://brief-aq7.pages.dev/en/" target="_blank" rel="noopener" data-goal="brief_click" class="btn btn-gold px-6 py-3 mt-5 self-start">Fill in the brief<svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      </li>
-      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col" style="transition-delay:.06s">
-        <div class="flex items-baseline gap-4">
-          <span class="step-num font-disp text-4xl" aria-hidden="true">02</span>
-          <h3 class="font-extrabold text-xl">Research</h3>
-        </div>
-        <p class="mt-4 text-mut leading-relaxed flex-1">I study your niche, your clients and how they go about choosing a service like yours. I look at competitors’ sites and real reviews to see which questions, expectations and objections need answering.</p>
-        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>Outcome:</b> a clear picture of your audience, what they want and what your offer can be built on.</div>
-      </li>
-      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col" style="transition-delay:.12s">
-        <div class="flex items-baseline gap-4">
-          <span class="step-num font-disp text-4xl" aria-hidden="true">03</span>
-          <h3 class="font-extrabold text-xl">Offer & structure</h3>
-        </div>
-        <p class="mt-4 text-mut leading-relaxed flex-1">I work out what to show first, which questions to answer and how to lead visitors to get in touch. I put together a page prototype and agree it with you before development starts.</p>
-        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>Outcome:</b> the page logic, section structure and a clear offer.</div>
-      </li>
-      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col">
-        <div class="flex items-baseline gap-4">
-          <span class="step-num font-disp text-4xl" aria-hidden="true">04</span>
-          <h3 class="font-extrabold text-xl">Copy, design & build</h3>
-        </div>
-        <p class="mt-4 text-mut leading-relaxed flex-1">I turn your strengths into clear messages, a visual system and an easy-to-use interface. Then I show you a working draft — <b class="text-ink">all changes at this stage are free</b>.</p>
-        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>Outcome:</b> approved copy, design and a working draft of the site.</div>
-      </li>
-      <li class="reveal glass glass-card glass-lift p-7 md:p-8 flex flex-col" style="transition-delay:.06s">
-        <div class="flex items-baseline gap-4">
-          <span class="step-num font-disp text-4xl" aria-hidden="true">05</span>
-          <h3 class="font-extrabold text-xl">Launch</h3>
-        </div>
-        <p class="mt-4 text-mut leading-relaxed flex-1">I test the site on different devices, connect your domain and set up enquiries to arrive in Telegram. You get an archive of all the files and a short video guide.</p>
-        <div class="mt-5 glass-inset p-4 text-sm leading-relaxed"><b>Outcome:</b> a live website, ready to receive enquiries.</div>
-      </li>
-      <li class="reveal glass-night glass-lift p-7 md:p-8 flex flex-col justify-between gap-6" style="transition-delay:.12s">
-        <div>
-          <h3 class="font-extrabold text-xl">Where to start?</h3>
-          <p class="mt-4 text-mutd leading-relaxed">Send a request — I’ll review your site or Instagram for free and tell you where it makes sense to start.</p>
-        </div>
-        <a href="#audit" class="btn btn-gold px-7 py-3.5 self-start">Discuss my project</a>
-      </li>
-    </ol>
-    </div>
-  </div>
-</section>
-
-
-<section id="offer" class="relative overflow-x-clip py-20 md:py-28">
-  
-  <div class="glow glow-violet w-[480px] h-[480px] top-1/4 -left-40 float" aria-hidden="true"></div>
-  <div class="glow glow-cyan w-[420px] h-[420px] bottom-10 -right-32 float-slow" aria-hidden="true"></div>
-  <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="max-w-2xl reveal">
-      <div class="eyebrow">06 · What’s included</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">What you get along with the website</h2>
-      <p class="mt-5 text-xl font-bold">A carefully planned turnkey landing page — <span class="text-golddeep">$265</span></p>
-    </div>
-
-    <div class="mt-12 grid lg:grid-cols-3 gap-5">
-      
-      <div class="reveal glass glass-card glass-lift p-7">
-        <div class="w-12 h-12 glass-icon flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-        <h3 class="font-extrabold text-lg">Research & groundwork</h3>
-        <ul class="mt-5 space-y-4">
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Niche, competitor and audience analysis.</b> So the site rests on what your clients really need and what your business does best.</p></li>
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Page structure and flow.</b> I map out what a visitor should see, understand and do, from the first screen to the enquiry.</p></li>
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Website copy.</b> I write it myself. No need for you to come up with headlines, service descriptions or calls to action.</p></li>
-        </ul>
-      </div>
-      
-      <div class="reveal glass glass-card glass-lift p-7" style="transition-delay:.08s">
-        <div class="w-12 h-12 glass-icon flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <h3 class="font-extrabold text-lg">Design & development</h3>
-        <ul class="mt-5 space-y-4">
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Custom design, no ready-made templates.</b> I create a visual system for your business, grounded in usability, perception and modern web practice.</p></li>
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Search-friendly content.</b> I take into account how people search for your services, so the site makes sense to search engines as well as to visitors.</p></li>
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Easy on a phone.</b> Text is easy to read, buttons are easy to tap, and getting in touch never turns into a quest.</p></li>
-        </ul>
-      </div>
-      
-      <div class="reveal glass glass-card glass-lift p-7" style="transition-delay:.16s">
-        <div class="w-12 h-12 glass-icon flex items-center justify-center mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.3L20 8l-4 3.9.9 5.6L12 14.8 7.1 17.5 8 11.9 4 8l5.6-.7z"/></svg></div>
-        <h3 class="font-extrabold text-lg">Launch & tech setup</h3>
-        <ul class="mt-5 space-y-4">
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Secure forms.</b> Basic spam protection and checks that every form works correctly.</p></li>
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Pre-launch testing.</b> I check responsiveness, key user flows and how the site looks on different devices.</p></li>
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p><b>Turnkey launch.</b> I connect the domain, publish the site and hand over all the files, so the project stays yours.</p></li>
+      <div class="about-text">
+        <h3 class="sub">I’m Natalya. I’ve loved building websites since 2012</h3>
+        <p>Altyn Click is me. I built every project in this portfolio myself, from niche research and copy to design and code. You deal with me directly — no account managers, no tasks passed down the line.</p>
+        <ul class="chips" aria-label="What I do on every project">
+          <li>Niche research</li>
+          <li>Copy & structure</li>
+          <li>Design</li>
+          <li>Build & launch</li>
         </ul>
       </div>
     </div>
 
-    
-    <div class="mt-6 grid md:grid-cols-2 gap-5">
-      <div class="reveal glass glass-card glass-lift p-7">
-        <h3 class="font-extrabold text-lg">Help with domain and hosting</h3>
-        <ul class="mt-4 space-y-3">
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>I’ll help you choose and set them up, and explain everything in plain language.</p></li>
-        </ul>
-      </div>
-      <div class="reveal glass glass-card glass-lift p-7" style="transition-delay:.08s">
-        <h3 class="font-extrabold text-lg">30 days of edits after launch</h3>
-        <ul class="mt-4 space-y-3">
-          <li class="chk"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>So you can try the site in real life at your own pace and tell me what needs adjusting.</p></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="mt-12 text-center reveal">
-      <a href="#audit" class="btn btn-gold px-9 py-4 text-base">Discuss my project <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
+    <dl class="terms">
+      <div><dt>Timeline</dt><dd>5 to 12 working days</dd></div>
+      <div><dt>Payment</dt><dd>50% upfront, 50% once you approve the draft</dd></div>
+      <div><dt>Contract</dt><dd>We work officially, with every stage and commitment in writing</dd></div>
+      <div><dt>I work on a limited number of projects at a time</dt><dd>That’s why I’m personally involved at every stage, from structure to launch. I’ll give you my next available start date when I reply to your request.</dd></div>
+    </dl>
   </div>
 </section>
 
+<section class="read price" id="price" aria-labelledby="price-title">
+  <div class="sheet">
+    <h2 id="price-title">What you get along with the website</h2>
+    <p class="price-line">A carefully planned turnkey landing page — <b class="num">$265</b></p>
 
-<section id="limits" class="night text-cream overflow-hidden">
-  <div class="glow glow-cyan w-[460px] h-[460px] -bottom-40 -left-32 float"></div>
-  <div class="glow glow-pink w-[300px] h-[300px] top-10 right-1/4 float-late"></div>
-
-  <div class="relative max-w-6xl mx-auto px-4 md:px-8 py-20 md:py-28 grid lg:grid-cols-[1.1fr_.9fr] gap-14 items-center">
-    <div class="reveal">
-      <div class="eyebrow">07 · How I take on work</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">Why only <span class="text-gold2">3 projects</span> a month?</h2>
-      <p class="mt-6 text-mutd leading-relaxed">
-        I’m not an agency with a conveyor belt, and I don’t take on ten projects at once only to deliver them a month late. I handle every site personally — from the first line of copy to testing on different phone screens.
-      </p>
-      <p class="mt-4 text-mutd leading-relaxed">
-        That’s how I deliver in <b class="text-cream">5–12 days</b> at the quality of a good studio — without their mark-up for an office and account managers.
-      </p>
-      <a href="#audit" class="btn btn-gold mt-9 px-8 py-4">Check my next start date</a>
-    </div>
-
-    <div class="reveal glass-dark rounded-[32px] p-8 md:p-10" style="transition-delay:.1s">
-      <div class="flex items-end gap-4">
-        <span class="font-disp font-bold text-[96px] md:text-[120px] leading-none text-gold2">3</span>
-        <span class="text-mutd font-semibold pb-3 leading-snug">projects<br>a month —<br>no more</span>
-      </div>
-      <div class="mt-8 pt-8 border-t border-white/10">
-        <p class="font-bold text-cream leading-snug">I work on a limited number of projects at a time</p>
-        <p class="mt-2 text-mutd leading-relaxed">That’s why I’m personally involved at every stage, from structure to launch. I’ll give you my next available start date when I reply to your request.</p>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="terms" class="relative overflow-x-clip py-20 md:py-28">
-  
-  <div class="glow glow-pink w-[380px] h-[380px] top-10 right-10 float-late" aria-hidden="true"></div>
-  <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="max-w-2xl reveal">
-      <div class="eyebrow">08 · Terms</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">All above board: from the first deposit to the handover</h2>
-    </div>
-
-    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
-      <div class="glass glass-card glass-lift p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Timeline</div><p class="font-bold leading-snug">5 to 12 working days</p></div>
-      <div class="glass glass-card glass-lift p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Payment</div><p class="font-bold leading-snug">50% upfront, 50% once you approve the draft</p></div>
-      <div class="glass glass-card glass-lift p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Contract</div><p class="font-bold leading-snug">We work officially, with every stage and commitment in writing</p></div>
-      <div class="glass-night glass-lift p-6"><div class="text-[11px] font-disp uppercase tracking-[0.2em] text-gold2 mb-2.5">Second language (KZ/RU)</div><p class="font-bold leading-snug">+$65</p></div>
-    </div>
-    <div class="mt-9 reveal">
-      <a href="#audit" class="btn btn-gold w-full sm:w-auto px-8 py-4">Discuss my project</a>
-    </div>
-  </div>
-</section>
-
-
-<section id="addons" class="relative overflow-x-clip py-20 md:py-28">
-  
-  <div class="glow glow-cyan w-[440px] h-[440px] top-1/3 -right-32 float" aria-hidden="true"></div>
-  <div class="glow glow-peach w-[400px] h-[400px] bottom-0 -left-32 float-slow" aria-hidden="true"></div>
-  <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="max-w-2xl reveal">
-      <div class="eyebrow">09 · Add-ons</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">Need something extra?</h2>
-      <p class="mt-5 text-mut leading-relaxed">The base turnkey landing page ($265) covers everything you need to start selling. If your business needs something specific, add it to the project. <b class="text-ink">Tap the cards to build your package.</b></p>
-    </div>
-
-    <div class="mt-11 grid md:grid-cols-3 gap-5">
-      <button type="button" aria-pressed="false" class="opt reveal text-left glass glass-card glass-lift p-7" data-opt="lang" data-price="30000">
-        <div class="flex items-start justify-between gap-3">
-          <span class="w-11 h-11 glass-icon flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg></span>
-          <span class="optmark w-7 h-7 rounded-full border-2 border-line text-transparent flex items-center justify-center transition-all"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
-        </div>
-        <h3 class="font-extrabold text-lg mt-5">Second language version</h3>
-        <p class="text-sm text-mut mt-2 leading-relaxed">Kazakh or Russian — reach a wider circle of clients.</p>
-        <div class="font-disp font-semibold text-golddeep mt-5">+ $65</div>
-      </button>
-
-      <button type="button" aria-pressed="false" class="opt reveal text-left glass glass-card glass-lift p-7" data-opt="quiz" data-price="15000" style="transition-delay:.08s">
-        <div class="flex items-start justify-between gap-3">
-          <span class="w-11 h-11 glass-icon flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7h8M8 12h3M13 12l3-2M8 17h3M13 17l3-2"/></svg></span>
-          <span class="optmark w-7 h-7 rounded-full border-2 border-line text-transparent flex items-center justify-center transition-all"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
-        </div>
-        <h3 class="font-extrabold text-lg mt-5">Interactive calculator / quiz</h3>
-        <p class="text-sm text-mut mt-2 leading-relaxed">Clients work out the price themselves — and arrive ready to buy.</p>
-        <div class="font-disp font-semibold text-golddeep mt-5">+ $35</div>
-      </button>
-
-      <button type="button" aria-pressed="false" class="opt reveal text-left glass glass-card glass-lift p-7" data-opt="express" data-price="25000" style="transition-delay:.16s">
-        <div class="flex items-start justify-between gap-3">
-          <span class="w-11 h-11 glass-icon flex items-center justify-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span>
-          <span class="optmark w-7 h-7 rounded-full border-2 border-line text-transparent flex items-center justify-center transition-all"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
-        </div>
-        <h3 class="font-extrabold text-lg mt-5">Express delivery</h3>
-        <p class="text-sm text-mut mt-2 leading-relaxed">The whole project in up to 5 working days. For when you needed it yesterday.</p>
-        <div class="font-disp font-semibold text-golddeep mt-5">+ $55</div>
-      </button>
-    </div>
-
-    
-    <div class="mt-7 reveal glass-night rounded-[40px] p-7 md:p-9 flex flex-col md:flex-row md:items-center justify-between gap-7">
+    <div class="incl">
       <div>
-        <div class="text-[11px] font-disp uppercase tracking-[0.22em] text-gold2 mb-3">Your estimate</div>
-        <div class="text-mutd text-sm leading-relaxed">$265 (base) <span id="optSumLabel" class="text-cream font-bold">— no add-ons yet</span></div>
-        <div id="optPromoLine" class="text-sm mt-1 text-gold2" hidden></div>
-        <div class="text-mutd text-sm mt-1">= Total →</div>
+        <h3>Research & groundwork</h3>
+        <ul>
+          <li><b>Niche, competitor and audience analysis.</b> So the site rests on what your clients really need and what your business does best.</li>
+          <li><b>Page structure and flow.</b> I map out what a visitor should see, understand and do, from the first screen to the enquiry.</li>
+          <li><b>Website copy.</b> I write it myself. No need for you to come up with headlines, service descriptions or calls to action.</li>
+        </ul>
       </div>
-      <div id="optTotal" class="font-disp font-bold text-4xl md:text-5xl text-gold2 whitespace-nowrap">$265</div>
-    </div>
-
-    <div class="mt-9 text-center reveal">
-      <a href="#audit" id="optCta" class="btn btn-gold px-8 py-4">Send a request with this estimate
-        <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<section id="faq" class="relative overflow-x-clip py-20 md:py-28">
-  
-  <div class="glow glow-violet w-[420px] h-[420px] top-10 -left-24 float-slow" aria-hidden="true"></div>
-  <div class="glow glow-pink w-[380px] h-[380px] bottom-10 -right-24 float" aria-hidden="true"></div>
-  <div class="max-w-3xl mx-auto px-4 md:px-8">
-    <div class="text-center reveal">
-      <div class="eyebrow">10 · FAQ</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">Honest answers — before you even ask</h2>
-    </div>
-
-    <div class="mt-12 space-y-3.5" id="faqList">
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          What if I don’t like what you come up with?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">We go step by step, so there are no surprises. First we agree on the structure and copy (the prototype), and only then do I move on to visuals and the build. All changes at the draft stage are included in the price. We keep refining until you like the site and it works for your clients.</p></div></div>
-      </div>
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.05s">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          What if I don’t have copy, a logo or decent photos?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">That’s common. I take care of all the copy: I interview you, study your clients’ reviews and write clear, meaningful headlines. For visuals, I’ll help you find quality graphics, put together a neat logo and build a consistent style.</p></div></div>
-      </div>
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.1s">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          Is the $265 base package really enough, or will I end up paying extra?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">The package covers everything: from research and copy to the build, mobile optimisation and setting up enquiries to arrive in Telegram. You only pay extra for add-ons you choose yourself (second language, calculator or quiz, express delivery — prices are in the “Add-ons” section) and for direct service costs: a domain (usually around $7–10 a year) and hosting, if you need a paid plan.</p></div></div>
-      </div>
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.15s">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          How long does it take, and how involved do I need to be?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Development takes 5 to 12 working days. From you, it takes about 15–20 minutes to fill in the brief at the start, plus quick approvals at two stages (structure and final draft). No endless calls — everything clear and to the point.</p></div></div>
-      </div>
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.2s">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          What happens after launch? What if something breaks?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">After handover you get 30 days of free technical support. If you spot a mistake or want to tweak some text, I’ll fix it free of charge. You also get an archive of the files and a short video guide, so the project stays fully under your control.</p></div></div>
-      </div>
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.25s">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          How does payment work, and is there a contract?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Yes, everything is official. We set out the stages and commitments in a written agreement. Payment is split into two equal parts: 50% before work starts and 50% only after you approve the finished working draft, before it goes live.</p></div></div>
-      </div>
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.05s">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          Why do I need a website if I already have Instagram?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">Instagram works well with people who already follow you. A website answers questions before anyone has to message you: what you offer, what it costs, how it works and why you can be trusted. People find it through search and via the link on 2GIS, and enquiries land straight in your Telegram. Instagram and a website don’t compete — the site link fits perfectly in your bio.</p></div></div>
-      </div>
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.1s">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          Do you guarantee I’ll get enquiries?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">The number of enquiries depends on traffic, demand and the service itself, so I won’t promise specific numbers — that wouldn’t be honest. What I’m responsible for is that anyone who lands on your site quickly understands your offer, finds answers to their doubts and can get in touch in a couple of taps.</p></div></div>
-      </div>
-      
-      <div class="faq-item reveal glass rounded-[24px] overflow-hidden" style="transition-delay:.15s">
-        <button type="button" class="faq-q w-full flex items-center justify-between gap-5 text-left px-6 py-5 font-bold">
-          Who owns the website after launch?
-          <span aria-hidden="true" class="faq-chev flex-none w-8 h-8 rounded-full border border-line text-golddeep flex items-center justify-center transition-all duration-300"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="faq-a"><div><p class="px-6 pb-6 text-mut leading-relaxed">You do. After launch I hand over an archive of all the files and a short video guide. The site isn’t tied to me — any developer can move it or build on it.</p></div></div>
-      </div>
-    </div>
-
-    <div class="mt-10 text-center reveal">
-      <a href="https://t.me/altynclick" target="_blank" rel="noopener" class="btn btn-ghost px-8 py-4">Ask your question on Telegram
-        <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<section id="audit" class="night text-cream overflow-hidden">
-  <div class="glow glow-cyan w-[460px] h-[460px] -top-32 left-1/3 float"></div>
-  <div class="glow glow-violet w-[420px] h-[420px] bottom-0 right-0 float-slow"></div>
-
-  <div class="relative max-w-6xl mx-auto px-4 md:px-8 py-20 md:py-28 grid lg:grid-cols-[1.05fr_.95fr] gap-14 items-center">
-    <div class="reveal">
-      <div class="eyebrow">11 · Free audit</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">What does your business tell a client in the first <span class="text-gold2">5 seconds</span>?</h2>
-      <p class="mt-6 text-mutd text-lg leading-relaxed">I’ll review your website, Instagram or 2GIS listing for free: first impression, how clear your offer is and the path to an enquiry.</p>
-
-      <h3 class="mt-9 text-xs font-disp uppercase tracking-[0.22em] text-mutd">What you’ll get</h3>
-      <ul class="mt-4 space-y-3.5">
-        <li class="chk chk-d"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>What a visitor understands from the first screen</p></li>
-        <li class="chk chk-d"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>What might raise questions or doubts</p></li>
-        <li class="chk chk-d"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>How obvious the next step is</p></li>
-        <li class="chk chk-d"><span class="ic"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><p>Which 2–3 changes to consider first</p></li>
-      </ul>
-
-      <div class="mt-8 glass-dark p-5 text-sm leading-relaxed text-mutd">
-        <p><b class="text-cream">Already have a site</b> — I’ll review it, even if it hasn’t been updated in ages.</p>
-        <p class="mt-2"><b class="text-cream">No site yet</b> — I’ll look at your Instagram or 2GIS and suggest what your future site should show.</p>
-      </div>
-    </div>
-
-    
-    <div class="reveal" style="transition-delay:.12s">
-      <div class="glass-form p-7 md:p-9">
-        <h3 class="font-extrabold text-xl">Request an audit or a quote</h3>
-        <p class="text-sm text-mut mt-1.5">I reply personally, usually within a day.</p>
-
-        <form id="auditForm" class="mt-6 space-y-4" novalidate>
-          <div>
-            <label for="f-name" class="block text-sm font-bold mb-1.5">Your name <span class="text-mut font-semibold">(required)</span></label>
-            <input class="input" id="f-name" name="name" required maxlength="80" autocomplete="name" aria-describedby="f-name-err">
-            <p id="f-name-err" class="field-err" hidden>Please tell me what to call you.</p>
-          </div>
-          <div>
-            <label for="f-contact" class="block text-sm font-bold mb-1.5">Phone or @telegram <span class="text-mut font-semibold">(required)</span></label>
-            <input class="input" id="f-contact" name="contact" required maxlength="120" autocomplete="tel" aria-describedby="f-contact-hint f-contact-err">
-            <p id="f-contact-hint" class="text-xs text-mut mt-1.5">E.g. +7 701 123 45 67 or @username</p>
-            <p id="f-contact-err" class="field-err" hidden>Please add a phone number or Telegram username so I can reply.</p>
-          </div>
-          <div>
-            <label for="f-link" class="block text-sm font-bold mb-1.5">Website, Instagram or 2GIS <span class="text-mut font-semibold">(if you have one)</span></label>
-            <input class="input" id="f-link" name="link" maxlength="300" autocomplete="url" inputmode="url">
-          </div>
-          <div id="promoBox">
-            <button type="button" id="promoToggle" class="text-sm font-bold text-golddeep underline underline-offset-4" aria-expanded="false" aria-controls="promoField">I have a promo code</button>
-            <div id="promoField" class="mt-2" hidden>
-              <label for="f-promo" class="block text-sm font-bold mb-1.5">Promo code</label>
-              <div class="flex gap-2">
-                <input class="input uppercase" id="f-promo" name="promo" maxlength="32" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="f-promo-msg">
-                <button type="button" id="promoApply" class="btn btn-ghost px-5 flex-none">Apply</button>
-              </div>
-              <p id="f-promo-msg" class="text-xs mt-1.5" aria-live="polite"></p>
-            </div>
-          </div>
-          
-          <div id="calcSummary" class="glass-inset p-4 text-sm leading-relaxed" hidden></div>
-          <input type="hidden" name="options" id="f-options">
-          <input type="hidden" name="utm_source">
-          <input type="hidden" name="utm_medium">
-          <input type="hidden" name="utm_campaign">
-          
-          <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-          <div>
-            <div class="flex items-start gap-3">
-              <input type="checkbox" id="f-consent" name="consent" value="yes" required aria-describedby="f-consent-err"
-                     class="mt-0.5 w-5 h-5 flex-none rounded border-[#536879] accent-[#5B5BEA] cursor-pointer">
-              <label for="f-consent" class="text-sm leading-snug text-ink/85 cursor-pointer">
-                I agree to the processing of my personal data from this form so you can reply to my request, as described in the <a href="privacy.html" target="_blank" rel="noopener" class="font-bold underline text-golddeep">privacy policy</a>.
-              </label>
-            </div>
-            <p id="f-consent-err" class="field-err" hidden>I can’t process your request without your consent — please tick the box.</p>
-          </div>
-          <div id="turnstileBox"></div>
-          <button type="submit" id="auditBtn" class="btn btn-gold w-full py-4">Send request</button>
-          <p class="text-xs text-mut text-center leading-relaxed">No spam — I’ll only contact you about your request.<br> Prefer to message right away? <a href="https://t.me/altynclick" target="_blank" rel="noopener" class="font-bold underline text-golddeep">Telegram</a> ·
-            <a href="https://wa.me/message/SEVFCLAYNOANG1" target="_blank" rel="noopener" class="font-bold underline text-golddeep">WhatsApp</a></p>
-        </form>
-
-        <div id="auditOk" class="hidden text-center py-8">
-          <div class="ok-bead w-16 h-16 mx-auto rounded-full text-green flex items-center justify-center"><svg aria-hidden="true" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <h4 id="auditOkTitle" tabindex="-1" class="font-extrabold text-xl mt-5">Request sent!</h4>
-          <p class="text-sm text-mut mt-2.5 leading-relaxed">Thank you! I’ll look at what you sent and reply within a day.<br>If it’s urgent, message me on
-            <a href="https://t.me/altynclick" target="_blank" rel="noopener" class="text-golddeep font-bold underline">Telegram</a> or <a href="https://wa.me/message/SEVFCLAYNOANG1" target="_blank" rel="noopener" class="text-golddeep font-bold underline">WhatsApp</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="partners" class="relative overflow-x-clip py-20 md:py-28">
-  
-  <div class="glow glow-violet w-[460px] h-[460px] top-10 -right-32 float" aria-hidden="true"></div>
-  <div class="glow glow-cyan w-[420px] h-[420px] top-1/2 -left-40 float-slow" aria-hidden="true"></div>
-  <div class="glow glow-pink w-[340px] h-[340px] bottom-0 right-1/4 float-late" aria-hidden="true"></div>
-  <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="max-w-3xl reveal">
-      <div class="eyebrow">12 · For agencies</div>
-      <h2 class="font-extrabold text-3xl md:text-[2.6rem] leading-[1.15] tracking-tight mt-5">Websites under <span class="text-golddeep">your agency’s brand</span></h2>
-      <p class="mt-5 text-lg text-mut leading-relaxed">You bring the clients, I build the websites. <b class="text-ink">You expand your services without an in-house developer</b>, and the client stays yours: I work under your brand and talk to the client the way we agree.</p>
-      <ul class="mt-7 flex flex-wrap gap-2.5 text-sm font-bold" aria-label="Who it’s for">
-        <li class="glass-chip rounded-full px-4 py-2">Marketing agencies</li>
-        <li class="glass-chip rounded-full px-4 py-2">SMM specialists</li>
-        <li class="glass-chip rounded-full px-4 py-2">Paid ads specialists</li>
-        <li class="glass-chip rounded-full px-4 py-2">NDA on request</li>
-      </ul>
-    </div>
-
-    
-    <h3 class="mt-14 font-extrabold text-xl md:text-2xl reveal">Services and wholesale prices</h3>
-    <div class="mt-6 grid md:grid-cols-2 gap-5">
-      <div class="reveal glass glass-card glass-lift p-7 flex flex-col">
-        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h4 class="font-extrabold text-lg">Build from a ready spec</h4>
-          <div class="font-disp font-bold text-xl text-golddeep whitespace-nowrap">from $190</div>
-        </div>
-        <p class="mt-3 text-mut leading-relaxed">You already have the structure, copy and mockup. I build a responsive layout and lead forms, connect the services you need and publish the site.</p>
-        <span class="mt-auto pt-5 self-start"><span class="inline-block glass-inset rounded-full px-3.5 py-1.5 text-xs font-bold text-golddeep">3–5 working days</span></span>
-      </div>
-      <div class="reveal glass glass-card glass-lift p-7 flex flex-col" style="transition-delay:.08s">
-        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h4 class="font-extrabold text-lg">Turnkey landing page</h4>
-          <div class="font-disp font-bold text-xl text-golddeep whitespace-nowrap">from $245</div>
-        </div>
-        <p class="mt-3 text-mut leading-relaxed">Structure, design and development from a brief. For clients who need a landing page for paid traffic.</p>
-        <span class="mt-auto pt-5 self-start"><span class="inline-block glass-inset rounded-full px-3.5 py-1.5 text-xs font-bold text-golddeep">7–10 working days</span></span>
-      </div>
-      <div class="reveal glass glass-card glass-lift p-7 flex flex-col">
-        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h4 class="font-extrabold text-lg">WordPress, 5–7 pages</h4>
-          <div class="font-disp font-bold text-xl text-golddeep whitespace-nowrap">from $420</div>
-        </div>
-        <p class="mt-3 text-mut leading-relaxed">A corporate website with responsive design, agreed features and basic setup. The client can edit it on their own.</p>
-        <span class="mt-auto pt-5 self-start"><span class="inline-block glass-inset rounded-full px-3.5 py-1.5 text-xs font-bold text-golddeep">10–15 working days</span></span>
-      </div>
-      <div class="reveal glass glass-card glass-lift p-7 flex flex-col" style="transition-delay:.08s">
-        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h4 class="font-extrabold text-lg">Website maintenance</h4>
-          <div class="font-disp font-bold text-xl text-golddeep whitespace-nowrap">from $25<span class="text-sm text-mut font-semibold">/mo</span></div>
-        </div>
-        <p class="mt-3 text-mut leading-relaxed">Three plans: $25, $45 and $70 a month, depending on the workload. If you have several sites, we’ll discuss wholesale terms.</p>
-        <span class="mt-auto pt-5 self-start"><span class="inline-block glass-inset rounded-full px-3.5 py-1.5 text-xs font-bold text-golddeep">Paid monthly, in advance</span></span>
-      </div>
-    </div>
-
-    
-    <h3 class="mt-16 font-extrabold text-xl md:text-2xl reveal">More orders, bigger discount</h3>
-    <ol class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:items-end reveal">
-      <li class="glass glass-card p-5 md:p-6"><div class="font-disp font-bold text-3xl md:text-4xl">0%</div><p class="mt-1.5 text-sm text-mut font-semibold">1–2 orders</p></li>
-      <li class="glass glass-card p-5 md:p-6 lg:pt-8"><div class="font-disp font-bold text-3xl md:text-4xl">−5%</div><p class="mt-1.5 text-sm text-mut font-semibold">3–4 orders</p></li>
-      <li class="glass glass-card p-5 md:p-6 lg:pt-11"><div class="font-disp font-bold text-3xl md:text-4xl text-golddeep">−8%</div><p class="mt-1.5 text-sm text-mut font-semibold">5–7 orders</p></li>
-      <li class="glass-night p-5 md:p-6 lg:pt-14"><div class="font-disp font-bold text-3xl md:text-4xl text-gold2">−10%</div><p class="mt-1.5 text-sm text-mutd font-semibold">8 or more orders</p></li>
-    </ol>
-    <p class="mt-5 text-sm text-mut leading-relaxed max-w-3xl reveal">I count paid orders for the previous calendar month, and the discount applies to new orders in the next one. Complex projects, custom integrations and extra work are quoted separately.</p>
-
-    
-    <h3 class="mt-16 font-extrabold text-xl md:text-2xl reveal">Terms of work</h3>
-    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
-      <div class="glass glass-card glass-lift p-6"><h4 class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Payment</h4><p class="leading-snug">50% before we start, 50% once the result is approved.</p></div>
-      <div class="glass glass-card glass-lift p-6"><h4 class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Revisions</h4><p class="leading-snug">Two rounds within the spec. Beyond that, $15/hour by agreement.</p></div>
-      <div class="glass glass-card glass-lift p-6"><h4 class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Timeline</h4><p class="leading-snug">I fix the exact deadline once I have the spec and all the materials.</p></div>
-      <div class="glass glass-card glass-lift p-6"><h4 class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Confidentiality</h4><p class="leading-snug">I work under your brand and sign an NDA on request.</p></div>
-      <div class="glass glass-card glass-lift p-6"><h4 class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Handover</h4><p class="leading-snug">Code, source files and access are handed over under the contract.</p></div>
-      <div class="glass glass-card glass-lift p-6"><h4 class="text-[11px] font-disp uppercase tracking-[0.2em] text-golddeep mb-2.5">Contract</h4><p class="leading-snug">I work as a registered sole proprietor. Deadlines, scope and compensation for any delay on my side are set out in the contract.</p></div>
-    </div>
-
-    
-    <div class="mt-12 reveal glass-night rounded-[40px] p-7 md:p-10 grid lg:grid-cols-[1.15fr_.85fr] gap-8 lg:gap-12 items-center">
       <div>
-        <div class="text-[11px] font-disp uppercase tracking-[0.22em] text-gold2 mb-3">Let’s start with a pilot</div>
-        <p class="font-extrabold text-2xl md:text-3xl leading-tight">First project — <span class="font-disp text-gold2 whitespace-nowrap">$155</span></p>
-        <p class="mt-4 text-mutd leading-relaxed">Within an agreed scope. We’ll check the quality, the timing and how well we work together, then decide on regular orders.</p>
+        <h3>Design & development</h3>
+        <ul>
+          <li><b>Custom design, no ready-made templates.</b> I create a visual system for your business, grounded in usability, perception and modern web practice.</li>
+          <li><b>Search-friendly content.</b> I take into account how people search for your services, so the site makes sense to search engines as well as to visitors.</li>
+          <li><b>Easy on a phone.</b> Text is easy to read, buttons are easy to tap, and getting in touch never turns into a quest.</li>
+        </ul>
       </div>
-      <div class="lg:border-l lg:border-white/15 lg:pl-12">
-        <p class="text-sm text-mutd">Natalya Kozulina, Altyn Click · Almaty</p>
-        <div class="mt-5 flex flex-col sm:flex-row lg:flex-col gap-3">
-          <a href="https://t.me/altynclick" target="_blank" rel="noopener" class="btn btn-gold px-7 py-3.5">Discuss a pilot on Telegram</a>
-          <a href="https://wa.me/message/SEVFCLAYNOANG1" target="_blank" rel="noopener" class="btn glass-dark text-cream px-7 py-3.5">Message me on WhatsApp</a>
+      <div>
+        <h3>Launch & tech setup</h3>
+        <ul>
+          <li><b>Secure forms.</b> Basic spam protection and checks that every form works correctly.</li>
+          <li><b>Pre-launch testing.</b> I check responsiveness, key user flows and how the site looks on different devices.</li>
+          <li><b>Turnkey launch.</b> I connect the domain, publish the site and hand over all the files, so the project stays yours.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Help with domain and hosting</h3>
+        <ul><li>I’ll help you choose and set them up, and explain everything in plain language.</li></ul>
+        <h3>30 days of edits after launch</h3>
+        <ul><li>So you can try the site in real life at your own pace and tell me what needs adjusting.</li></ul>
+      </div>
+    </div>
+
+    <h3 class="sub" id="opts-title">Need something extra?</h3>
+    <p class="sub-lead">The base turnkey landing page ($265) covers everything you need to start selling. If your business needs something specific, add it to the project. <b>Tap the cards to build your package.</b></p>
+    <div class="opts" role="group" aria-labelledby="opts-title">
+      <button type="button" class="opt" aria-pressed="false" data-opt="lang" data-price="30000">
+        <span class="opt-name">Second language version</span>
+        <span class="opt-text">Kazakh or Russian — reach a wider circle of clients.</span>
+        <span class="opt-price num">+ $65</span>
+      </button>
+      <button type="button" class="opt" aria-pressed="false" data-opt="quiz" data-price="15000">
+        <span class="opt-name">Interactive calculator / quiz</span>
+        <span class="opt-text">Clients work out the price themselves — and arrive ready to buy.</span>
+        <span class="opt-price num">+ $35</span>
+      </button>
+      <button type="button" class="opt" aria-pressed="false" data-opt="express" data-price="25000">
+        <span class="opt-name">Express development</span>
+        <span class="opt-text">The whole project in up to 5 working days. For when you needed it yesterday.</span>
+        <span class="opt-price num">+ $55</span>
+      </button>
+    </div>
+    <div class="calc" aria-live="polite">
+      <div class="calc-rows">
+        <p class="calc-label">Your estimate</p>
+        <p>$265 (base) <span id="optSumLabel">— no add-ons yet</span></p>
+        <p id="optPromoLine" hidden></p>
+      </div>
+      <p class="calc-total"><span class="calc-eq">Total</span> <b id="optTotal" class="num">$265</b></p>
+    </div>
+    <a href="#contact" id="optCta" class="btn btn-primary">Send a request with this estimate</a>
+  </div>
+</section>
+
+<section class="read faq" id="faq" aria-labelledby="faq-title">
+  <div class="sheet">
+    <h2 id="faq-title">Honest answers — before you even ask</h2>
+        <div class="faq-list">
+      <details><summary>What if I don’t like what you come up with?</summary><p>We go step by step, so there are no surprises. First we agree on the structure and copy (the prototype), and only then do I move on to visuals and the build. All changes at the draft stage are included in the price. We keep refining until you like the site and it works for your clients.</p></details>
+      <details><summary>What if I don’t have copy, a logo or decent photos?</summary><p>That’s common. I take care of all the copy: I interview you, study your clients’ reviews and write clear, meaningful headlines. For visuals, I’ll help you find quality graphics, put together a neat logo and build a consistent style.</p></details>
+      <details><summary>Is the $265 base package really enough, or will I end up paying extra?</summary><p>The package covers everything: from research and copy to the build, mobile optimisation and setting up enquiries to arrive in Telegram. You only pay extra for add-ons you choose yourself (second language, calculator or quiz, express delivery — prices are in the “Add-ons” section) and for direct service costs: a domain (usually around $7–10 a year) and hosting, if you need a paid plan.</p></details>
+      <details><summary>How long does it take, and how involved do I need to be?</summary><p>Development takes 5 to 12 working days. From you, it takes about 15–20 minutes to fill in the brief at the start, plus quick approvals at two stages (structure and final draft). No endless calls — everything clear and to the point.</p></details>
+      <details><summary>What happens after launch? What if something breaks?</summary><p>After handover you get 30 days of free technical support. If you spot a mistake or want to tweak some text, I’ll fix it free of charge. You also get an archive of the files and a short video guide, so the project stays fully under your control.</p></details>
+      <details><summary>How does payment work, and is there a contract?</summary><p>Yes, everything is official. We set out the stages and commitments in a written agreement. Payment is split into two equal parts: 50% before work starts and 50% only after you approve the finished working draft, before it goes live.</p></details>
+      <details><summary>Why do I need a website if I already have Instagram?</summary><p>Instagram works well with people who already follow you. A website answers questions before anyone has to message you: what you offer, what it costs, how it works and why you can be trusted. People find it through search and via the link on 2GIS, and enquiries land straight in your Telegram. Instagram and a website don’t compete — the site link fits perfectly in your bio.</p></details>
+      <details><summary>Do you guarantee I’ll get enquiries?</summary><p>The number of enquiries depends on traffic, demand and the service itself, so I won’t promise specific numbers — that wouldn’t be honest. What I’m responsible for is that anyone who lands on your site quickly understands your offer, finds answers to their doubts and can get in touch in a couple of taps.</p></details>
+      <details><summary>Who owns the website after launch?</summary><p>You do. After launch I hand over an archive of all the files and a short video guide. The site isn’t tied to me — any developer can move it or build on it.</p></details>
+    </div>
+    <a class="link-out" href="https://t.me/altynclick" target="_blank" rel="noopener">Ask your question on Telegram <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-title" data-station="contact">
+  <div class="tor">
+    <h2 id="contact-title">Tell me about your project</h2>
+    <p class="tor-lead">I reply personally, usually within a day.</p>
+
+    <form id="leadForm" class="form" novalidate>
+      <fieldset class="seg">
+        <legend>What do you need?</legend>
+        <div class="seg-row">
+          <label><input type="radio" name="goal" value="site" checked><span>A new website</span></label>
+          <label><input type="radio" name="goal" value="audit"><span>A free review of my current site</span></label>
         </div>
-        <p class="mt-4 text-sm text-mutd">Phone: <a href="tel:+77056757050" class="font-bold text-cream whitespace-nowrap hover:text-gold2">+7 705 675 70 50</a></p>
+        <p class="hint" id="goalNote" hidden>I’ll review your website, Instagram or 2GIS listing for free: first impression, how clear your offer is and the path to an enquiry.</p>
+      </fieldset>
+
+      <div class="field">
+        <label for="f-name">Your name <span class="req">(required)</span></label>
+        <input id="f-name" name="name" required maxlength="80" autocomplete="name" aria-describedby="f-name-err">
+        <p class="err" id="f-name-err" hidden>Please tell me what to call you.</p>
+      </div>
+
+      <fieldset class="seg">
+        <legend>Best way to reach you</legend>
+        <div class="seg-row">
+          <label><input type="radio" name="channel" value="telegram" checked><span>Telegram</span></label>
+          <label><input type="radio" name="channel" value="whatsapp"><span>WhatsApp</span></label>
+          <label><input type="radio" name="channel" value="call"><span>Phone call</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="f-contact">Phone or @telegram <span class="req">(required)</span></label>
+        <input id="f-contact" name="contact" required maxlength="120" autocomplete="tel" aria-describedby="f-contact-hint f-contact-err">
+        <p class="hint" id="f-contact-hint">E.g. +7 701 123 45 67 or @username</p>
+        <p class="err" id="f-contact-err" hidden>Please add a phone number or Telegram username so I can reply.</p>
+      </div>
+
+      <div class="field">
+        <label for="f-message">About the project <span class="req">(required)</span></label>
+        <textarea id="f-message" name="message" required maxlength="1500" rows="4" aria-describedby="f-message-hint f-message-err"></textarea>
+        <p class="hint" id="f-message-hint">What your business does and what you need from the site. A couple of sentences is enough.</p>
+        <p class="err" id="f-message-err" hidden>Please describe the project in a few words.</p>
+      </div>
+
+      <div class="field">
+        <label for="f-link">Website, Instagram or 2GIS <span class="opt-mark">(if you have one)</span></label>
+        <input id="f-link" name="link" maxlength="300" autocomplete="url" inputmode="url">
+      </div>
+
+      <div class="promo" id="promoBox">
+        <button type="button" id="promoToggle" class="link-btn" aria-expanded="false" aria-controls="promoField">I have a promo code</button>
+        <div id="promoField" hidden>
+          <label for="f-promo">Promo code</label>
+          <div class="promo-row">
+            <input id="f-promo" name="promo" maxlength="32" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="f-promo-msg">
+            <button type="button" id="promoApply" class="btn btn-quiet btn-sm">Apply</button>
+          </div>
+          <p id="f-promo-msg" class="hint" aria-live="polite"></p>
+        </div>
+      </div>
+            <div id="calcSummary" class="calc-summary" hidden></div>
+      <input type="hidden" name="options" id="f-options">
+      <input type="hidden" name="utm_source">
+      <input type="hidden" name="utm_medium">
+      <input type="hidden" name="utm_campaign">
+            <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+      <div class="field consent">
+        <input type="checkbox" id="f-consent" name="consent" value="yes" required aria-describedby="f-consent-err">
+        <label for="f-consent">I agree to the processing of my personal data from this form so you can reply to my request, as described in the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>.</label>
+        <p class="err" id="f-consent-err" hidden>I can’t process your request without your consent — please tick the box.</p>
+      </div>
+      <div id="turnstileBox" class="turnstile"></div>
+      <button type="submit" id="leadBtn" class="btn btn-primary btn-lg btn-block">Send request</button>
+      <p class="form-alt">No spam — I’ll only contact you about your request. Prefer to message right away? <a href="https://t.me/altynclick" target="_blank" rel="noopener">Telegram</a> · <a href="https://wa.me/message/SEVFCLAYNOANG1" target="_blank" rel="noopener">WhatsApp</a></p>
+    </form>
+
+    <div id="leadOk" class="form-ok" hidden>
+      <h3 id="leadOkTitle" tabindex="-1">Request sent!</h3>
+      <p>Thank you! I’ll look at what you sent and reply within a day. If it’s urgent, message me on <a href="https://t.me/altynclick" target="_blank" rel="noopener">Telegram</a> or <a href="https://wa.me/message/SEVFCLAYNOANG1" target="_blank" rel="noopener">WhatsApp</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="read partners" id="partners" aria-labelledby="partners-title">
+  <div class="sheet">
+    <h2 id="partners-title">Websites under your agency’s brand</h2>
+    <p class="sub-lead">You bring the clients, I build the websites. <b>You expand your services without an in-house developer</b>, and the client stays yours: I work under your brand and talk to the client the way we agree.</p>
+    <ul class="chips" aria-label="Who it’s for">
+      <li>Marketing agencies</li>
+      <li>SMM specialists</li>
+      <li>Paid ads specialists</li>
+      <li>NDA on request</li>
+    </ul>
+
+    <h3 class="sub">Services and wholesale prices</h3>
+    <div class="svc">
+      <div><h4>Build from a ready spec</h4><p class="svc-price num">from $190</p><p>You already have the structure, copy and mockup. I build a responsive layout and lead forms, connect the services you need and publish the site.</p><p class="svc-time">3–5 working days</p></div>
+      <div><h4>Turnkey landing page</h4><p class="svc-price num">from $245</p><p>Structure, design and development from a brief. For clients who need a landing page for paid traffic.</p><p class="svc-time">7–10 working days</p></div>
+      <div><h4>WordPress, 5–7 pages</h4><p class="svc-price num">from $420</p><p>A corporate website with responsive design, agreed features and basic setup. The client can edit it on their own.</p><p class="svc-time">10–15 working days</p></div>
+      <div><h4>Website maintenance</h4><p class="svc-price num">from $25/mo</p><p>Three plans: $25, $45 and $70 a month, depending on the workload. If you have several sites, we’ll discuss wholesale terms.</p><p class="svc-time">Paid monthly, in advance</p></div>
+    </div>
+
+    <h3 class="sub">More orders, bigger discount</h3>
+    <ol class="tiers">
+      <li><b class="num">0%</b><span>1–2 orders</span></li>
+      <li><b class="num">−5%</b><span>3–4 orders</span></li>
+      <li><b class="num">−8%</b><span>5–7 orders</span></li>
+      <li><b class="num">−10%</b><span>8 or more orders</span></li>
+    </ol>
+    <p class="fine">I count paid orders for the previous calendar month, and the discount applies to new orders in the next one. Complex projects, custom integrations and extra work are quoted separately.</p>
+
+    <h3 class="sub">Terms of work</h3>
+    <dl class="terms terms-3">
+      <div><dt>Payment</dt><dd>50% before we start, 50% once the result is approved.</dd></div>
+      <div><dt>Revisions</dt><dd>Two rounds within the spec. Beyond that, $15/hour by agreement.</dd></div>
+      <div><dt>Timeline</dt><dd>I fix the exact deadline once I have the spec and all the materials.</dd></div>
+      <div><dt>Confidentiality</dt><dd>I work under your brand and sign an NDA on request.</dd></div>
+      <div><dt>Handover</dt><dd>Code, source files and access are handed over under the contract.</dd></div>
+      <div><dt>Contract</dt><dd>I work as a registered sole proprietor. Deadlines, scope and compensation for any delay on my side are set out in the contract.</dd></div>
+    </dl>
+
+    <div class="pilot">
+      <div>
+        <h3>Let’s start with a pilot</h3>
+        <p class="pilot-price">First project — <b class="num">$155</b></p>
+        <p>Within an agreed scope. We’ll check the quality, the timing and how well we work together, then decide on regular orders.</p>
+      </div>
+      <div class="pilot-contact">
+        <p>Natalya Kozulina, Altyn Click · Almaty</p>
+        <a class="btn btn-primary" href="https://t.me/altynclick" target="_blank" rel="noopener">Discuss a pilot on Telegram</a>
+        <a class="btn btn-quiet" href="https://wa.me/message/SEVFCLAYNOANG1" target="_blank" rel="noopener">Message me on WhatsApp</a>
+        <p>Phone: <a href="tel:+77056757050">+7 705 675 70 50</a></p>
       </div>
     </div>
   </div>
@@ -1143,53 +766,39 @@
 
 </main>
 
-
-<footer class="night text-cream pt-16 pb-8 mt-10">
-  <div class="max-w-6xl mx-auto px-4 md:px-8">
-    <div class="grid md:grid-cols-[1.2fr_1fr_1fr] gap-10 pb-12 border-b border-white/10">
-      <div>
-        <div class="brand font-semibold text-lg">altyn<span class="text-gold">·click</span></div>
-        <p class="mt-4 text-mutd text-sm leading-relaxed max-w-xs">Websites that sell, for small businesses. A site that keeps selling while you get on with your work.</p>
-      </div>
-      <div>
-        <div class="text-xs font-disp uppercase tracking-[0.22em] text-mutd mb-4">Navigation</div>
-        <div class="flex flex-col gap-0.5 text-sm font-semibold">
-          <a href="#works" class="py-1.5 hover:text-gold2 transition-colors">Work</a>
-          <a href="#about" class="py-1.5 hover:text-gold2 transition-colors">About</a>
-          <a href="#process" class="py-1.5 hover:text-gold2 transition-colors">Process</a>
-          <a href="#offer" class="py-1.5 hover:text-gold2 transition-colors">Package</a>
-          <a href="#audit" class="py-1.5 hover:text-gold2 transition-colors">Free audit</a>
-          <a href="#faq" class="py-1.5 hover:text-gold2 transition-colors">FAQ</a>
-          <a href="#partners" class="py-1.5 hover:text-gold2 transition-colors">For agencies</a>
-        </div>
-      </div>
-      <div>
-        <div class="text-xs font-disp uppercase tracking-[0.22em] text-mutd mb-4">Contact</div>
-        <div class="flex flex-col gap-0.5 text-sm font-semibold">
-          <a href="https://t.me/altynclick" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 py-1.5 hover:text-gold2 transition-colors"><svg aria-hidden="true" class="w-4 h-4 text-gold2" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>@altynclick</a>
-          <a href="https://wa.me/message/SEVFCLAYNOANG1" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 py-1.5 hover:text-gold2 transition-colors"><svg aria-hidden="true" class="w-4 h-4 text-gold2" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</a>
-          <a href="https://instagram.com/altyn.click" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 py-1.5 hover:text-gold2 transition-colors"><svg aria-hidden="true" class="w-4 h-4 text-gold2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>@altyn.click</a>
-        </div>
-        <p class="mt-4 text-xs text-mutd">Almaty · working remotely across Kazakhstan</p>
-        <div class="lang-sw lang-sw-dark mt-5" role="group" aria-label="Site language">
-          <a href="/" hreflang="ru" lang="ru" data-lang="ru">Рус</a>
-          <a href="/kz/" hreflang="kk" lang="kk" data-lang="kk">Қаз</a>
-          <a href="/en/" hreflang="en" lang="en" data-lang="en" aria-current="page">Eng</a>
-        </div>
-      </div>
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <p class="brand">altyn<span>·click</span></p>
+      <p>Websites that sell, for small businesses. A site that keeps selling while you get on with your work.</p>
     </div>
-    <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-mutd">
-      <div>© <span id="year">2025</span> Altyn Click · All rights reserved · <a href="privacy.html" class="underline hover:text-gold2">Privacy policy</a></div>
-      <div>Made with care for your clients</div>
+    <nav aria-label="Page navigation">
+      <a href="#works">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#price">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Discuss your project</a>
+      <a href="#partners">For agencies</a>
+    </nav>
+    <div class="foot-contacts">
+      <a href="https://t.me/altynclick" target="_blank" rel="noopener">Telegram @altynclick</a>
+      <a href="https://wa.me/message/SEVFCLAYNOANG1" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://instagram.com/altyn.click" target="_blank" rel="noopener">Instagram @altyn.click</a>
+      <p>Almaty · working remotely across Kazakhstan</p>
+      <div class="lang-sw" role="group" aria-label="Site language">
+        <a href="/" hreflang="ru" lang="ru" data-lang="ru">Рус</a>
+        <a href="/kz/" hreflang="kk" lang="kk" data-lang="kk">Қаз</a>
+        <a href="/en/" hreflang="en" lang="en" data-lang="en" aria-current="page">Eng</a>
+      </div>
     </div>
   </div>
+  <p class="foot-legal">© <span id="year">2026</span> Altyn Click · All rights reserved · <a href="privacy.html">Privacy policy</a></p>
 </footer>
 
-
-<div id="workModal" class="fixed inset-0 z-[90] hidden" role="dialog" aria-modal="true" aria-labelledby="workTitle">
-  <div class="absolute inset-0 modal-scrim" data-close></div>
-  <div class="relative h-full overflow-y-auto p-4 md:p-8">
-    <div class="panel max-w-3xl mx-auto glass-modal rounded-[32px] overflow-hidden" id="modalBody"></div>
+<div id="workModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="workTitle" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" id="modalScroll">
+    <div id="modalBody"></div>
   </div>
 </div>
 

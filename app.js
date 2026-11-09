@@ -1,5 +1,7 @@
 /* ================================================================
    Altyn Click — вся логика страницы
+   3D-мир (dist/world.js, исходники в src/world/) подгружается отсюда
+   только когда устройство его потянет; без него страница полная.
 ================================================================ */
 
 /* ---------- 0. Настройки: меняются здесь ---------- */
@@ -13,8 +15,8 @@ const WA = 'https://wa.me/message/SEVFCLAYNOANG1';
 // Must match PRICES in functions/api/promo.js — the server recalculates the total from its own copy
 const BASE_PRICE = 120000;
 
-const ARR = '<svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-const CHK = '<svg aria-hidden="true" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+const ARR = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const EXT = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>';
 
 /* ---------- Языки ---------- */
 // The page language comes from <html lang>. /kz/ and /en/ load i18n/<lang>.js before this file;
@@ -43,15 +45,15 @@ const RU = {
   errors: {
     captcha: 'Проверка от спама не прошла — попробуйте ещё раз.',
     contact: 'Проверьте контакт: нужен телефон или ник в Telegram.',
-    required: 'Заполните имя и контакт.',
+    required: 'Заполните имя, контакт и пару слов о проекте.',
     consent: 'Отметьте согласие на обработку данных.',
   },
   errGeneric: 'Не получилось отправить. Попробуйте ещё раз.',
+  errNetwork: 'Нет связи с сервером — заявка не ушла. Проверьте интернет и отправьте ещё раз.',
+  hintTg: 'Например, @username или +7 701 123 45 67',
+  hintPhone: 'Например, +7 701 123 45 67',
   // Turnstile has no Kazakh UI; 'auto' follows the browser language
   turnstileLang: 'ru',
-  openCase: 'Открыть кейс: ',
-  galExpand: 'Смотреть все проекты',
-  galCollapse: 'Свернуть галерею',
   city: 'Алматы',
   done: 'Что сделано',
   highlight: 'Изюминка',
@@ -109,59 +111,63 @@ document.addEventListener('click', e => {
   else if (a.dataset.goal) track(a.dataset.goal);
 });
 
-/* ---------- 1. Шапка, меню, reveal ---------- */
+/* ---------- 1. Шапка и меню ---------- */
 const hdr = document.getElementById('hdr');
-// Glass bar styles live in src/input.css (#hdr.hdr-on .hdr-bar)
-const HDR_ON = ['hdr-on'];
-let hdrScrolled = false;
-addEventListener('scroll', () => {
+let hdrOn = false;
+function onScrollHeader() {
   const on = scrollY > 12;
-  if (on === hdrScrolled) return;
-  hdrScrolled = on;
-  HDR_ON.forEach(c => hdr.classList.toggle(c, on));
-}, { passive: true });
+  if (on !== hdrOn) { hdrOn = on; hdr.classList.toggle('on', on); }
+}
+addEventListener('scroll', onScrollHeader, { passive: true });
+onScrollHeader();
 
 const mobMenu = document.getElementById('mobMenu');
 const burger = document.getElementById('burger');
 function setMenu(open) {
-  mobMenu.classList.toggle('hidden', !open);
+  mobMenu.hidden = !open;
+  hdr.classList.toggle('menu-open', open);
   burger.setAttribute('aria-expanded', String(open));
   burger.setAttribute('aria-label', open ? T.menuClose : T.menuOpen);
 }
-burger.addEventListener('click', () => setMenu(mobMenu.classList.contains('hidden')));
+burger.addEventListener('click', () => setMenu(mobMenu.hidden));
 mobMenu.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', () => setMenu(false)));
 addEventListener('keydown', e => {
-  if (e.key === 'Escape' && !mobMenu.classList.contains('hidden')) { setMenu(false); burger.focus(); }
+  if (e.key === 'Escape' && !mobMenu.hidden) { setMenu(false); burger.focus(); }
 });
 
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-}), { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-/* ---------- 2. FAQ ---------- */
-const faqBtns = [...document.querySelectorAll('.faq-q')];
-faqBtns.forEach((btn, i) => {
-  const panel = btn.nextElementSibling;
-  panel.id = 'faq-a-' + i;
-  btn.id = 'faq-q-' + i;
-  btn.setAttribute('aria-controls', panel.id);
-  btn.setAttribute('aria-expanded', 'false');
-  panel.setAttribute('role', 'region');
-  panel.setAttribute('aria-labelledby', btn.id);
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const wasOpen = item.classList.contains('open');
-    faqBtns.forEach(b => {
-      b.closest('.faq-item').classList.remove('open');
-      b.setAttribute('aria-expanded', 'false');
-    });
-    if (!wasOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+/* ---------- 2. Указатель маршрута ---------- */
+// One gauge for the whole route: entrance → nine works → approach → request. Its fill follows the scroll.
+const route = document.getElementById('route');
+const routeLinks = [...route.querySelectorAll('a[data-route]')];
+const workEls = [...document.querySelectorAll('.work')];
+const ticks = route.querySelector('.route-ticks');
+workEls.forEach(() => ticks.appendChild(document.createElement('i')));
+const routeTargets = routeLinks.map(a => document.getElementById(a.dataset.route));
+function updateRoute() {
+  const mid = scrollY + innerHeight * 0.45;
+  const max = document.documentElement.scrollHeight - innerHeight;
+  // The gauge ends at the form: everything after it (agencies, footer) counts as arrived
+  const end = Math.max(1, Math.min(max, document.getElementById('contact').offsetTop));
+  route.style.setProperty('--route', Math.min(1, scrollY / end).toFixed(4));
+  let cur = 0;
+  routeTargets.forEach((el, i) => { if (el && el.offsetTop <= mid) cur = i; });
+  routeLinks.forEach((a, i) => { if (i === cur) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current'); });
+  [...ticks.children].forEach((t, i) => {
+    const w = workEls[i];
+    t.classList.toggle('on', w.offsetTop <= mid && w.offsetTop + w.offsetHeight > mid);
   });
-});
+}
+let routeQueued = false;
+addEventListener('scroll', () => {
+  if (routeQueued) return;
+  routeQueued = true;
+  requestAnimationFrame(() => { routeQueued = false; updateRoute(); });
+}, { passive: true });
+addEventListener('resize', updateRoute, { passive: true });
+updateRoute();
 
 /* ---------- 3. Калькулятор опций + промокод ---------- */
-const form = document.getElementById('auditForm');
+const form = document.getElementById('leadForm');
 const optCards = [...document.querySelectorAll('.opt')];
 const optField = document.getElementById('f-options');
 const calcSummary = document.getElementById('calcSummary');
@@ -169,7 +175,7 @@ const promoLine = document.getElementById('optPromoLine');
 let promo = null; // { code, label, percent?, amount? } once the server confirms the code
 
 function calc() {
-  const picked = optCards.filter(c => c.classList.contains('on'));
+  const picked = optCards.filter(c => c.getAttribute('aria-pressed') === 'true');
   const subtotal = basePrice + picked.reduce((sum, c) => sum + optPrice(c), 0);
   let discount = 0;
   if (promo) discount = Math.min(subtotal, promo.percent ? Math.round(subtotal * promo.percent / 100) : promoAmount(promo));
@@ -189,14 +195,13 @@ function recalc() {
   optField.value = picked.map(c => c.dataset.opt).join(',');
   calcSummary.hidden = !picked.length && !promo;
   if (!calcSummary.hidden) {
-    const names = picked.map(c => c.querySelector('h3').textContent.trim());
-    calcSummary.innerHTML = ''; // rebuilt from our own strings below, no user input
+    const names = picked.map(c => c.querySelector('.opt-name').textContent.trim());
+    calcSummary.textContent = '';
     const add = (label, value) => {
       const row = document.createElement('div');
-      row.className = 'flex justify-between gap-3';
-      row.innerHTML = '<span></span><b class="whitespace-nowrap"></b>';
-      row.children[0].textContent = label;
-      row.children[1].textContent = value;
+      const l = document.createElement('span'), v = document.createElement('b');
+      l.textContent = label; v.textContent = value; v.className = 'num';
+      row.append(l, v);
       calcSummary.appendChild(row);
     };
     add(T.rowBase, money(basePrice));
@@ -206,12 +211,12 @@ function recalc() {
   }
 }
 optCards.forEach(card => card.addEventListener('click', () => {
-  card.setAttribute('aria-pressed', String(card.classList.toggle('on')));
+  card.setAttribute('aria-pressed', String(card.getAttribute('aria-pressed') !== 'true'));
   recalc();
 }));
 // Leaving the calculator for the form: land on the first field
 document.getElementById('optCta').addEventListener('click', () => {
-  setTimeout(() => form.elements.name.focus({ preventScroll: true }), REDUCED.matches ? 0 : 500);
+  setTimeout(() => form.elements.name.focus({ preventScroll: true }), REDUCED.matches ? 0 : 700);
 });
 
 const promoToggle = document.getElementById('promoToggle');
@@ -227,7 +232,7 @@ promoToggle.addEventListener('click', () => { openPromo(); promoInput.focus(); }
 
 function setPromoMsg(text, ok) {
   promoMsg.textContent = text;
-  promoMsg.className = 'text-xs mt-1.5 ' + (ok ? 'text-[#2F7A4A] font-bold' : 'text-red-700');
+  promoMsg.className = 'hint ' + (text ? (ok ? 'ok' : 'bad') : '');
 }
 async function applyPromo() {
   const code = promoInput.value.trim().toUpperCase();
@@ -269,34 +274,59 @@ if (qs.get('promo')) {
 }
 
 /* ---------- 4. Форма заявки ---------- */
-const btn = document.getElementById('auditBtn');
+const btn = document.getElementById('leadBtn');
 const BTN_TXT = btn.textContent;
+// Same rule as functions/api/lead.js: a phone with 10+ digits or a Telegram username
+const contactOk = v => v.replace(/\D/g, '').length >= 10 || /^@?[a-zA-Z0-9_]{4,32}$/.test(v.trim());
 const REQUIRED = [
   { el: form.elements.name, err: document.getElementById('f-name-err') },
-  { el: form.elements.contact, err: document.getElementById('f-contact-err') },
+  { el: form.elements.contact, err: document.getElementById('f-contact-err'), ok: contactOk },
+  { el: form.elements.message, err: document.getElementById('f-message-err') },
   { el: form.elements.consent, err: document.getElementById('f-consent-err') },
 ];
-const filled = el => el.type === 'checkbox' ? el.checked : !!el.value.trim();
+const valid = f => f.el.type === 'checkbox' ? f.el.checked : !!f.el.value.trim() && (!f.ok || f.ok(f.el.value));
 function setFieldError(f, bad) {
   f.el.setAttribute('aria-invalid', String(bad));
   f.err.hidden = !bad;
 }
 // Clear a field's error as soon as the user fixes it
-REQUIRED.forEach(f => f.el.addEventListener(f.el.type === 'checkbox' ? 'change' : 'input', () => { if (filled(f.el)) setFieldError(f, false); }));
+REQUIRED.forEach(f => f.el.addEventListener(f.el.type === 'checkbox' ? 'change' : 'input', () => { if (valid(f)) setFieldError(f, false); }));
+// A filled contact is checked when the visitor leaves the field, not while typing
+form.elements.contact.addEventListener('blur', () => {
+  const f = REQUIRED[1];
+  if (f.el.value.trim()) setFieldError(f, !valid(f));
+});
+
+// "What do you need": the free review explains itself
+const goalNote = document.getElementById('goalNote');
+form.querySelectorAll('input[name="goal"]').forEach(r => r.addEventListener('change', () => {
+  goalNote.hidden = form.elements.goal.value !== 'audit';
+}));
+// "How to reach you": the hint follows the channel; WhatsApp and calls need a phone number
+const contactHint = document.getElementById('f-contact-hint');
+form.querySelectorAll('input[name="channel"]').forEach(r => r.addEventListener('change', () => {
+  const tg = form.elements.channel.value === 'telegram';
+  contactHint.textContent = tg ? T.hintTg : T.hintPhone;
+  form.elements.contact.setAttribute('inputmode', tg ? 'text' : 'tel');
+}));
 
 function showFormError(text) {
-  let err = document.getElementById('auditErr');
+  let err = document.getElementById('leadErr');
   if (!err) {
     err = document.createElement('p');
-    err.id = 'auditErr';
+    err.id = 'leadErr';
+    err.className = 'form-error';
     err.setAttribute('role', 'alert');
-    err.className = 'text-sm text-center text-red-700';
-    form.appendChild(err);
+    btn.before(err);
   }
   // Static markup with our own text only, never user input
   err.innerHTML = text + T.errTail(
-    '<a href="' + TG + '" target="_blank" rel="noopener" class="font-bold underline">Telegram</a>',
-    '<a href="' + WA + '" target="_blank" rel="noopener" class="font-bold underline">WhatsApp</a>');
+    '<a href="' + TG + '" target="_blank" rel="noopener">Telegram</a>',
+    '<a href="' + WA + '" target="_blank" rel="noopener">WhatsApp</a>');
+}
+function clearFormError() {
+  const err = document.getElementById('leadErr');
+  if (err) err.remove();
 }
 
 // Cloudflare Turnstile: loaded only when a site key is configured
@@ -311,14 +341,21 @@ if (TURNSTILE_SITEKEY) {
   document.head.appendChild(ts);
 }
 
+function setSending(on) {
+  btn.disabled = on;
+  btn.setAttribute('aria-busy', String(on));
+  if (on) btn.innerHTML = '<span class="btn-spin" aria-hidden="true"></span>' + T.sending;
+  else btn.textContent = BTN_TXT;
+}
+
 form.addEventListener('submit', e => {
   e.preventDefault();
-  const invalid = REQUIRED.filter(f => !filled(f.el));
+  clearFormError();
+  const invalid = REQUIRED.filter(f => !valid(f));
   REQUIRED.forEach(f => setFieldError(f, invalid.includes(f)));
   if (invalid.length) { invalid[0].el.focus(); return; }
 
-  btn.disabled = true;
-  btn.textContent = T.sending;
+  setSending(true);
   // An unconfirmed code still travels with the lead; the server re-checks it
   fetch('/api/lead', {
     method: 'POST',
@@ -326,19 +363,24 @@ form.addEventListener('submit', e => {
     // lang tells the owner which language to reply in
     body: JSON.stringify({ ...Object.fromEntries(new FormData(form)), lang: LANG }),
   })
-    .then(r => r.json().then(d => { if (!r.ok || !d.ok) throw new Error(d.error || r.status); }))
+    .then(r => r.json().catch(() => ({})).then(d => { if (!r.ok || !d.ok) throw new Error(d.error || r.status); }))
+    // Success is shown only after the server confirmed the lead reached Telegram
     .then(() => {
-      form.classList.add('hidden');
-      document.getElementById('auditOk').classList.remove('hidden');
-      document.getElementById('auditOkTitle').focus();
-      track('lead_submit', { promo: promo ? promo.code : '', options: optField.value, lang: LANG });
+      form.hidden = true;
+      const ok = document.getElementById('leadOk');
+      ok.hidden = false;
+      document.getElementById('leadOkTitle').focus();
+      document.dispatchEvent(new CustomEvent('lead:sent'));
+      track('lead_submit', { promo: promo ? promo.code : '', options: optField.value, goal: form.elements.goal.value, lang: LANG });
     })
     .catch(err => {
-      btn.disabled = false;
-      btn.textContent = BTN_TXT;
+      setSending(false);
       // Turnstile tokens are single-use: a new one is needed for the retry
       if (turnstileId !== null && window.turnstile) turnstile.reset(turnstileId);
-      showFormError(T.errors[err.message] || T.errGeneric);
+      const msg = err instanceof TypeError ? T.errNetwork : (T.errors[err.message] || T.errGeneric);
+      showFormError(msg);
+      // The button was disabled while sending, so focus fell to the page; give it back for the retry
+      btn.focus();
     });
 });
 
@@ -346,14 +388,12 @@ form.addEventListener('submit', e => {
 // Every project ships 5 desktop (1416×768) and 5 mobile (585×1266 = 390px viewport @1.5x) WebP shots; 01 = hero, 02–05 = key sections
 const shots = id => [1,2,3,4,5].map(n => ROOT + 'screenshots/' + id + '/0' + n + '.webp');
 const mshots = id => [1,2,3,4,5].map(n => ROOT + 'screenshots/' + id + '/m/0' + n + '.webp');
-// Must match the Tailwind `sm` breakpoint used in the image classes below
-const MOBILE_Q = '(max-width: 639px)';
-const MOBILE = matchMedia(MOBILE_Q);
+// Must match the max-width in the <picture> sources of the work cards
+const MOBILE = matchMedia('(max-width: 767px)');
 // Figures in case texts are only those visible on the client's live site or in its screenshots
 const works = [
   {
     id:'savepoint', name:'Save Point', cat:'Кофейня и коворкинг',
-    tag:'Стол с розеткой и кофе к нужной минуте',
     tagline:'Бронь стола за 30 секунд — эспрессо готов к приходу',
     url:'https://savepoint-1hu.pages.dev/',
     about:'Лендинг спешелти-кофейни и laptop-friendly пространства в центре Алматы для фрилансеров, стартаперов и тех, кто назначает встречи в центре. Их главная боль — кружить по залу в поисках свободного стола с розеткой и ловить косые взгляды персонала из-за ноутбука. Задача — перенести выбор места и заказ в онлайн и привести к брони стола или предзаказу напитка.',
@@ -369,7 +409,6 @@ const works = [
   },
   {
     id:'elara', name:'ELARA Dental', cat:'Стоматология',
-    tag:'Стоматология с ценой, известной до лечения',
     tagline:'Цена без сюрпризов: осмотр, снимки и план лечения — до кресла',
     url:'https://elara-dental.pages.dev/',
     about:'Лендинг новой стоматологической клиники ELARA Dental в Алматы: лечение, эстетика и протезирование для взрослых и детей. Для тех, кто откладывает визит из-за прошлого неудачного опыта и страха неожиданного счёта. Задача — дать новой клинике без отзывов аргументы доверия и привести к записи на консультацию с планом лечения.',
@@ -385,7 +424,6 @@ const works = [
   },
   {
     id:'alba', name:'Alba', cat:'Салон красоты',
-    tag:'Красота за 90 минут · время для себя',
     tagline:'Красота за 90 минут — премиум без потери времени',
     url:'https://alba-7wj.pages.dev/',
     about:'Премиальный лендинг салона красоты Alba в Алматы для занятых женщин 25–45 лет. Услуги: сложное окрашивание, ногтевой сервис, брови. Задача — снять три главных страха клиентки: «испортят волосы», «отнимут полдня», «обманут с ценой» — и привести к записи через форму или WhatsApp.',
@@ -401,7 +439,6 @@ const works = [
   },
   {
     id:'proremont', name:'ProRemont', cat:'Ремонт под ключ',
-    tag:'Ремонт квартир без сюрпризов',
     tagline:'Ремонт без сюрпризов: цена в договоре — не на словах',
     url:'https://proremont-11k.pages.dev/',
     about:'Лендинг ремонтной компании полного цикла в Алматы — черновая отделка, «под ключ», дизайнерский ремонт. Для тех, кто боится типичных рисков ремонта: цена «поплыла», подрядчик пропал, сроки сорваны. Задача — перевести недоверие в заявку через расчёт, конкретные гарантии и примеры объектов.',
@@ -417,7 +454,6 @@ const works = [
   },
   {
     id:'tropinka', name:'Тропинка', cat:'Детский центр',
-    tag:'Подготовка к школе и развитие детей 3–6 лет',
     tagline:'«Тропинка к школе» — подготовка без родительской тревоги',
     url:'https://tropinka.pages.dev/',
     about:'Конверсионный одностраничный сайт для детского центра в Алматы. Программы для детей 3–6 лет: подготовка к школе, логопедия, студия рисования, казахский и английский языки. Задача — снять родительскую тревогу «не опоздали ли мы», понятно объяснить методику и программы и перевести сомневающегося родителя в запись на пробное занятие.',
@@ -433,7 +469,6 @@ const works = [
   },
   {
     id:'steps', name:'Steps', cat:'Детский развивающий центр',
-    tag:'Каждый шаг — развитие, и каждый шаг виден',
     tagline:'Прозрачность, которую можно увидеть: камеры и диагностика',
     url:'https://stupenky.pages.dev/',
     about:'Лендинг детского развивающего центра Steps в Алматы для детей 1,5–7 лет (речевое развитие, логика, подготовка к школе). Для родителей, которых пугает неизвестность — «а что там реально происходит с ребёнком». Задача — перевести это в запись на бесплатное пробное занятие через прозрачность.',
@@ -449,7 +484,6 @@ const works = [
   },
   {
     id:'targetolog', name:'Азамат Жеңісұлы', cat:'Таргетолог',
-    tag:'Таргет, который окупается ×3 — и это можно посчитать',
     tagline:'Системный таргет вместо «настроил и надеялся»: 7 шагов и живой расчёт цели',
     url:'https://azamat-targetolog.pages.dev/v1',
     about:'Персональный сайт таргетолога из Алматы, который запускает рекламу в Instagram, Facebook и TikTok для товарного бизнеса, сферы услуг, экспертов и онлайн-школ. Услуга невидимая, а главный вопрос предпринимателя — «вернутся ли мои деньги». Задача — показать подход и логику работы, назвать результат языком денег (×3) и привести к разговору в WhatsApp.',
@@ -465,7 +499,6 @@ const works = [
   },
   {
     id:'wedding', name:'Айгерим &amp; Тимур', cat:'Свадебное приглашение',
-    tag:'Свадьба, на которой гость знает свой стол и свой трансфер',
     tagline:'Всё, о чём гость спросил бы в чате, — на одной странице',
     url:'https://azamat-targetolog.pages.dev/v2',
     about:'Сайт-приглашение на свадьбу 12 июня 2027 года в саду «Бес Терек» в предгорьях Алатау. Обычно гостям приходится собирать детали из десятка сообщений: во сколько, куда ехать, что надеть, где сидеть, что дарить. Задача — собрать всё по одному адресу и получить от каждого гостя ответ о присутствии, выборе горячего и трансфере.',
@@ -481,7 +514,6 @@ const works = [
   },
   {
     id:'birthday', name:'Миссия «Мирон-7»', cat:'Детский праздник',
-    tag:'День рождения как космический рейс с посадочным талоном',
     tagline:'Родители отвечают за минуту, ребёнок ждёт старта',
     url:'https://azamat-targetolog.pages.dev/v3',
     about:'Сайт-приглашение на седьмой день рождения в космической теме: 17 октября 2026, 14:00–18:00, детский центр «Орбита» в Алматы. Родителям приглашённых детей нужно быстро понять, куда и во сколько идти, что надеть и что подарить, а организатору — собрать ответы, аллергии и время забора без десятка личных сообщений. Задача — превратить организационную рассылку в игру, в которую интересно играть и взрослым, и детям.',
@@ -497,182 +529,82 @@ const works = [
   }
 ];
 works.forEach(w => {
-  // Translated fields (cat, tag, tagline, about, done, highlight) replace the Russian ones
+  // Translated fields (cat, tagline, about, done, highlight) replace the Russian ones
   Object.assign(w, L10N.works && L10N.works[w.id]);
-  w.cover = shots(w.id)[0];
   w.shots = shots(w.id);
   w.mshots = mshots(w.id);
-  w.mcover = w.mshots[0];
 });
 
-/* ---------- 6. Портфолио: стопка → кейс, сетка по кнопке ---------- */
-// Grid cards are static HTML (indexable); the stack is built here from the same data
-const pic = (w, cls) =>
-  '<picture><source media="' + MOBILE_Q + '" srcset="' + w.mcover + '" width="585" height="1266">' +
-  '<img src="' + w.cover + '" alt="" width="1416" height="768" loading="lazy" decoding="async" class="' + cls + '"></picture>';
-const stackEl = document.getElementById('workStack');
-const gridEl  = document.getElementById('workGrid');
-const galToggle = document.getElementById('galToggle');
-const galBtnTxt = document.getElementById('galBtnTxt');
-let expanded = false;
-
-works.forEach((w, i) => {
-  // Stack card: a real button that opens the case directly (no intermediate grid step)
-  const sp = document.createElement('button');
-  sp.type = 'button';
-  sp.className = 'ws-pos text-left';
-  sp.dataset.work = w.id;
-  sp.setAttribute('aria-haspopup', 'dialog');
-  sp.style.zIndex = 10 + i * 10;
-  sp.innerHTML =
-    // Visible text stays the accessible name; the prefix only adds context for screen readers
-    '<span class="sr-only">' + T.openCase + '</span>' +
-    '<div class="ws-card glass glass-fan w-40 sm:w-56 md:w-72 overflow-hidden">' +
-      '<div class="shot-frame overflow-hidden m-1.5 md:m-2 mb-0 md:mb-0 rounded-[20px]">' +
-      pic(w, 'w-full aspect-square sm:aspect-[59/32] object-cover object-top pointer-events-none select-none') + '</div>' +
-      '<div class="p-3 md:p-4"><div class="text-[10px] font-disp uppercase tracking-[0.2em] text-golddeep">' + w.cat + '</div>' +
-      '<div class="font-extrabold text-sm md:text-base leading-tight mt-1">' + w.name + '</div></div></div>';
-  // Hovered or focused card comes to the front so it's fully visible
-  const front = () => sp.style.zIndex = 100;
-  const back = () => sp.style.zIndex = 10 + i * 10;
-  sp.addEventListener('mouseenter', front);
-  sp.addEventListener('mouseleave', back);
-  sp.addEventListener('focus', front);
-  sp.addEventListener('blur', back);
-  stackEl.appendChild(sp);
-});
-
-// Switch from the no-JS grid to the stack view
-stackEl.hidden = false;
-gridEl.style.display = 'none';
-document.getElementById('galControls').hidden = false;
-
-function layoutStack() {
-  if (expanded) return;
-  const cards = [...stackEl.children];
-  if (!cards.length) return;
-  // Two fan rows; phones get three rows of two, otherwise three cards overlap until captions are unreadable.
-  // The row gap comes from the real card height, so the lower row never covers the captions above it
-  const rows = stackEl.clientWidth < 520 ? 3 : 2;
-  const perRow = Math.ceil(cards.length / rows);
-  const w = cards[0].offsetWidth, h = cards[0].offsetHeight;
-  const rowGap = h + 24;
-  // Neighbours overlap by ~8% on wide screens; on phones the fan compresses to fit the container
-  const spread = Math.max(0, Math.min((stackEl.clientWidth - w) / 2, w * 0.92));
-  // Extra room for hover lift and the rotated corners
-  stackEl.style.height = ((rows - 1) * rowGap + h + 56) + 'px';
-  cards.forEach((c, i) => {
-    const row = Math.floor(i / perRow), col = i % perRow;
-    const inRow = Math.min(perRow, cards.length - row * perRow);
-    // k is normalized to -1…1 inside the row; a lone card stays centred
-    const half = (inRow - 1) / 2;
-    const k = half ? (col - half) / half : 0;
-    const y = (row - (rows - 1) / 2) * rowGap + 10 * k * k;
-    c.style.transform = 'translate(-50%,-50%) translateX(' + (k * spread) + 'px) translateY(' + y + 'px) rotate(' + (k * 6) + 'deg)';
-  });
-}
-layoutStack();
-addEventListener('resize', layoutStack, { passive: true });
-
-function expand() {
-  expanded = true;
-  stackEl.classList.add('hide');
-  galBtnTxt.textContent = T.galCollapse;
-  galToggle.setAttribute('aria-expanded', 'true');
-  later(() => {
-    stackEl.style.display = 'none';
-    gridEl.style.display = 'grid';
-    gridEl.classList.add('prep');
-    raf2(() => gridEl.classList.remove('prep'));
-  }, 380);
-}
-function collapse() {
-  expanded = false;
-  gridEl.classList.add('prep');
-  galBtnTxt.textContent = T.galExpand;
-  galToggle.setAttribute('aria-expanded', 'false');
-  later(() => {
-    gridEl.style.display = 'none';
-    stackEl.style.display = '';
-    layoutStack();
-    raf2(() => stackEl.classList.remove('hide'));
-  }, 300);
-}
-galToggle.addEventListener('click', () => expanded ? collapse() : expand());
-[stackEl, gridEl].forEach(root => root.addEventListener('click', e => {
-  const card = e.target.closest('[data-work]');
-  if (card) openWork(card.dataset.work, card);
-}));
-
-/* ---------- 7. Модалка проекта ---------- */
+/* ---------- 6. Кейс проекта ---------- */
 const modal = document.getElementById('workModal');
 const modalBody = document.getElementById('modalBody');
+const modalScroll = document.getElementById('modalScroll');
 let curWork = null, shotIdx = 0, lastFocus = null;
 // Phone users get phone screenshots; the set is picked at open time and re-picked on breakpoint change
 const curShots = () => MOBILE.matches ? curWork.mshots : curWork.shots;
-const shotAlt = i => T.shotAlt(curWork.name, i + 1, curShots().length);
-const thumbCls = on => 'th flex-none w-12 h-20 sm:w-20 sm:h-14 rounded-xl overflow-hidden border-2 ' +
-  (on ? 'border-gold' : 'border-transparent opacity-70 hover:opacity-100') + ' transition bg-slate';
+const shotAlt = i => T.shotAlt(curWork.name.replace('&amp;', '&'), i + 1, curShots().length);
+const ICON = d => '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="' + d + '"/></svg>';
 
-const EXT = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
 function renderWork() {
+  const list = curShots();
   modalBody.innerHTML =
-    '<div class="relative bg-slate select-none">' +
-      '<img id="shotImg" src="' + curShots()[0] + '" alt="' + shotAlt(0) + '" ' + (MOBILE.matches ? 'width="585" height="1266"' : 'width="1416" height="768"') + ' class="w-full aspect-[585/1266] max-h-[75vh] object-contain sm:aspect-[59/32] sm:max-h-none sm:object-cover object-top bg-slate">' +
-      '<button type="button" data-dir="-1" aria-label="' + T.prevShot + '" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass-tag hover:bg-gold text-white flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
-      '<button type="button" data-dir="1" aria-label="' + T.nextShot + '" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass-tag hover:bg-gold text-white flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>' +
-      '<div id="shotCnt" aria-live="polite" class="absolute bottom-3 right-4 text-xs font-bold glass-tag px-3 py-1.5 rounded-full">1 / ' + curShots().length + '</div>' +
-      '<button type="button" data-close aria-label="' + T.closeCase + '" class="absolute top-3 right-3 w-11 h-11 rounded-full glass-tag hover:bg-ink/70 flex items-center justify-center transition"><svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>' +
+    '<div class="case-top">' +
+      '<p id="shotCnt" class="case-count" aria-live="polite">1 / ' + list.length + '</p>' +
+      '<button type="button" class="case-btn" data-close aria-label="' + T.closeCase + '">' + ICON('M18 6L6 18M6 6l12 12') + '</button>' +
     '</div>' +
-    '<div id="thumbs" class="flex gap-2 px-5 md:px-8 -mt-6 relative z-10 overflow-x-auto pb-1">' +
-      curShots().map((s, i) =>
-        '<button type="button" data-thumb="' + i + '" aria-label="' + T.showScreen(i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + ' class="' + thumbCls(i === 0) + '"><img src="' + s + '" alt="" loading="lazy" class="w-full h-full object-cover object-top"></button>'
-      ).join('') +
+    '<div class="case-media">' +
+      '<img id="shotImg" src="' + list[0] + '" alt="' + shotAlt(0) + '" ' + (MOBILE.matches ? 'width="585" height="1266"' : 'width="1416" height="768"') + '>' +
     '</div>' +
-    '<div class="p-6 md:p-9">' +
-      '<div class="flex flex-wrap items-center gap-2">' +
-        '<span class="text-[11px] font-disp uppercase tracking-[0.2em] bg-gold/15 text-golddeep px-3 py-1.5 rounded-full">' + curWork.cat + '</span>' +
-        '<span class="text-[11px] font-disp uppercase tracking-[0.2em] glass-chip text-mut px-3 py-1.5 rounded-full">' + T.city + '</span></div>' +
-      '<h3 id="workTitle" class="font-disp font-extrabold text-2xl md:text-[1.7rem] mt-4 leading-tight">' + curWork.name + '</h3>' +
-      '<p class="text-golddeep font-bold mt-1.5">' + curWork.tagline + '</p>' +
-      '<p class="mt-4 text-mut leading-relaxed">' + curWork.about + '</p>' +
-      '<h4 class="mt-8 text-[11px] font-disp uppercase tracking-[0.22em] text-mut font-normal">' + T.done + '</h4>' +
-      '<ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-3">' +
-        curWork.done.map(d => '<li class="chk"><span class="ic">' + CHK + '</span><p>' + d + '</p></li>').join('') +
-      '</ul>' +
-      '<div class="mt-8 glass-inset p-5" style="background:linear-gradient(120deg,rgba(141,232,226,.32),rgba(188,168,248,.3))">' +
-        '<div class="text-[11px] font-disp uppercase tracking-[0.22em] text-golddeep mb-2">' + T.highlight + '</div>' +
-        '<p class="leading-relaxed text-ink/85">' + curWork.highlight + '</p></div>' +
-      '<div class="mt-8 flex flex-wrap items-center gap-4">' +
-        '<a href="#audit" data-to-form class="btn btn-gold px-7 py-3.5">' + T.wantSimilar + ' ' + ARR + '</a>' +
+    // Controls sit outside the screenshot so they never cover the project's own interface
+    '<div class="case-nav">' +
+      '<button type="button" class="case-btn" data-dir="-1" aria-label="' + T.prevShot + '">' + ICON('M15 18l-6-6 6-6') + '</button>' +
+      '<div id="thumbs" class="case-thumbs">' +
+        list.map((s, i) =>
+          '<button type="button" data-thumb="' + i + '" aria-label="' + T.showScreen(i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + '><img src="' + s + '" alt="" loading="lazy"></button>'
+        ).join('') +
+      '</div>' +
+      '<button type="button" class="case-btn" data-dir="1" aria-label="' + T.nextShot + '">' + ICON('M9 6l6 6-6 6') + '</button>' +
+    '</div>' +
+    '<div class="case-body">' +
+      '<h3 id="workTitle">' + curWork.name + '</h3>' +
+      '<p class="case-meta">' + curWork.cat + ' · ' + T.city + '</p>' +
+      '<p class="case-tagline">' + curWork.tagline + '</p>' +
+      '<p>' + curWork.about + '</p>' +
+      '<h4>' + T.done + '</h4>' +
+      '<ul class="case-done">' + curWork.done.map(d => '<li>' + d + '</li>').join('') + '</ul>' +
+      '<div class="case-hl"><h4>' + T.highlight + '</h4><p>' + curWork.highlight + '</p></div>' +
+      '<div class="case-actions">' +
+        '<a href="#contact" data-to-form class="btn btn-primary">' + T.wantSimilar + ' ' + ARR + '</a>' +
         // Live link is optional: projects without a public URL simply don't get the button
-        (curWork.url ? '<a href="' + curWork.url + '" target="_blank" rel="noopener" class="btn btn-ghost px-7 py-3.5">' + T.viewSite + ' ' + EXT + '</a>' : '') +
-        '<span class="text-sm text-mut">' + T.tellMore('<a href="' + TG + '" target="_blank" rel="noopener" class="font-bold underline text-golddeep">' + T.tellMoreLink + '</a>') + '</span></div>' +
+        (curWork.url ? '<a href="' + curWork.url + '" target="_blank" rel="noopener" class="link-out">' + T.viewSite + ' ' + EXT + '</a>' : '') +
+        '<p class="note">' + T.tellMore('<a href="' + TG + '" target="_blank" rel="noopener">' + T.tellMoreLink + '</a>') + '</p>' +
+      '</div>' +
     '</div>';
 }
 function openWork(id, trigger) {
   curWork = works.find(w => w.id === id);
+  if (!curWork) return;
   shotIdx = 0;
   lastFocus = trigger || document.activeElement;
   renderWork();
-  modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-  modal.querySelector('.overflow-y-auto').scrollTop = 0;
+  modal.hidden = false;
+  document.documentElement.style.overflow = 'hidden';
+  modalScroll.scrollTop = 0;
   raf2(() => modal.classList.add('open'));
   // Move focus inside the dialog; the title gives screen readers the case name
   modal.querySelector('button[data-close]').focus();
   track('case_open', { case: id });
 }
 function closeWork(returnFocus = true) {
-  if (modal.classList.contains('hidden')) return;
+  if (modal.hidden) return;
   if (!returnFocus) lastFocus = null;
   modal.classList.remove('open');
   later(() => {
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
-    // Return focus to the card that opened the case (it may be hidden if the view switched)
-    if (lastFocus && lastFocus.offsetParent !== null) lastFocus.focus();
-  }, 300);
+    modal.hidden = true;
+    document.documentElement.style.overflow = '';
+    // Return focus to the control that opened the case; the 3D world has none, so the card's button takes it
+    if (lastFocus && lastFocus.isConnected && lastFocus.offsetParent !== null) lastFocus.focus({ preventScroll: true });
+  }, 350);
 }
 function setShot(i) {
   const list = curShots(), n = list.length;
@@ -681,37 +613,40 @@ function setShot(i) {
   img.src = list[shotIdx];
   img.alt = shotAlt(shotIdx);
   document.getElementById('shotCnt').textContent = (shotIdx + 1) + ' / ' + n;
-  document.querySelectorAll('#thumbs .th').forEach((t, k) => {
-    t.className = thumbCls(k === shotIdx);
+  document.querySelectorAll('#thumbs button').forEach((t, k) => {
     if (k === shotIdx) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
   });
 }
 MOBILE.addEventListener('change', () => {
-  if (!curWork || modal.classList.contains('hidden')) return;
+  if (!curWork || modal.hidden) return;
   const keep = shotIdx;
   renderWork();
   setShot(keep);
 });
+document.addEventListener('click', e => {
+  const opener = e.target.closest('[data-open]');
+  if (opener) openWork(opener.dataset.open, opener.closest('.work')?.querySelector('.work-actions [data-open]') || opener);
+});
 modal.addEventListener('click', e => {
-  // "Хочу похожий сайт": close the case first (body scroll is locked while it's open), then go to the form
+  // "Хочу похожий сайт": close the case first (page scroll is locked while it's open), then go to the form
   const toForm = e.target.closest('[data-to-form]');
   if (toForm) {
     e.preventDefault();
     closeWork(false);
     later(() => {
-      document.getElementById('audit').scrollIntoView({ behavior: REDUCED.matches ? 'auto' : 'smooth' });
-      form.elements.name.focus({ preventScroll: true });
-    }, 320);
+      document.getElementById('contact').scrollIntoView({ behavior: REDUCED.matches ? 'auto' : 'smooth' });
+      form.elements.message.focus({ preventScroll: true });
+    }, 380);
     return;
   }
-  if (e.target.closest('[data-close]') || e.target.dataset.close !== undefined) return closeWork();
+  if (e.target.closest('[data-close]')) return closeWork();
   const nav = e.target.closest('[data-dir]');
   if (nav) return setShot(shotIdx + +nav.dataset.dir);
   const th = e.target.closest('[data-thumb]');
   if (th) return setShot(+th.dataset.thumb);
 });
 addEventListener('keydown', e => {
-  if (modal.classList.contains('hidden')) return;
+  if (modal.hidden) return;
   if (e.key === 'Escape') return closeWork();
   if (e.key === 'ArrowRight') return setShot(shotIdx + 1);
   if (e.key === 'ArrowLeft') return setShot(shotIdx - 1);
@@ -724,22 +659,69 @@ addEventListener('keydown', e => {
   }
 });
 
-/* ---------- 8. Год в футере ---------- */
+/* ---------- 7. Год в футере ---------- */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ---------- 9. Свет внутри стекла следует за курсором ---------- */
-// Moves the inner glow (--gx/--gy, registered in input.css) towards the pointer; mouse/pen only, never on touch or reduced motion
-if (matchMedia('(hover: hover) and (pointer: fine)').matches && !REDUCED.matches) {
-  document.addEventListener('pointermove', e => {
-    const el = e.target.closest && e.target.closest('.glass-lift, .hero-panel, .glass-form');
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--gx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
-    el.style.setProperty('--gy', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
-  }, { passive: true });
-  // Leaving a card hands the light back to its resting position from CSS
-  document.addEventListener('pointerout', e => {
-    const el = e.target.closest && e.target.closest('.glass-lift, .hero-panel, .glass-form');
-    if (el && !el.contains(e.relatedTarget)) { el.style.removeProperty('--gx'); el.style.removeProperty('--gy'); }
-  }, { passive: true });
+/* ---------- 8. 3D-мир ---------- */
+// Three stagings of one world: "full" — desktop camera route with the works hung in 3D;
+// "mobile" — a short vertical route behind ordinary cards; "lite" — no WebGL, the static crown drawing.
+// ?world=full|mobile|lite forces a staging (for checking).
+const html = document.documentElement;
+function webglOK() {
+  try {
+    const c = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl')));
+  } catch { return false; }
+}
+const WIDE = matchMedia('(min-width: 1100px)');
+function pickStaging() {
+  const forced = qs.get('world');
+  if (['full', 'mobile', 'lite'].includes(forced)) return forced;
+  if (REDUCED.matches || !webglOK()) return 'lite';
+  const net = navigator.connection;
+  if (net && (net.saveData || /(^|-)2g$/.test(net.effectiveType || ''))) return 'lite';
+  const weak = (navigator.deviceMemory && navigator.deviceMemory < 3) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4);
+  if (!WIDE.matches) return weak ? 'lite' : 'mobile';
+  return 'full';
+}
+let staging = pickStaging();
+let world = null;
+function setStagingClasses() {
+  html.classList.toggle('world-on', staging !== 'lite');
+  html.classList.toggle('world-full', staging === 'full');
+  html.classList.toggle('world-mobile', staging === 'mobile');
+  html.classList.toggle('world-lite', staging === 'lite');
+}
+function goLite() {
+  staging = 'lite';
+  if (world) { world.dispose(); world = null; }
+  html.classList.remove('world-ready');
+  setStagingClasses();
+  updateRoute();
+}
+setStagingClasses();
+if (staging !== 'lite') {
+  // The world loads after the page is usable: text, buttons and the form never wait for it
+  const boot = () => import(ROOT + 'dist/world.js')
+    .then(m => m.createWorld({
+      root: document.getElementById('world'),
+      staging,
+      assets: ROOT,
+      onReady: () => html.classList.add('world-ready'),
+      onDegrade: goLite,
+      onOpen: id => openWork(id, document.querySelector('#work-' + id + ' .work-actions [data-open]')),
+    }))
+    .then(w => { world = w; })
+    .catch(goLite);
+  if (document.readyState === 'complete') setTimeout(boot, 0);
+  else addEventListener('load', () => setTimeout(boot, 0), { once: true });
+  // Crossing the desktop breakpoint switches between the full and the mobile staging
+  WIDE.addEventListener('change', () => {
+    if (staging === 'lite') return;
+    staging = WIDE.matches ? 'full' : 'mobile';
+    setStagingClasses();
+    if (world) world.setStaging(staging);
+    updateRoute();
+  });
+  REDUCED.addEventListener('change', () => { if (REDUCED.matches) goLite(); });
 }

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*",
+    "/src/*",
+    "/scripts/*",
+    "/Claude*",
+    "/.claude/*",
+    "/.codex/*",
+    "/.impeccable/*",
+    "/.gitignore",
+    "/.gitattributes",
+    "/package.json",
+    "/package-lock.json",
+    "/tailwind.config.js",
+    "/DESIGN.md",
+    "/PRODUCT.md",
+    "/i18n/pages.mjs"
+  ],
+  "exclude": []
+}
