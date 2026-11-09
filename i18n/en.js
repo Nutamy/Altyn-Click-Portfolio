@@ -1,11 +1,18 @@
 /* English strings for app.js (dynamic UI and case studies). Loaded only on /en/ before app.js. */
 window.I18N = {
+  // Prices shown on /en/: KZT list prices ÷ ~452 ₸/$ (National Bank of Kazakhstan, Nov 2026), rounded to $5.
+  // Keep in sync with the USD figures in i18n/pages.mjs; base and option ids match PRICES in functions/api/promo.js
+  currency: {
+    sign: '$',
+    kztRate: 452,
+    prices: { base: 265, lang: 65, quiz: 35, express: 55 },
+  },
   ui: {
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     optNone: '— no add-ons yet',
-    optSum: sum => '+ ' + sum + ' ₸ (add-ons)',
-    promoLine: (code, size, disc) => 'Promo code ' + code + ': ' + size + ' (−' + disc + ' ₸)',
+    optSum: sum => '+ $' + sum + ' (add-ons)',
+    promoLine: (code, size, disc) => 'Promo code ' + code + ': ' + size + ' (−$' + disc + ')',
     rowBase: 'Turnkey landing page',
     rowOpts: names => 'Add-ons: ' + names,
     rowPromo: code => 'Promo code ' + code,

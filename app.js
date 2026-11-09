@@ -68,6 +68,13 @@ const RU = {
 const T = { ...RU, ...L10N.ui, errors: { ...RU.errors, ...(L10N.ui && L10N.ui.errors) } };
 // English groups thousands with commas; Russian and Kazakh use spaces, as in the static prices
 const fmt = n => n.toLocaleString(LANG === 'en' ? 'en-US' : 'ru-RU');
+// /en/ quotes its own rounded USD prices (i18n/en.js → currency); the lead is still priced in KZT on the server
+const CUR = L10N.currency;
+const money = n => CUR ? CUR.sign + fmt(n) : fmt(n) + ' ₸';
+const basePrice = CUR?.prices.base ?? BASE_PRICE;
+const optPrice = card => CUR?.prices[card.dataset.opt] ?? +card.dataset.price;
+// Fixed promo discounts are stored in tenge; convert them at the page's reference rate
+const promoAmount = p => CUR ? Math.round(p.amount / CUR.kztRate) : p.amount;
 
 // Language links keep the promo/utm query and the current section when switching
 document.querySelectorAll('a[data-lang]').forEach(a => a.addEventListener('click', () => {
@@ -163,18 +170,18 @@ let promo = null; // { code, label, percent?, amount? } once the server confirms
 
 function calc() {
   const picked = optCards.filter(c => c.classList.contains('on'));
-  const subtotal = BASE_PRICE + picked.reduce((sum, c) => sum + +c.dataset.price, 0);
+  const subtotal = basePrice + picked.reduce((sum, c) => sum + optPrice(c), 0);
   let discount = 0;
-  if (promo) discount = Math.min(subtotal, promo.percent ? Math.round(subtotal * promo.percent / 100) : promo.amount);
+  if (promo) discount = Math.min(subtotal, promo.percent ? Math.round(subtotal * promo.percent / 100) : promoAmount(promo));
   return { picked, subtotal, discount, total: subtotal - discount };
 }
-const promoText = p => p.percent ? '−' + p.percent + '%' : '−' + fmt(p.amount) + ' ₸';
+const promoText = p => p.percent ? '−' + p.percent + '%' : '−' + money(promoAmount(p));
 
 function recalc() {
   const { picked, subtotal, discount, total } = calc();
-  const optSum = subtotal - BASE_PRICE;
+  const optSum = subtotal - basePrice;
   document.getElementById('optSumLabel').textContent = optSum ? T.optSum(fmt(optSum)) : T.optNone;
-  document.getElementById('optTotal').textContent = fmt(total) + ' ₸';
+  document.getElementById('optTotal').textContent = money(total);
   promoLine.hidden = !promo;
   if (promo) promoLine.textContent = T.promoLine(promo.code, promoText(promo), fmt(discount));
 
@@ -192,10 +199,10 @@ function recalc() {
       row.children[1].textContent = value;
       calcSummary.appendChild(row);
     };
-    add(T.rowBase, fmt(BASE_PRICE) + ' ₸');
-    if (names.length) add(T.rowOpts(names.join(', ')), '+ ' + fmt(subtotal - BASE_PRICE) + ' ₸');
-    if (promo) add(T.rowPromo(promo.code), '− ' + fmt(discount) + ' ₸');
-    add(T.rowTotal, fmt(total) + ' ₸');
+    add(T.rowBase, money(basePrice));
+    if (names.length) add(T.rowOpts(names.join(', ')), '+ ' + money(subtotal - basePrice));
+    if (promo) add(T.rowPromo(promo.code), '− ' + money(discount));
+    add(T.rowTotal, money(total));
   }
 }
 optCards.forEach(card => card.addEventListener('click', () => {
