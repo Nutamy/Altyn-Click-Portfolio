@@ -1,0 +1,797 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T06:31:01.416Z",
+  "title": "Design System: Altyn Click",
+  "extensions": {
+    "colorMeta": {
+      "gold": {
+        "role": "primary",
+        "displayName": "Liquid Gold",
+        "canonical": "#C9932A",
+        "oklch": "oklch(69.8% 0.131 79.2)",
+        "tonalRamp": [
+          "#1A0500",
+          "#421A00",
+          "#693800",
+          "#8D5A00",
+          "#B37E00",
+          "#D3A659",
+          "#EACC9E",
+          "#F9EDDA"
+        ]
+      },
+      "gold-hi": {
+        "role": "primary",
+        "displayName": "Molten Highlight",
+        "canonical": "#F1C76A",
+        "oklch": "oklch(84.8% 0.121 85.4)",
+        "tonalRamp": [
+          "#180700",
+          "#3D1F00",
+          "#623D00",
+          "#855F00",
+          "#AA821A",
+          "#CBA960",
+          "#E4CFA1",
+          "#F6EEDC"
+        ]
+      },
+      "gold-deep": {
+        "role": "primary",
+        "displayName": "Cast Bronze",
+        "canonical": "#7A4F0C",
+        "oklch": "oklch(46.5% 0.095 71.3)",
+        "tonalRamp": [
+          "#180600",
+          "#3E1D00",
+          "#643A00",
+          "#885C1E",
+          "#AD7F44",
+          "#CEA677",
+          "#E6CCAE",
+          "#F7EDE0"
+        ]
+      },
+      "gold-wash": {
+        "role": "primary",
+        "displayName": "Gold Wash",
+        "canonical": "#FFF7E6",
+        "oklch": "oklch(97.8% 0.024 85.8)",
+        "tonalRamp": [
+          "#0E0B05",
+          "#2B261B",
+          "#4B4437",
+          "#6C6557",
+          "#908879",
+          "#B3ADA0",
+          "#D5D1C8",
+          "#F0EEEB"
+        ]
+      },
+      "ultramarine": {
+        "role": "secondary",
+        "displayName": "Felt Ultramarine",
+        "canonical": "#2B3FB8",
+        "oklch": "oklch(43.6% 0.190 269.2)",
+        "tonalRamp": [
+          "#030037",
+          "#0F0A75",
+          "#212FA8",
+          "#3C57D1",
+          "#5C7DFB",
+          "#86A7FF",
+          "#B6CFFF",
+          "#E3EEFF"
+        ]
+      },
+      "ultramarine-deep": {
+        "role": "secondary",
+        "displayName": "Deep Ultramarine",
+        "canonical": "#1F2E8A",
+        "oklch": "oklch(35.6% 0.153 269.4)",
+        "tonalRamp": [
+          "#03032E",
+          "#101865",
+          "#273995",
+          "#445DBC",
+          "#6581E5",
+          "#8EAAFE",
+          "#BCCFFF",
+          "#E6EEFF"
+        ]
+      },
+      "sky": {
+        "role": "neutral",
+        "displayName": "Pale Noon Sky",
+        "canonical": "#C9D1EA",
+        "oklch": "oklch(86.2% 0.036 271.5)",
+        "tonalRamp": [
+          "#080B14",
+          "#212636",
+          "#3E4459",
+          "#5E657B",
+          "#81889F",
+          "#A7ADC1",
+          "#CCD1DE",
+          "#ECEEF4"
+        ]
+      },
+      "sky-2": {
+        "role": "neutral",
+        "displayName": "Haze Sky",
+        "canonical": "#DEE2EF",
+        "oklch": "oklch(91.4% 0.018 272.3)",
+        "tonalRamp": [
+          "#0A0B10",
+          "#24262E",
+          "#41454F",
+          "#626671",
+          "#858995",
+          "#AAAEB8",
+          "#CFD1D7",
+          "#EDEEF1"
+        ]
+      },
+      "stone": {
+        "role": "neutral",
+        "displayName": "Steppe Dust",
+        "canonical": "#E8DFD1",
+        "oklch": "oklch(90.7% 0.021 79.1)",
+        "tonalRamp": [
+          "#0E0B06",
+          "#2B261C",
+          "#4B4438",
+          "#6D6559",
+          "#90887B",
+          "#B4ADA2",
+          "#D5D0C9",
+          "#F0EEEB"
+        ]
+      },
+      "stone-2": {
+        "role": "neutral",
+        "displayName": "Dry Grass",
+        "canonical": "#DCD0BD",
+        "oklch": "oklch(86.2% 0.029 79.5)",
+        "tonalRamp": [
+          "#0F0A04",
+          "#2D2518",
+          "#4D4334",
+          "#6F6454",
+          "#938876",
+          "#B6AD9D",
+          "#D6D0C6",
+          "#F1EEEA"
+        ]
+      },
+      "stone-3": {
+        "role": "neutral",
+        "displayName": "Packed Earth",
+        "canonical": "#CDBFA9",
+        "oklch": "oklch(81.0% 0.034 79.2)",
+        "tonalRamp": [
+          "#0F0A03",
+          "#2E2516",
+          "#4F4330",
+          "#716450",
+          "#948772",
+          "#B8AC9B",
+          "#D7D0C4",
+          "#F1EEE9"
+        ]
+      },
+      "felt": {
+        "role": "neutral",
+        "displayName": "Warm White Felt",
+        "canonical": "#F7F4EF",
+        "oklch": "oklch(96.8% 0.007 80.7)",
+        "tonalRamp": [
+          "#0C0B09",
+          "#282623",
+          "#474541",
+          "#686661",
+          "#8B8984",
+          "#B0AEAA",
+          "#D2D1CE",
+          "#EFEEED"
+        ]
+      },
+      "felt-2": {
+        "role": "neutral",
+        "displayName": "Shaded Felt",
+        "canonical": "#F1ECE4",
+        "oklch": "oklch(94.5% 0.012 79.8)",
+        "tonalRamp": [
+          "#0D0B08",
+          "#292621",
+          "#48443E",
+          "#6A655F",
+          "#8D8881",
+          "#B1ADA7",
+          "#D3D0CC",
+          "#EFEEED"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#FFFDF9",
+        "oklch": "oklch(99.4% 0.006 84.6)",
+        "tonalRamp": [
+          "#0C0B0A",
+          "#272624",
+          "#464542",
+          "#676662",
+          "#8B8985",
+          "#AFAEAB",
+          "#D2D1CF",
+          "#EFEEED"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Black",
+        "canonical": "#1A1511",
+        "oklch": "oklch(20.0% 0.011 60.8)",
+        "tonalRamp": [
+          "#0D0B09",
+          "#2A2522",
+          "#4A443F",
+          "#6B6560",
+          "#8E8882",
+          "#B2ADA8",
+          "#D4D0CD",
+          "#F0EEED"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#4A3F35",
+        "oklch": "oklch(37.6% 0.022 64.3)",
+        "tonalRamp": [
+          "#0F0A06",
+          "#2D251D",
+          "#4E4339",
+          "#706459",
+          "#93877B",
+          "#B7ACA2",
+          "#D7CFC9",
+          "#F1EEEB"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Meta",
+        "canonical": "#66594B",
+        "oklch": "oklch(47.3% 0.028 69.2)",
+        "tonalRamp": [
+          "#0F0A05",
+          "#2E241A",
+          "#4F4335",
+          "#716455",
+          "#948778",
+          "#B8AC9F",
+          "#D7CFC7",
+          "#F1EEEA"
+        ]
+      },
+      "ink-hover": {
+        "role": "neutral",
+        "displayName": "Ink Hover",
+        "canonical": "#2B231C",
+        "oklch": "oklch(26.3% 0.018 63.1)",
+        "tonalRamp": [
+          "#0E0A07",
+          "#2C251F",
+          "#4C433C",
+          "#6E645C",
+          "#91877F",
+          "#B5ACA5",
+          "#D6D0CB",
+          "#F0EEEC"
+        ]
+      },
+      "on-ink": {
+        "role": "neutral",
+        "displayName": "On Ink",
+        "canonical": "#FBF6EC",
+        "oklch": "oklch(97.4% 0.014 84.6)",
+        "tonalRamp": [
+          "#0D0B08",
+          "#292620",
+          "#49453D",
+          "#6A665D",
+          "#8D8980",
+          "#B1ADA6",
+          "#D3D1CB",
+          "#EFEEEC"
+        ]
+      },
+      "on-ink-2": {
+        "role": "neutral",
+        "displayName": "On Ink Muted",
+        "canonical": "#D9CBB4",
+        "oklch": "oklch(84.7% 0.035 80.3)",
+        "tonalRamp": [
+          "#0F0A03",
+          "#2E2515",
+          "#4F4330",
+          "#716450",
+          "#948772",
+          "#B8AC9A",
+          "#D7D0C4",
+          "#F1EEE9"
+        ]
+      },
+      "on-ink-hi": {
+        "role": "neutral",
+        "displayName": "On Ink Bright",
+        "canonical": "#FFF6E2",
+        "oklch": "oklch(97.5% 0.028 86.6)",
+        "tonalRamp": [
+          "#0E0B05",
+          "#2C2619",
+          "#4C4434",
+          "#6D6554",
+          "#918876",
+          "#B4AD9E",
+          "#D5D1C6",
+          "#F0EEEA"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(26,21,17,.14)"
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Madder Red",
+        "canonical": "#A3271C",
+        "oklch": "oklch(47.3% 0.162 29.5)",
+        "tonalRamp": [
+          "#260000",
+          "#590000",
+          "#870000",
+          "#B03428",
+          "#DA5B4B",
+          "#F78B7B",
+          "#FFBCB0",
+          "#FFE7E1"
+        ]
+      },
+      "error-wash": {
+        "role": "error",
+        "displayName": "Error Wash",
+        "canonical": "#FBEAE6",
+        "oklch": "oklch(94.9% 0.019 33.4)",
+        "tonalRamp": [
+          "#0F0A08",
+          "#2E2421",
+          "#4F413E",
+          "#71625F",
+          "#948582",
+          "#B8ABA7",
+          "#D8CFCD",
+          "#F1EDED"
+        ]
+      },
+      "success": {
+        "role": "success",
+        "displayName": "Steppe Green",
+        "canonical": "#2E6B3A",
+        "oklch": "oklch(47.4% 0.100 148.0)",
+        "tonalRamp": [
+          "#001100",
+          "#003109",
+          "#125323",
+          "#397644",
+          "#5D9A66",
+          "#8ABD90",
+          "#BADBBE",
+          "#E6F3E7"
+        ]
+      },
+      "world-gold": {
+        "role": "world",
+        "displayName": "3D Liquid Gold Base",
+        "canonical": "#E7B65A",
+        "oklch": "oklch(80.3% 0.123 81.2)",
+        "tonalRamp": [
+          "#190600",
+          "#401C00",
+          "#653A00",
+          "#895C00",
+          "#AF8018",
+          "#CFA75F",
+          "#E7CDA1",
+          "#F7EDDC"
+        ]
+      },
+      "world-sky-top": {
+        "role": "world",
+        "displayName": "3D Sky Zenith",
+        "canonical": "#C4CDE8",
+        "oklch": "oklch(85.0% 0.039 270.9)",
+        "tonalRamp": [
+          "#080B14",
+          "#202637",
+          "#3D445A",
+          "#5E657D",
+          "#8088A1",
+          "#A6ADC3",
+          "#CCD1DF",
+          "#ECEEF4"
+        ]
+      },
+      "world-horizon": {
+        "role": "world",
+        "displayName": "3D Horizon",
+        "canonical": "#EEEBE6",
+        "oklch": "oklch(94.1% 0.007 80.7)",
+        "tonalRamp": [
+          "#0C0B09",
+          "#282623",
+          "#474541",
+          "#686661",
+          "#8B8984",
+          "#B0AEAA",
+          "#D2D1CE",
+          "#EFEEED"
+        ]
+      },
+      "world-felt-mat": {
+        "role": "world",
+        "displayName": "3D Felt Mat",
+        "canonical": "#2A211A",
+        "oklch": "oklch(25.6% 0.019 59.7)",
+        "tonalRamp": [
+          "#0F0A07",
+          "#2D251F",
+          "#4D433B",
+          "#6F645C",
+          "#92877E",
+          "#B6ACA4",
+          "#D6D0CB",
+          "#F0EEEC"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Entrance h1 only; flared cast-metal cut."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Sheet titles (h2), max 22ch; smaller in the full-route left column."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-section and panel headings (h3)."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "Step titles and case sub-headings (h4)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text on felt, capped at 62ch; flat terminals."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Term labels in ruled fact rows, sentence case, ink-3."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Capsule button and control text."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "altyn·click lettering only, Unbounded 600, Latin subset, every language."
+      }
+    },
+    "fonts": [
+      {
+        "family": "Commissioner",
+        "source": "Google Fonts",
+        "axes": "FLAR 0..100, VOLM 0..100, wght 300..800",
+        "display": "font-variation-settings: 'FLAR' 100, 'VOLM' 45",
+        "text": "font-variation-settings: 'FLAR' 0, 'VOLM' 0"
+      },
+      {
+        "family": "Unbounded",
+        "source": "Google Fonts",
+        "axes": "wght 600",
+        "subset": "altynclick·"
+      }
+    ],
+    "shadows": [
+      {
+        "name": "felt-lift",
+        "value": "0 1px 0 rgba(255,255,255,.7) inset, 0 18px 40px -22px rgba(60,40,15,.45), 0 4px 10px -6px rgba(60,40,15,.25)",
+        "purpose": "Sheets, work cards, form panel, privacy panel."
+      },
+      {
+        "name": "place-of-honour",
+        "value": "0 1px 0 rgba(255,255,255,.7) inset, 0 18px 40px -22px rgba(60,40,15,.45), 0 4px 10px -6px rgba(60,40,15,.25), 0 0 0 1px rgba(201,147,42,.35), 0 0 0 8px rgba(241,199,106,.14)",
+        "purpose": "The form panel (tör) only: felt lift plus a soft gold halo."
+      },
+      {
+        "name": "gold-rim-frame",
+        "value": "0 0 0 1.5px #C9932A, 0 0 0 6px rgba(241,199,106,.18), 0 30px 50px -30px rgba(60,40,15,.6)",
+        "purpose": "Screenshot buttons."
+      },
+      {
+        "name": "capsule",
+        "value": "inset 0 0 0 1.5px #C9932A, inset 0 1px 0 1.5px rgba(241,199,106,.55), 0 12px 26px -14px rgba(26,21,17,.75)",
+        "purpose": "Primary button at rest."
+      },
+      {
+        "name": "capsule-hover",
+        "value": "inset 0 0 0 1.5px #F1C76A, inset 0 1px 0 1.5px rgba(241,199,106,.8), 0 16px 30px -14px rgba(26,21,17,.8)",
+        "purpose": "Primary button hover."
+      },
+      {
+        "name": "header-settle",
+        "value": "0 1px 0 rgba(26,21,17,.14), 0 10px 30px -24px rgba(60,40,15,.5)",
+        "purpose": "Opaque felt header once scrolled or menu open."
+      },
+      {
+        "name": "modal",
+        "value": "0 40px 80px -30px rgba(26,21,17,.7)",
+        "purpose": "Case viewer panel over a 60% ink backdrop with 6px blur."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 3px solid #2B3FB8; outline-offset: 3px",
+        "purpose": "Global :focus-visible; gold-hi on ink surfaces."
+      },
+      {
+        "name": "input-focus",
+        "value": "border-color: #2B3FB8; box-shadow: 0 0 0 4px rgba(43,63,184,.18)",
+        "purpose": "Text fields on focus."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "The single brand ease: lifts, modal rise, canvas fade, route ring."
+      },
+      {
+        "name": "lift",
+        "value": "transform .35s ease; translateY(-2px)",
+        "purpose": "Button and option-card hover; removed under reduced motion."
+      },
+      {
+        "name": "state-color",
+        "value": ".2s–.25s",
+        "purpose": "Colour, border and shadow state changes."
+      },
+      {
+        "name": "canvas-fade",
+        "value": "opacity 1.2s ease",
+        "purpose": "3D world appears once ready."
+      },
+      {
+        "name": "modal-rise",
+        "value": "opacity .4s, transform .5s from translateY(24px) scale(.985)",
+        "purpose": "Case viewer entry."
+      },
+      {
+        "name": "confirm-rise",
+        "value": ".7s from translateY(14px) scale(.98)",
+        "purpose": "Form success panel; fade only under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "cta",
+        "value": "480px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "grid",
+        "value": "900px"
+      },
+      {
+        "name": "nav",
+        "value": "1024px"
+      },
+      {
+        "name": "staging-full",
+        "value": "1100px",
+        "note": "full camera route vs mobile route"
+      },
+      {
+        "name": "route-gauge",
+        "value": "1180px"
+      }
+    ],
+    "stagings": [
+      {
+        "name": "full",
+        "when": "min-width 1100px, capable device",
+        "what": "Scroll-driven camera route, sticky 100vh stations, screenshots hung in 3D, DPR up to 2."
+      },
+      {
+        "name": "mobile",
+        "when": "below 1100px or touch",
+        "what": "Short vertical route behind ordinary cards; crown above the copy; DPR up to 1.5, no MSAA."
+      },
+      {
+        "name": "lite",
+        "when": "no WebGL, prefers-reduced-motion, deviceMemory < 3 or < 4 cores on narrow screens, save-data or 2g",
+        "what": "No canvas; static SVG crown; DOM screenshots."
+      }
+    ],
+    "world": {
+      "colorSpace": "sRGB output, ACES filmic tone mapping, exposure 1.05; colours authored in display space",
+      "materials": [
+        {
+          "name": "liquid-gold",
+          "value": "MeshStandardMaterial color #E7B65A, metalness 1, roughness 0.06–0.14, envMapIntensity 1.25–1.4; simplex-noise vertex wave and normal perturbation"
+        },
+        {
+          "name": "sky-dome",
+          "value": "#C4CDE8 zenith → #EEEBE6 horizon with warm sun glint"
+        },
+        {
+          "name": "ground",
+          "value": "#E8DFD1"
+        },
+        {
+          "name": "felt-mat",
+          "value": "MeshStandardMaterial #2A211A, roughness 1, metalness 0, behind every screenshot; gold tube frame"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink capsule with a gold rim; every main command.",
+      "html": "<button class=\"ds-btn-primary\">Обсудить проект</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 1.35rem;border:0;border-radius:999px;background:var(--ink,#1A1511);color:var(--on-ink,#FBF6EC);font-family:'Commissioner',system-ui,sans-serif;font-variation-settings:'FLAR' 0,'VOLM' 0;font-weight:650;font-size:.98rem;letter-spacing:.005em;cursor:pointer;box-shadow:inset 0 0 0 1.5px #C9932A,inset 0 1px 0 1.5px rgba(241,199,106,.55),0 12px 26px -14px rgba(26,21,17,.75);transition:transform .35s cubic-bezier(.16,1,.3,1),background-color .25s,box-shadow .35s cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{background:#2B231C;box-shadow:inset 0 0 0 1.5px #F1C76A,inset 0 1px 0 1.5px rgba(241,199,106,.8),0 16px 30px -14px rgba(26,21,17,.8);transform:translateY(-2px)}.ds-btn-primary:active{transform:translateY(0);box-shadow:inset 0 0 0 1.5px #C9932A,0 6px 14px -10px rgba(26,21,17,.8)}.ds-btn-primary:focus-visible{outline:3px solid #2B3FB8;outline-offset:3px}"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Paper capsule with an ink rim; secondary actions.",
+      "html": "<button class=\"ds-btn-quiet\">Смотреть работы</button>",
+      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 1.35rem;border:0;border-radius:999px;background:rgba(255,253,248,.55);color:#1A1511;font-family:'Commissioner',system-ui,sans-serif;font-weight:650;font-size:.98rem;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(26,21,17,.32);transition:transform .35s cubic-bezier(.16,1,.3,1),background-color .25s,box-shadow .35s}.ds-btn-quiet:hover{background:rgba(255,253,248,.95);box-shadow:inset 0 0 0 1.5px #1A1511;transform:translateY(-2px)}.ds-btn-quiet:focus-visible{outline:3px solid #2B3FB8;outline-offset:3px}"
+    },
+    {
+      "name": "Out Link",
+      "kind": "custom",
+      "refersTo": "ultramarine",
+      "description": "Ultramarine underlined link with an arrow; the only blue in the system.",
+      "html": "<a class=\"ds-link-out\" href=\"#\">Сайт проекта <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17 17 7M9 7h8v8\"/></svg></a>",
+      "css": ".ds-link-out{display:inline-flex;align-items:center;gap:.35rem;font-family:'Commissioner',system-ui,sans-serif;font-weight:650;color:#2B3FB8;text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px;text-decoration-color:rgba(43,63,184,.35);transition:color .2s,text-decoration-color .2s}.ds-link-out svg{width:1em;height:1em}.ds-link-out:hover{color:#1F2E8A;text-decoration-color:currentColor}.ds-link-out:focus-visible{outline:3px solid #2B3FB8;outline-offset:3px;border-radius:8px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Paper field, stone stroke, ultramarine focus.",
+      "html": "<label class=\"ds-field\"><span>Как к вам обращаться</span><input placeholder=\"Имя\"></label>",
+      "css": ".ds-field{display:grid;gap:.45rem;font-family:'Commissioner',system-ui,sans-serif;color:#1A1511}.ds-field span{font-weight:650;font-size:.97rem}.ds-field input{min-height:52px;padding:.8rem 1rem;border-radius:12px;border:1.5px solid #CDBFA9;background:#FFFDF9;color:#1A1511;font:inherit;transition:border-color .2s,box-shadow .2s}.ds-field input::placeholder{color:#66594B}.ds-field input:hover{border-color:#66594B}.ds-field input:focus{outline:none;border-color:#2B3FB8;box-shadow:0 0 0 4px rgba(43,63,184,.18)}"
+    },
+    {
+      "name": "Segment",
+      "kind": "chip",
+      "refersTo": "segment",
+      "description": "Single-choice capsule; selected state matches the primary button.",
+      "html": "<div class=\"ds-seg\"><button class=\"ds-seg-i\" aria-pressed=\"true\">Telegram</button><button class=\"ds-seg-i\">WhatsApp</button><button class=\"ds-seg-i\">Звонок</button></div>",
+      "css": ".ds-seg{display:flex;flex-wrap:wrap;gap:.5rem}.ds-seg-i{display:inline-flex;align-items:center;min-height:44px;padding:0 1.05rem;border:0;border-radius:999px;background:#FFFDF9;color:#1A1511;font-family:'Commissioner',system-ui,sans-serif;font-weight:600;font-size:.95rem;cursor:pointer;box-shadow:inset 0 0 0 1.5px #CDBFA9;transition:background-color .2s,box-shadow .2s,color .2s}.ds-seg-i:hover{box-shadow:inset 0 0 0 1.5px #66594B}.ds-seg-i[aria-pressed=true]{background:#1A1511;color:#FBF6EC;box-shadow:inset 0 0 0 1.5px #C9932A}.ds-seg-i:focus-visible{outline:3px solid #2B3FB8;outline-offset:3px}"
+    },
+    {
+      "name": "Felt Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "Opaque warm felt reading surface with ruled steps and flat gold-deep numerals.",
+      "html": "<section class=\"ds-sheet\"><h2>Как идёт работа</h2><ol class=\"ds-steps\"><li><b>Бриф</b><p>15 минут, чтобы я поняла задачу.</p></li><li><b>Структура</b><p>Прототип на согласование.</p></li></ol></section>",
+      "css": ".ds-sheet{max-width:40rem;background:#F7F4EF;color:#1A1511;border-radius:28px;padding:clamp(1.5rem,4.5vw,3rem);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 18px 40px -22px rgba(60,40,15,.45),0 4px 10px -6px rgba(60,40,15,.25);font-family:'Commissioner',system-ui,sans-serif;font-size:1.0625rem;line-height:1.6}.ds-sheet h2{margin:0;font-variation-settings:'FLAR' 100,'VOLM' 45;font-weight:700;font-size:2.4rem;line-height:1.02;letter-spacing:-.025em}.ds-steps{list-style:none;margin:2rem 0 0;padding:0;counter-reset:s}.ds-steps li{position:relative;padding:1.6rem 0 1.6rem 4.2rem;border-top:1px solid rgba(26,21,17,.14);counter-increment:s}.ds-steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1.45rem;font-variation-settings:'FLAR' 100,'VOLM' 45;font-weight:700;font-size:1.5rem;line-height:1;color:#7A4F0C;font-variant-numeric:tabular-nums}.ds-steps p{margin:.4rem 0 0;color:#4A3F35}"
+    },
+    {
+      "name": "Inline List",
+      "kind": "custom",
+      "refersTo": "gold-deep",
+      "description": "Descriptive inline list separated by gold-deep middots; never chips.",
+      "html": "<ul class=\"ds-inline\"><li>Кофейни</li><li>Клиники</li><li>Салоны</li><li>Эксперты</li></ul>",
+      "css": ".ds-inline{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;row-gap:.3rem;font-family:'Commissioner',system-ui,sans-serif;font-weight:650;color:#1A1511}.ds-inline li:not(:last-child)::after{content:'\\00B7';margin:0 .65rem;color:#7A4F0C}"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "refersTo": "header",
+      "description": "Opaque felt bar: wordmark, nav with gold hover underline, language pill.",
+      "html": "<header class=\"ds-hdr\"><a class=\"ds-brand\" href=\"#\">altyn<span>·click</span></a><nav class=\"ds-nav\"><a href=\"#\">Работы</a><a href=\"#\">Подход</a><a href=\"#\">Цена</a></nav><div class=\"ds-lang\"><a aria-current=\"page\">Рус</a><a>Қаз</a><a>Eng</a></div></header>",
+      "css": ".ds-hdr{display:flex;align-items:center;gap:1.5rem;height:72px;padding:0 24px;background:#F7F4EF;box-shadow:0 1px 0 rgba(26,21,17,.14),0 10px 30px -24px rgba(60,40,15,.5);font-family:'Commissioner',system-ui,sans-serif;}.ds-brand{font-family:'Unbounded','Commissioner',sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:-.02em;color:#1A1511;text-decoration:none}.ds-brand span{color:#7A4F0C}.ds-nav{display:flex;gap:1.5rem;font-weight:600;font-size:.95rem}.ds-nav a{color:#4A3F35;text-decoration:none;padding:.4rem 0;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}.ds-nav a:hover{color:#1A1511;border-color:#C9932A}.ds-nav a:focus-visible{outline:3px solid #2B3FB8;outline-offset:3px;border-radius:8px}.ds-lang{margin-left:auto;display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:rgba(255,253,248,.6);box-shadow:inset 0 0 0 1px rgba(26,21,17,.14);font-size:.8rem;font-weight:700;line-height:1}.ds-lang a{padding:.55rem .7rem;border-radius:999px;color:#4A3F35;cursor:pointer;transition:color .2s,background-color .2s}.ds-lang a:hover{color:#1A1511;background:rgba(26,21,17,.06)}.ds-lang a[aria-current=page]{background:#1A1511;color:#FBF6EC}"
+    },
+    {
+      "name": "Route Gauge",
+      "kind": "custom",
+      "refersTo": "gold-deep",
+      "description": "Fixed vertical depth axis: hairline track filling with gold-deep; the current station ring fills gold.",
+      "html": "<ol class=\"ds-route\" style=\"--route:.55\"><li><a>Вход</a></li><li><a>Работы</a></li><li><a aria-current=\"step\">Подход</a></li><li><a>Заявка</a></li></ol>",
+      "css": ".ds-route{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.4rem;position:relative;width:max-content;font-family:'Commissioner',system-ui,sans-serif;font-size:.78rem;font-weight:650}.ds-route::before,.ds-route::after{content:'';position:absolute;right:11px;top:6px;width:1.5px}.ds-route::before{bottom:6px;background:rgba(26,21,17,.18)}.ds-route::after{height:calc((100% - 12px)*var(--route,0));background:#7A4F0C}.ds-route li{display:flex;justify-content:flex-end;position:relative;z-index:1}.ds-route a{display:flex;align-items:center;gap:.6rem;padding:.25rem .3rem .25rem .6rem;border-radius:999px;background:rgba(245,240,231,.82);color:#4A3F35;cursor:pointer;transition:color .25s,background-color .25s}.ds-route a::after{content:'';width:12px;height:12px;border-radius:50%;background:#E8DFD1;box-shadow:inset 0 0 0 1.5px rgba(26,21,17,.35)}.ds-route a:hover{color:#1A1511;background:#F7F4EF}.ds-route a[aria-current=step]{color:#1A1511}.ds-route a[aria-current=step]::after{background:#C9932A;box-shadow:inset 0 0 0 1.5px #7A4F0C,0 0 0 4px rgba(201,147,42,.22)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Noon Over the Steppe",
+    "overview": "A high-key world: a pale sky fades into sun-bleached steppe dust, and above it hangs one object, a shanyrak (the yurt crown) cast in liquid gold that reflects both sky and ground. The page scroll flies the camera into that world. The reading happens on dense panels of warm white felt that sit over the landscape like hangings on a yurt wall. Nothing is translucent. Text sits on felt, felt sits in the dust, and gold is the only material that shines.\n\nDensity is calm and editorial. Each section is one felt sheet with a narrow reading measure. Lists are ruled lines or quiet middots rather than tiles. The display type is Commissioner with its flared terminals fully open, so headlines read as cast metal, while running text stays plain. Interaction colour is held back. Ultramarine, the felt dye, appears only where the reader can act or is focused: links, focus rings, selection and the text caret. Commands are ink capsules with a gold rim.\n\nThe world is staged three ways from one source. **Full** (1100px and wider) runs a scroll-driven camera route with sticky reading stations. **Mobile** (below 1100px, or touch) runs a shorter vertical route behind ordinary cards. **Lite** (no WebGL, reduced motion, weak devices or save-data) shows a static SVG crown. The visual system is the same in all three; only the depth layer changes.",
+    "keyCharacteristics": [
+      "High-key sky-to-dust field (sky → sky-2 → stone), never a dark studio.",
+      "One shining material: liquid gold. Everything else is matte felt, dust or ink.",
+      "Opaque warm felt panels, 28px corners, a soft warm drop shadow, no glass or blur.",
+      "Ultramarine is reserved for links, focus, selection and the caret.",
+      "Commissioner at FLAR 100 / VOLM 45 for display and FLAR 0 for text. The wordmark is Unbounded.",
+      "Ruled lists, middot-separated inline lists and flat gold-deep numerals."
+    ],
+    "rules": [
+      {
+        "name": "The Felt Dye Rule",
+        "body": "Ultramarine marks only what the reader can act on or is focused on: links, focus, selection and the caret. It never fills a button, a heading or a decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Metal Rule",
+        "body": "Gold is the only material that shines. On light surfaces, text-weight gold uses gold-deep. Bright gold appears as rims, rules and dots, or as gold-hi on ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Opaque Felt Rule",
+        "body": "Reading surfaces are opaque felt. No glass, backdrop blur or translucent plates over the world. The only blur in the system is the modal backdrop.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cast and Woven Rule",
+        "body": "FLAR 100 / VOLM 45 belongs to headings, prices and numerals. Running text, buttons, inputs and labels stay at FLAR 0. Do not set long text in the flared cut.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Numbers that compare (prices, counters, step numerals) use tabular lining figures and never wrap.",
+        "section": "typography"
+      },
+      {
+        "name": "The Kept Line Rule",
+        "body": "Text content gets non-breaking spaces after short Russian and Kazakh words and before dashes, so a line never ends on «в», «и» or «және» and never starts with «—». The typograph script applies this to the Russian pages by hand and to the generated Kazakh pages on every build.",
+        "section": "typography"
+      },
+      {
+        "name": "The Inset Line Rule",
+        "body": "Borders on controls and tiles are drawn as inset box-shadows (1–2px), not layout borders. The only true borders are the input stroke and the hairline rules between list rows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** set every reading surface on opaque felt with 28px corners and the felt lift shadow.",
+      "**Do** keep ultramarine for links, focus, selection and the caret only.",
+      "**Do** make commands ink capsules with a 1.5px gold rim. Quiet actions are paper capsules with an ink rim.",
+      "**Do** use gold-deep for any gold that must read as text on felt or paper. Reserve gold and gold-hi for rims, rules and dots, and for text on ink.",
+      "**Do** separate list rows with hairline rules, separate inline lists with gold-deep middots, and number steps with flat gold-deep numerals.",
+      "**Do** cap paragraphs at the 62ch measure and use tabular figures for prices and counts.",
+      "**Do** draw control and tile borders as inset box-shadows, and tint every drop shadow warm brown.",
+      "**Do** keep all three stagings (full, mobile, lite) visually equivalent apart from the depth layer, and respect prefers-reduced-motion by removing travel while keeping fades and colour changes."
+    ],
+    "donts": [
+      "**Don't** put glass, backdrop blur or translucent plates under reading text. The modal backdrop is the only blur.",
+      "**Don't** fill buttons, headings or decorative shapes with ultramarine.",
+      "**Don't** set running text, buttons or inputs in the flared (FLAR 100) cut.",
+      "**Don't** turn descriptive inline lists into chips or pill tags.",
+      "**Don't** use grey or hard offset shadows. Depth is either warm and blurred or comes from the 3D world.",
+      "**Don't** add kickers, eyebrow labels or section numbers above headings.",
+      "**Don't** let screenshots sit directly on gold or sky. In 3D they hang on a warm black felt mat, and in the DOM they sit in an ink field with a gold rim."
+    ]
+  }
+}

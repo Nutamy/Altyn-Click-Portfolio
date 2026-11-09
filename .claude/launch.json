@@ -1,0 +1,43 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/Nutamy/AppData/Local/Temp/claude/D-------------Altyn-Click-Altyn-Click-Portfolio/988a93be-ce66-4487-8397-671a98a26aa5/scratchpad/dev-server.mjs",
+        ".",
+        "8787"
+      ],
+      "env": {
+        "MOCK_TG": "ok",
+        "API_DELAY": "900"
+      },
+      "port": 8787
+    },
+    {
+      "name": "scratch",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/Nutamy/AppData/Local/Temp/claude/D-------------Altyn-Click-Altyn-Click-Portfolio/988a93be-ce66-4487-8397-671a98a26aa5/scratchpad/dev-server.mjs",
+        "C:/Users/Nutamy/AppData/Local/Temp/claude/D-------------Altyn-Click-Altyn-Click-Portfolio/988a93be-ce66-4487-8397-671a98a26aa5/scratchpad",
+        "8790"
+      ],
+      "port": 8790
+    },
+    {
+      "name": "site-fail",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/Nutamy/AppData/Local/Temp/claude/D-------------Altyn-Click-Altyn-Click-Portfolio/988a93be-ce66-4487-8397-671a98a26aa5/scratchpad/dev-server.mjs",
+        ".",
+        "8788"
+      ],
+      "env": {
+        "MOCK_TG": "fail",
+        "API_DELAY": "900"
+      },
+      "port": 8788
+    }
+  ]
+}
