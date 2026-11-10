@@ -2,11 +2,17 @@
   "name": "altyn-click-portfolio",
   "private": true,
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./dist/styles.css --minify && node scripts/build-i18n.mjs",
+    "build": "node scripts/build-redesign.mjs && node scripts/build-i18n.mjs && esbuild src/redesign/main.js --bundle --minify --format=esm --splitting --outdir=assets --entry-names=site --chunk-names=chunks/[name]-[hash]",
     "watch": "tailwindcss -i ./src/input.css -o ./dist/styles.css --watch",
-    "i18n": "node scripts/build-i18n.mjs"
+    "i18n": "node scripts/build-redesign.mjs && node scripts/build-i18n.mjs",
+    "dev": "node scripts/dev-server.mjs",
+    "test": "node --test tests/*.test.mjs"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "@fontsource-variable/cormorant-garamond": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^3.4.17",
+    "three": "^0.186.1"
   }
 }

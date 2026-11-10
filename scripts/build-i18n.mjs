@@ -98,7 +98,7 @@ function check(src, out, lang, file) {
   }
 }
 
-for (const [file, entries] of [['index.html', dict.index], ['privacy.html', dict.privacy]]) {
+for (const [file, entries] of [['privacy.html', dict.privacy]]) {
   const src = readFileSync(join(ROOT, file), 'utf8');
   for (const [lang, L] of Object.entries(LANGS)) {
     const out = localize(translate(src, entries, L.col, `${lang}/${file}`), lang, file);
